@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STRATOS - Business & Corporate Advisory UAE</title>
+    <!-- Google Fonts for Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    
+    <style>
+        /* Color Palette & CSS Variables */
+        :root {
+            --navy-dark: #070e28;
+            --navy-light: #101c42;
+            --text-dark: #1e293b;
+            --text-muted: #64748b;
+            --bg-light: #f8fafc;
+            --bg-white: #ffffff;
+            --border-color: #e2e8f0;
+            --font-heading: 'Cinzel', serif;
+            --font-body: 'Inter', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--text-dark);
+            background-color: var(--bg-white);
+            line-height: 1.6;
+        }
+
+        /* Top Navigation Bar */
+        header {
+            background-color: var(--navy-dark);
+            color: #ffffff;
+            padding: 20px 5%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .logo-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex-grow: 1;
+        }
+
+        .logo-icon {
+            width: 24px;
+            height: 24px;
+            fill: #ffffff;
+            margin-bottom: 4px;
+        }
+
+        .logo-text {
+            font-family: var(--font-heading);
+            font-size: 20px;
+            letter-spacing: 4px;
+            font-weight: 600;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .icon-btn {
+            background: none;
+            border: none;
+            color: #ffffff;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn-signin {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            padding: 6px 16px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 13px;
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            gap: 25px;
+        }
+
+        nav a {
+            color: #a0aec0;
+            text-decoration: none;
+            font-size: 13px;
+            transition: color 0.3s;
+        }
+
+        nav a.active, nav a:hover {
+            color: #ffffff;
+            font-weight: 500;
+        }
+
+        /* Hero / About Section */
+        .hero-section {
+            padding: 80px 10%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+            background-color: var(--bg-white);
+        }
+
+        .hero-grid-images {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 15px;
+        }
+
+        .hero-left-col {
+            display: grid;
+            grid-template-rows: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .hero-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 2px;
+        }
+
+        .hero-content h1 {
+            font-family: var(--font-heading);
+            font-size: 38px;
+            line-height: 1.2;
+            margin-bottom: 25px;
+            color: var(--navy-dark);
+            font-weight: 500;
+        }
+
+        .hero-content p {
+            font-size: 14px;
+            color: var(--text-dark);
+            margin-bottom: 20px;
+        }
+
+        .hero-content ul {
+            list-style: none;
+            margin: 20px 0;
+            padding-left: 10px;
+        }
+
+        .hero-content li {
+            font-size: 14px;
+            margin-bottom: 8px;
+            position: relative;
+            padding-left: 15px;
+        }
+
+        .hero-content li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+        }
+
+        .btn-outline {
+            display: inline-block;
+            padding: 10px 28px;
+            border: 1 border-style;
+            border: 1px solid var(--navy-dark);
+            border-radius: 20px;
+            color: var(--navy-dark);
+            text-decoration: none;
+            font-size: 13px;
+            margin-top: 15px;
+            transition: all 0.3s;
+        }
+
+        .btn-outline:hover {
+            background-color: var(--navy-dark);
+            color: #ffffff;
+        }
+
+        /* Services Overview Cards */
+        .services-section {
+            background-color: var(--bg-light);
+            padding: 80px 8%;
+            text-align: center;
+        }
+
+        .section-header h2 {
+            font-family: var(--font-heading);
+            font-size: 32px;
+            color: var(--navy-dark);
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+
+        .section-header p {
+            color: var(--text-muted);
+            font-size: 14px;
+            margin-bottom: 50px;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .service-card {
+            background: var(--bg-white);
+            border-radius: 8px;
+            padding: 40px 25px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .card-icon {
+            width: 40px;
+            height: 40px;
+            margin-bottom: 20px;
+            stroke: var(--navy-dark);
+        }
+
+        .service-card h3 {
+            font-family: var(--font-heading);
+            font-size: 18px;
+            color: var(--navy-dark);
+            margin-bottom: 15px;
+        }
+
+        .service-card p {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 25px;
+            flex-grow: 1;
+        }
+
+        .card-list {
+            width: 100%;
+            text-align: left;
+            margin-top: 20px;
+            border-top: 1px solid var(--border-color);
+            padding-top: 15px;
+        }
+
+        .card-list-item {
+            font-size: 12px;
+            color: var(--text-muted);
+            padding: 8px 0;
+            border-bottom: 1px dashed var(--border-color);
+        }
+
+        /* Why Choose Us Section */
+        .why-us-section {
+            padding: 80px 10%;
+            background-color: var(--bg-white);
+            text-align: center;
+        }
+
+        .features-list {
+            max-width: 800px;
+            margin: 40px auto 0;
+            text-align: left;
+        }
+
+        .feature-item {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 30px;
+            align-items: flex-start;
+        }
+
+        .feature-icon {
+            width: 30px;
+            height: 30px;
+            flex-shrink: 0;
+        }
+
+        .feature-text h4 {
+            font-family: var(--font-heading);
+            font-size: 16px;
+            color: var(--navy-dark);
+            margin-bottom: 5px;
+        }
+
+        .feature-text p {
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        /* Experts Section */
+        .experts-section {
+            padding: 80px 10%;
+            background-color: var(--bg-white);
+            text-align: center;
+        }
+
+        .experts-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .expert-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .expert-avatar {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 15px;
+        }
+
+        .expert-card h4 {
+            font-family: var(--font-heading);
+            font-size: 16px;
+            color: var(--navy-dark);
+        }
+
+        .expert-card p {
+            font-size: 12px;
+            font-style: italic;
+            color: var(--text-muted);
+        }
+
+        /* Contact Banner Footer */
+        .contact-banner {
+            background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            color: #ffffff;
+            text-align: center;
+            padding: 80px 20px;
+        }
+
+        .contact-banner h2 {
+            font-family: var(--font-heading);
+            font-size: 26px;
+            font-weight: 400;
+            margin-bottom: 25px;
+        }
+
+        .btn-banner {
+            display: inline-block;
+            padding: 10px 30px;
+            border: 1px solid #ffffff;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 20px;
+            font-size: 13px;
+            transition: all 0.3s;
+        }
+
+        .btn-banner:hover {
+            background-color: #ffffff;
+            color: var(--navy-dark);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 900px) {
+            .hero-section, .cards-grid {
+                grid-template-columns: 1fr;
+            }
+            .experts-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Header -->
+    <header>
+        <div class="header-top">
+            <button class="icon-btn" aria-label="Search">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            </button>
+            
+            <div class="logo-container">
+                <svg class="logo-icon" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                <div class="logo-text">STRATOS</div>
+            </div>
+
+            <div class="header-actions">
+                <button class="icon-btn" aria-label="Cart">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                </button>
+                <a href="#" class="btn-signin">Sign in</a>
+            </div>
+        </div>
+
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#" class="active">About</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">FAQs</a></li>
+                <li><a href="#">Articles</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#">Appointments</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero / About Section -->
+    <section class="hero-section">
+        <div class="hero-grid-images">
+            <div class="hero-left-col">
+                <img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=600&q=80" alt="Dubai City Landscape" class="hero-img">
+                <img src="https://images.unsplash.com/photo-1546412414-8035e1776c9a?auto=format&fit=crop&w=600&q=80" alt="Dubai Marina" class="hero-img">
+            </div>
+            <div>
+                <img src="https://images.unsplash.com/photo-1526495124232-a04e1849168c?auto=format&fit=crop&w=600&q=80" alt="Burj Khalifa" class="hero-img">
+            </div>
+        </div>
+
+        <div class="hero-content">
+            <h1>The Story Behind<br>STRATOS</h1>
+            <p><strong>Stratos Consulting was founded to solve a problem that serious founders, investors, and operators repeatedly face when entering the UAE: a fragmented, opaque, and compliance-heavy system that is poorly explained and badly coordinated.</strong></p>
+            <p>After years working in corporate advisory, finance, and international business development, the founding team saw a clear pattern. Too many entrepreneurs were being:</p>
+            <ul>
+                <li>misguided into unsuitable structures</li>
+                <li>delayed by incomplete documentation</li>
+                <li>or rejected by banks and authorities due to poor preparation</li>
+            </ul>
+            <p>Stratos was created to replace that with a <strong>structured, compliant, and accountable approach</strong> to market entry in the UAE.</p>
+            <a href="#" class="btn-outline">Discover Services</a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services-section">
+        <div class="section-header">
+            <h2>Services & Professional Engagements</h2>
+            <p>We provide structured engagements designed to build compliant, bankable, and sustainable UAE operations.</p>
+        </div>
+
+        <div class="cards-grid">
+            <!-- Service 1 -->
+            <div class="service-card">
+                <svg class="card-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                <h3>Company Formation & Corporate Structuring</h3>
+                <p>We design and coordinate the establishment of UAE entities that meet regulatory, immigration, and banking standards from day one.</p>
+                <a href="#" class="btn-outline">Start Now</a>
+                <div class="card-list">
+                    <div class="card-list-item">Company Registration (Mainland, Free Zone, Offshore)</div>
+                    <div class="card-list-item">Visa Application Preparation & Submission</div>
+                    <div class="card-list-item">Regulatory Compliance Coordination</div>
+                </div>
+            </div>
+
+            <!-- Service 2 -->
+            <div class="service-card">
+                <svg class="card-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+                <h3>Accounting, Tax & Ongoing Compliance</h3>
+                <p>Professional accounting and bookkeeping services appropriate to the client's regulatory and reporting obligations.</p>
+                <a href="#" class="btn-outline">Start Now</a>
+                <div class="card-list">
+                    <div class="card-list-item">General Ledger & Financial Records</div>
+                    <div class="card-list-item">Financial Statement Preparation (IFRS)</div>
+                    <div class="card-list-item">VAT & Tax Filing</div>
+                </div>
+            </div>
+
+            <!-- Service 3 -->
+            <div class="service-card">
+                <svg class="card-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                <h3>Audit & Financial Review</h3>
+                <p>We coordinate licensed audit firms to perform Audits where required by UAE Law.</p>
+                <a href="#" class="btn-outline">Start Now</a>
+                <div class="card-list">
+                    <div class="card-list-item">External Audits</div>
+                    <div class="card-list-item">Internal Audits</div>
+                    <div class="card-list-item">Compliance & Financial Health Audits</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="why-us-section">
+        <div class="section-header">
+            <h2>Why Clients Choose Us</h2>
+            <p>With years of industry expertise, we specialise in crafting tailored solutions that meet each client's unique needs.</p>
+        </div>
+
+        <div class="features-list">
+            <div class="feature-item">
+                <svg class="feature-icon" fill="none" viewBox="0 0 24 24" stroke="#101c42"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 002 2h1.5a2.5 2.5 0 002.5-2.5V11a2 2 0 012-2h1.055"/></svg>
+                <div class="feature-text">
+                    <h4>Remote Coordination only required in-person steps where mandated</h4>
+                    <p>Many steps can be completed remotely. Certain government and banking procedures require in-person attendance, which we coordinate for you.</p>
+                </div>
+            </div>
+
+            <div class="feature-item">
+                <svg class="feature-icon" fill="none" viewBox="0 0 24 24" stroke="#101c42"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+                <div class="feature-text">
+                    <h4>Expert Knowledge of UAE Compliance & Regulations</h4>
+                    <p>With deep expertise in UAE corporate law, immigration, and business licensing, we ensure your business is fully compliant from day one.</p>
+                </div>
+            </div>
+
+            <div class="feature-item">
+                <svg class="feature-icon" fill="none" viewBox="0 0 24 24" stroke="#101c42"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                <div class="feature-text">
+                    <h4>Transparent Pricing</h4>
+                    <p>We provide every client with a personalised Statement of Account. This ensures complete transparency on how you are billed, giving you clarity and control.</p>
+                </div>
+            </div>
+        </div>
+
+        <a href="#" class="btn-outline">View All</a>
+    </section>
+
+    <!-- Meet The Experts -->
+    <section class="experts-section">
+        <div class="section-header">
+            <h2>Meet The Experts</h2>
+        </div>
+
+        <div class="experts-grid">
+            <div class="expert-card">
+                <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=200&q=80" alt="Gregory" class="expert-avatar">
+                <h4>Gregory</h4>
+                <p>Founder</p>
+            </div>
+            <div class="expert-card">
+                <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=200&q=80" alt="Matthew" class="expert-avatar">
+                <h4>Matthew</h4>
+                <p>Head of Operations</p>
+            </div>
+            <div class="expert-card">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80" alt="Andrew" class="expert-avatar">
+                <h4>Andrew</h4>
+                <p>Head of Accounting</p>
+            </div>
+            <div class="expert-card">
+                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=200&q=80" alt="Palesa" class="expert-avatar">
+                <h4>Palesa</h4>
+                <p>Head of Legal</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action Banner -->
+    <section class="contact-banner">
+        <h2>Didn't find your answer?<br>We're here to help.</h2>
+        <a href="#" class="btn-banner">Contact Us</a>
+    </section>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

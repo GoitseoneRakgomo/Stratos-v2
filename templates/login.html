@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title %}Sign In | STRATOS{% endblock %}
+{% block content %}
+<section class="auth-layout page-hero hero-login">
+    <div class="auth-intro">
+        <p class="eyebrow">STRATOS PORTAL</p>
+        <h1>One place for<br>your next move.</h1>
+        <p class="lead">Sign in to access your client workspace or the Stratos administration dashboard.</p>
+    </div>
+    <form class="contact-form auth-form" method="post" action="{{ url_for('login') }}">
+        <h2>Sign in</h2>
+        {% if error %}<p class="form-error">{{ error }}</p>{% endif %}
+        <label for="role">Portal</label>
+        <select id="role" name="role" required>
+            <option value="client">Client workspace</option>
+            <option value="admin">Admin dashboard</option>
+        </select>
+        <label for="username">Username</label>
+        <input id="username" name="username" autocomplete="username" required>
+        <label for="password">Password</label>
+        <input id="password" name="password" type="password" autocomplete="current-password" required>
+        <button class="btn-outline" type="submit">Continue</button>
+        <p class="form-hint">Demo client: <strong>client</strong> / <strong>stratos2026</strong><br>Demo admin: <strong>admin</strong> / <strong>stratos2026</strong></p>
+    </form>
+</section>
+{% endblock %}

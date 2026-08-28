@@ -1,0 +1,244 @@
+{% extends 'base.html' %}
+{% block title %}Articles | STRATOS UAE Advisory{% endblock %}
+{% block content %}
+
+<style>
+    /* Premium Editorial Article Grid */
+    .premium-articles-section {
+        padding: 80px 10%;
+        background: #ffffff;
+    }
+
+    .articles-header {
+        margin-bottom: 48px;
+    }
+
+    .articles-header h2 {
+        color: var(--navy-dark);
+        margin: 0;
+    }
+
+    .articles-bento-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 32px;
+    }
+
+    .editorial-card {
+        background: #ffffff;
+        border: 1px solid rgba(7, 14, 40, 0.12);
+        border-radius: 4px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+        text-decoration: none;
+    }
+
+    .editorial-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 16px 32px rgba(7, 14, 40, 0.08);
+        border-color: var(--navy-dark);
+    }
+
+    .editorial-img-wrap {
+        width: 100%;
+        height: 240px;
+        overflow: hidden;
+        border-bottom: 1px solid rgba(7, 14, 40, 0.1);
+    }
+
+    .editorial-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: grayscale(20%);
+        transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), filter 0.6s ease;
+    }
+
+    .editorial-card:hover .editorial-img {
+        transform: scale(1.06);
+        filter: grayscale(0%);
+    }
+
+    .editorial-content {
+        padding: 32px;
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+    }
+
+    .editorial-category {
+        font-family: var(--font-body);
+        font-size: 11px !important;
+        font-weight: 700;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        color: var(--navy-light);
+        margin-bottom: 12px;
+    }
+
+    .editorial-content h2 {
+        font-family: var(--font-heading);
+        font-size: 24px !important;
+        line-height: 1.35 !important;
+        color: var(--navy-dark);
+        margin: 0 0 16px;
+        font-weight: 600;
+    }
+
+    .editorial-content p {
+        font-size: 14px !important;
+        color: var(--navy-light);
+        margin: 0 0 24px;
+        flex-grow: 1;
+        text-align: justify !important;
+    }
+
+    .editorial-action {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-family: var(--font-body);
+        font-size: 12px;
+        font-weight: 700;
+        color: var(--navy-dark);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .editorial-action svg {
+        transition: transform 0.3s ease;
+    }
+
+    .editorial-card:hover .editorial-action svg {
+        transform: translateX(6px);
+    }
+
+    /* Mobile Adjustments */
+    @media (max-width: 1024px) {
+        .articles-bento-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .articles-bento-grid {
+            grid-template-columns: 1fr;
+        }
+        .premium-articles-section {
+            padding: 56px 6%;
+        }
+    }
+</style>
+
+<!-- HERO BANNER -->
+<section class="page-intro compact page-hero hero-articles">
+    <p class="eyebrow">INSIGHT &amp; PERSPECTIVE</p>
+    <h1>Bespoke guidance for important decisions.</h1>
+    <p class="lead">Practical notes on business formation, accounting, auditing, VAT, banking, and corporate compliance in the UAE.</p>
+</section>
+
+<!-- EDITORIAL ARTICLE GRID -->
+<section class="premium-articles-section">
+    <div class="articles-header">
+        <p class="eyebrow">LATEST INSIGHTS</p>
+        <h2>Corporate Strategy &amp; Analysis</h2>
+    </div>
+
+    <div class="articles-bento-grid">
+        
+        <!-- Article 1 -->
+        <a href="#" class="editorial-card">
+            <div class="editorial-img-wrap">
+                <img class="editorial-img" src="{{ url_for('image_asset', filename='gabriel-santos-DgLksCjEfB0-unsplash.jpg') }}" alt="Dubai Business District">
+            </div>
+            <div class="editorial-content">
+                <span class="editorial-category">Business Formation</span>
+                <h2>Starting your UAE business with precision</h2>
+                <p>How the right company setup and licensing plan can create a stronger, more resilient foundation for your enterprise from day one.</p>
+                <div class="editorial-action">
+                    Read Article <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </div>
+            </div>
+        </a>
+
+        <!-- Article 2 -->
+        <a href="#" class="editorial-card">
+            <div class="editorial-img-wrap">
+                <img class="editorial-img" src="{{ url_for('image_asset', filename='kate-trysh-70vza4NysS8-unsplash.jpg') }}" alt="Financial Data">
+            </div>
+            <div class="editorial-content">
+                <span class="editorial-category">Accounting &amp; Tax</span>
+                <h2>Why strong financial records matter</h2>
+                <p>Clear records and meticulous financial reporting help businesses meet their regulatory obligations and make sharper, data-driven decisions as they scale.</p>
+                <div class="editorial-action">
+                    Read Article <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </div>
+            </div>
+        </a>
+
+        <!-- Article 3 -->
+        <a href="#" class="editorial-card">
+            <div class="editorial-img-wrap">
+                <img class="editorial-img" src="{{ url_for('image_asset', filename='dubai-1351569_1920.jpg') }}" alt="Corporate Compliance">
+            </div>
+            <div class="editorial-content">
+                <span class="editorial-category">Compliance</span>
+                <h2>Preparing for UAE auditing requirements</h2>
+                <p>A practical, step-by-step look at how early preparation, expert support, and licensed audit coordination dramatically reduce corporate friction.</p>
+                <div class="editorial-action">
+                    Read Article <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </div>
+            </div>
+        </a>
+        <!-- Article 4 -->
+        <a href="#" class="editorial-card">
+            <div class="editorial-img-wrap">
+                <img class="editorial-img" src="{{ url_for('image_asset', filename='photo-1659493560381-0c74ace5ddd5.jpg') }}" alt="UAE Tax Strategy">
+            </div>
+            <div class="editorial-content">
+                <span class="editorial-category">UAE Corporate Tax</span>
+                <h2>Navigating the corporate tax landscape</h2>
+                <p>A comprehensive overview of the new corporate tax regime, crucial exemptions, and strategic planning for both mainland and free zone entities.</p>
+                <div class="editorial-action">
+                    Read Article <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </div>
+            </div>
+        </a>
+
+        <!-- Article 5 -->
+        <a href="#" class="editorial-card">
+            <div class="editorial-img-wrap">
+                <img class="editorial-img" src="{{ url_for('image_asset', filename='amir-hanna-KjWMGF0PYuE-unsplash (1).jpg') }}" alt="Golden Visa UAE">
+            </div>
+            <div class="editorial-content">
+                <span class="editorial-category">Residency &amp; Visas</span>
+                <h2>Securing the UAE Golden Visa</h2>
+                <p>Explore the exact eligibility criteria, exclusive benefits, and the streamlined application process for long-term residency designed for investors and top talent.</p>
+                <div class="editorial-action">
+                    Read Article <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </div>
+            </div>
+        </a>
+
+        <!-- Article 6 -->
+        <a href="#" class="editorial-card">
+            <div class="editorial-img-wrap">
+                <img class="editorial-img" src="{{ url_for('image_asset', filename='claudio-poggio-0xC7iBAgtr8-unsplash.jpg') }}" alt="Corporate Banking Dubai">
+            </div>
+            <div class="editorial-content">
+                <span class="editorial-category">Corporate Banking</span>
+                <h2>Streamlining bank account opening</h2>
+                <p>Understand the stringent compliance checks, required documentation, and best practices for establishing robust banking relationships seamlessly in Dubai.</p>
+                <div class="editorial-action">
+                    Read Article <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </div>
+            </div>
+        </a>
+
+    </div>
+</section>
+
+{% endblock %}

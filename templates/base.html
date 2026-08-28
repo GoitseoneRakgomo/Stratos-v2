@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FK Physical Assets | Independent Access to Physical Assets</title>
+    
+    <!-- Google Fonts for a premium look -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        /* CSS VARIABLES */
+        :root {
+            --primary-dark: #2c2a28;
+            --accent-gold: #9a7b4f; 
+            --accent-gold-light: #d4b881;
+            --text-main: #4a4845;
+            --text-light: #706d68;
+            --bg-main: #f9f7f2; 
+            --bg-card: #fdfbf7;
+            --bg-alt: #ffffff; 
+            --border-color: #e8e2d5;
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Inter', sans-serif;
+        }
+
+        /* RESET & GLOBAL STYLES */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--text-main);
+            line-height: 1.6;
+            background-color: var(--bg-main);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: var(--font-heading);
+            color: var(--primary-dark);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        p {
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* BUTTONS */
+        .cta-button {
+            display: inline-block;
+            background-color: var(--accent-gold);
+            color: #fff;
+            padding: 0.8rem 2.2rem;
+            border-radius: 4px;
+            font-weight: 500;
+            transition: opacity 0.3s ease;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+        }
+
+        .cta-button:hover {
+            opacity: 0.9;
+        }
+
+        /* NAVIGATION */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 0;
+        }
+
+        .nav-logo {
+            max-height: 55px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+        }
+
+        .nav-links a {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--primary-dark);
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-gold);
+        }
+
+        /* HERO SECTION */
+        .hero-section {
+            padding: 4rem 0 6rem 0;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            letter-spacing: -0.5px;
+        }
+
+        .hero-content h2 {
+            font-size: 1.4rem;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+            font-family: var(--font-body);
+            font-weight: 300;
+        }
+
+        .hero-checklist {
+            margin: 2.5rem 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            font-weight: 400;
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        .hero-image-wrapper img {
+            width: 100%;
+            height: 600px;
+            object-fit: cover;
+            border-radius: 12px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+        }
+
+        /* SECTION IMAGES */
+        .content-image {
+            width: 100%;
+            height: 100%;
+            min-height: 400px;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        /* FULL WIDTH BANNER */
+        .banner-section {
+            position: relative;
+            padding: 8rem 0;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; /* Parallax effect */
+            text-align: center;
+            color: #fff;
+        }
+
+        .banner-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(44, 42, 40, 0.7); /* Dark overlay for text readability */
+            z-index: 1;
+        }
+
+        .banner-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .banner-content h2 {
+            color: #fff;
+            font-size: 2.2rem;
+            font-style: italic;
+            font-weight: 400;
+        }
+
+        /* CONTENT SECTIONS */
+        .content-section {
+            padding: 6rem 0;
+        }
+
+        .bg-alt {
+            background-color: var(--bg-alt); 
+        }
+
+        /* GRID LAYOUTS */
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+        }
+
+        .two-col.reverse {
+            direction: rtl;
+        }
+        .two-col.reverse > div {
+            direction: ltr;
+        }
+
+        .preserve-list {
+            list-style: none;
+            margin-top: 1.5rem;
+        }
+
+        .preserve-list li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        .preserve-list li::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background-color: var(--border-color);
+            border-radius: 50%;
+            position: absolute;
+            left: 0;
+            top: 8px;
+        }
+
+        /* SERVICES CARDS */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .service-card {
+            background: var(--bg-card);
+            padding: 2.5rem 2rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.03);
+            border-color: var(--accent-gold-light);
+        }
+
+        .service-icon {
+            width: 32px;
+            height: 32px;
+            margin-bottom: 1.5rem;
+            color: var(--accent-gold);
+        }
+
+        .service-card h3 {
+            font-size: 1.1rem;
+            font-family: var(--font-body);
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+        }
+
+        .service-card p {
+            color: var(--text-light);
+            font-size: 0.85rem;
+            margin: 0;
+        }
+
+        /* PROCESS SECTION */
+        .process-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            overflow-x: auto;
+            padding-bottom: 1rem;
+        }
+
+        .process-step {
+            flex: 1;
+            min-width: 180px;
+            background: var(--bg-card);
+            padding: 2rem 1.5rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            text-align: center;
+        }
+
+        .process-step strong {
+            display: block;
+            font-size: 1rem;
+            color: var(--primary-dark);
+            margin-bottom: 0.5rem;
+            font-family: var(--font-body);
+            font-weight: 600;
+        }
+
+        .process-arrow {
+            color: var(--text-light);
+            font-size: 1.2rem;
+        }
+
+        /* FAQ ACCORDION */
+        .faq-container {
+            width: 100%;
+        }
+
+        .faq-item {
+            margin-bottom: 1rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.2rem 1.5rem;
+        }
+
+        .faq-item summary {
+            font-weight: 500;
+            font-family: var(--font-body);
+            cursor: pointer;
+            font-size: 1.05rem;
+            color: var(--primary-dark);
+            outline: none;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-item summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .faq-item summary::after {
+            content: '+';
+            font-size: 1.5rem;
+            color: var(--accent-gold);
+            font-weight: 300;
+        }
+
+        .faq-item[open] summary::after {
+            content: '−';
+        }
+
+        .faq-item p {
+            margin-top: 1rem;
+            color: var(--text-light);
+            padding-top: 1rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        /* CONTACT FORM */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 4rem;
+            background: var(--bg-card);
+            padding: 4rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--primary-dark);
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            font-family: var(--font-body);
+            background: #fff;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            border-color: var(--accent-gold);
+        }
+
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        /* FOOTER */
+        footer {
+            background-color: var(--bg-alt);
+            color: var(--primary-dark);
+            padding: 4rem 0 2rem 0;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-content p {
+            color: var(--text-light);
+            font-size: 0.85rem;
+        }
+
+        .footer-contact div {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 1rem;
+            color: var(--text-main);
+            font-size: 0.85rem;
+        }
+
+        .disclaimer-text {
+            font-size: 0.75rem;
+            color: #888;
+            border-top: 1px solid rgba(0,0,0,0.1);
+            padding-top: 1.5rem;
+            text-align: justify;
+            line-height: 1.6;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            color: #888;
+            font-size: 0.8rem;
+            margin-top: 2rem;
+        }
+
+        /* RESPONSIVE DESIGN */
+        @media (max-width: 900px) {
+            .hero-grid, .two-col, .contact-container, .footer-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+            .hero-image-wrapper img {
+                height: 400px;
+            }
+            .contact-container {
+                padding: 2rem;
+            }
+            .process-container {
+                flex-direction: column;
+            }
+            .process-arrow {
+                transform: rotate(90deg);
+                margin: 0.5rem 0;
+            }
+            .navbar {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+            .hero-content h1 {
+                font-size: 2.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER & HERO SECTION -->
+    <div class="container">
+        <header class="navbar">
+            <div class="logo">
+                <img src="{{ url_for('static', filename='logos/Logo1.png') }}" alt="FK Physical Assets Logo" class="nav-logo">
+            </div>
+            <nav class="nav-links">
+                <a href="#services">Services</a>
+                <a href="#about">About</a>
+                <a href="#approach">Sourcing</a>
+                <a href="#faq">Storage</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </header>
+
+        <main class="hero-section">
+            <div class="hero-grid">
+                <div class="hero-content">
+                    <h1>FK Physical Assets</h1>
+                    <h2>Expert Physical Asset Advisory</h2>
+                    <p>FK Physical Assets assists private clients, family offices, and businesses in navigating the acquisition, storage, transportation, and management of physical assets. Through an established international network of suppliers, storage providers, logistics partners, and market participants, we help clients access opportunities across the physical asset sector through a structured and professional process.</p>
+                    
+                    <div class="hero-checklist">
+                        <span>Precious Metals</span>
+                        <span>Asset Sourcing</span>
+                        <span>Storage Solutions</span>
+                        <span>International Logistics</span>
+                        <span>Independent Transaction Support</span>
+                    </div>
+                    
+                    <a href="#contact" class="cta-button">Request Consultation</a>
+                </div>
+                <div class="hero-image-wrapper">
+                    <!-- Replace with your actual hero image -->
+                    <img src="https://images.unsplash.com/photo-1610375461246-83df859d849d?auto=format&fit=crop&q=80&w=800" alt="Premium Gold Texture">
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- SERVICES SECTION -->
+    <section id="services" class="content-section bg-alt">
+        <div class="container">
+            <div class="services-grid">
+                <div class="service-card">
+                    <svg class="service-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 3l8 4v2l-8 4-8-4V7l8-4z M12 11v10 M4 9v6l8 4 M20 9v6l-8 4"></path></svg>
+                    <h3>Precious Metals</h3>
+                    <p>Assistance with sourcing, evaluating, acquiring, storing, and disposing of physical precious metals through established industry participants.</p>
+                </div>
+                <div class="service-card">
+                    <svg class="service-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                    <h3>Asset Sourcing</h3>
+                    <p>Access to an international network of suppliers, counterparties, and service providers across selected physical asset categories.</p>
+                </div>
+                <div class="service-card">
+                    <svg class="service-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+                    <h3>Secure Vault Storage</h3>
+                    <p>Introduction to secure storage providers and vaulting facilities in selected jurisdictions worldwide.</p>
+                </div>
+                <div class="service-card">
+                    <svg class="service-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    <h3>Global Logistics</h3>
+                    <p>Coordination with specialist logistics providers for the secure movement of physical assets across borders.</p>
+                </div>
+                <div class="service-card">
+                    <svg class="service-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"></path></svg>
+                    <h3>Transaction Support</h3>
+                    <p>Support throughout the transaction process, helping clients navigate acquisitions, disposals, and ownership structures efficiently.</p>
+                </div>
+                <div class="service-card">
+                    <svg class="service-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z"></path></svg>
+                    <h3>Market Intelligence</h3>
+                    <p>Guidance and access to selected physical and alternative asset opportunities through our established network of industry relationships.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FULL WIDTH PARALLAX BANNER -->
+    <!-- Replace URL with your static banner image -->
+    <section class="banner-section" style="background-image: url('https://images.unsplash.com/photo-1601597111158-2fceff292cdc?auto=format&fit=crop&q=80&w=1920');">
+        <div class="banner-overlay"></div>
+        <div class="container banner-content">
+            <h2>"Wealth preservation through tangible assets, delivered with discretion and integrity."</h2>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION (With Image) -->
+    <section id="about" class="content-section">
+        <div class="container">
+            <div class="two-col">
+                <div>
+                    <h2>Preserve Wealth with<br>Physical Integrity.</h2>
+                    <br>
+                    <p>FK Physical Assets is an independent consulting and facilitation firm specializing in physical and alternative assets. We work with clients seeking exposure to tangible assets by providing access to industry expertise, established international networks, and practical transaction support.</p>
+                    <p>Our role extends beyond facilitating transactions. We help clients understand available options, identify appropriate solutions, and connect with trusted counterparties across multiple jurisdictions.</p>
+                    
+                    <h3 style="font-family: var(--font-body); font-weight: 600; font-size: 1.1rem; margin-top: 2rem;">Why Physical Assets?</h3>
+                    <p>Physical assets have been used to preserve and transfer wealth for centuries. Many investors choose to allocate a portion of their holdings to physical assets as part of a broader diversification strategy.</p>
+                    <ul class="preserve-list">
+                        <li>Precious Metals</li>
+                        <li>Real Estate</li>
+                        <li>Natural Resources</li>
+                        <li>Infrastructure Assets</li>
+                        <li>Private Equity & Collectibles</li>
+                    </ul>
+                </div>
+                <div>
+                    <!-- Replace with your actual section image -->
+                    <img src="https://images.unsplash.com/photo-1621504450181-5d356f61d307?auto=format&fit=crop&q=80&w=800" alt="Wealth Preservation" class="content-image">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- OUR APPROACH / PROCESS -->
+    <section id="approach" class="content-section bg-alt">
+        <div class="container">
+            <div class="process-container">
+                <div class="process-step">
+                    <strong>1. Consultation &<br>Strategy</strong>
+                    <p style="font-size: 0.85rem; color: var(--text-light); margin-top: 0.5rem; margin-bottom: 0;">We understand your objectives before recommending solutions.</p>
+                </div>
+                <div class="process-arrow">→</div>
+                <div class="process-step">
+                    <strong>2. Acquisition &<br>Sourcing</strong>
+                    <p style="font-size: 0.85rem; color: var(--text-light); margin-top: 0.5rem; margin-bottom: 0;">Identify appropriate suppliers and storage providers.</p>
+                </div>
+                <div class="process-arrow">→</div>
+                <div class="process-step">
+                    <strong>3. Secure Storage<br>& Logistics</strong>
+                    <p style="font-size: 0.85rem; color: var(--text-light); margin-top: 0.5rem; margin-bottom: 0;">Coordinate introductions and facilitate secure transfer.</p>
+                </div>
+                <div class="process-arrow">→</div>
+                <div class="process-step">
+                    <strong>4. Ongoing<br>Management</strong>
+                    <p style="font-size: 0.85rem; color: var(--text-light); margin-top: 0.5rem; margin-bottom: 0;">Assist with storage, logistics, and future requirements.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ SECTION (With Image) -->
+    <section id="faq" class="content-section">
+        <div class="container">
+            <div class="two-col reverse">
+                <div>
+                    <h2>Why Work With<br>FK Physical Assets</h2>
+                    <br>
+                    <p>Navigating the physical asset market can be complex. Different jurisdictions, suppliers, storage providers, logistics partners, regulatory considerations, and ownership structures all present unique opportunities and challenges.</p>
+                    <p><strong>FK Physical Assets helps simplify that process.</strong></p>
+                    
+                    <div class="faq-container" style="margin-top: 2rem;">
+                        <h3 style="font-family: var(--font-body); font-weight: 600; font-size: 1.1rem; margin-bottom: 1.5rem;">Frequently Asked Questions</h3>
+                        <details class="faq-item">
+                            <summary>What does FK Physical Assets do?</summary>
+                            <p>FK Physical Assets is an independent consulting and facilitation firm that assists clients with sourcing, introductions, transaction support, storage coordination, and logistics relating to physical and alternative assets.</p>
+                        </details>
+                        <details class="faq-item">
+                            <summary>Can you help arrange storage?</summary>
+                            <p>Yes. We can introduce clients to secure storage providers and vaulting facilities in selected jurisdictions around the world.</p>
+                        </details>
+                        <details class="faq-item">
+                            <summary>Can you assist with international logistics?</summary>
+                            <p>Yes. We work with specialist logistics providers and can assist with coordinating the transportation of physical assets where required.</p>
+                        </details>
+                    </div>
+                </div>
+                <div>
+                    <!-- Replace with your actual section image -->
+                    <img src="https://images.unsplash.com/photo-1577983050868-b80c54eb4474?auto=format&fit=crop&q=80&w=800" alt="Secure Vault" class="content-image">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="content-section bg-alt">
+        <div class="container">
+            <div class="contact-container">
+                <div>
+                    <h2>Let's Start a Conversation</h2>
+                    <p style="color: var(--text-light); margin-bottom: 2.5rem; margin-top: 1rem;">Whether you are exploring physical precious metals, evaluating storage options, seeking access to specialist providers, or looking for assistance navigating the physical asset market, our team is available to help.</p>
+                    
+                    <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+                        <div style="display: flex; align-items: center; gap: 1rem;">
+                            <svg width="20" height="20" fill="none" stroke="var(--accent-gold)" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                            <span style="font-size: 0.95rem; font-weight: 500;">(822) 258-5787</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 1rem;">
+                            <svg width="20" height="20" fill="none" stroke="var(--accent-gold)" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                            <span style="font-size: 0.95rem; font-weight: 500;">advisory@fkassets.com</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 1rem;">
+                            <svg width="20" height="20" fill="none" stroke="var(--accent-gold)" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                            <span style="font-size: 0.95rem; font-weight: 500;">Suite 22238<br>Global Financial District</span>
+                        </div>
+                    </div>
+                </div>
+
+                <form onsubmit="event.preventDefault();">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">How can we assist you?</label>
+                        <textarea id="message" required></textarea>
+                    </div>
+                    <button type="submit" class="cta-button" style="width: 100%;">Submit Inquiry</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div style="flex: 1.5; min-width: 300px; padding-right: 2rem;">
+                    <img src="{{ url_for('static', filename='logos/Logo1.png') }}" alt="FK Physical Assets Logo" style="max-height: 40px; margin-bottom: 1.5rem;">
+                    <p>FK Physical Assets is an independent consulting and facilitation firm specializing in physical and alternative assets. Through an international network of suppliers, storage providers, logistics partners, and industry participants, we assist private clients, family offices, and businesses in navigating physical asset opportunities across multiple jurisdictions.</p>
+                </div>
+
+                <div class="footer-contact" style="flex: 1; min-width: 250px;">
+                    <h3 style="font-family: var(--font-body); font-size: 1rem; margin-bottom: 1.5rem;">Contact Us</h3>
+                    <div>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg> 
+                        advisory@fkassets.com
+                    </div>
+                    <div>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg> 
+                        (822) 258-5787
+                    </div>
+                    <div>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg> 
+                        Suite 22238, Global Financial District
+                    </div>
+                </div>
+            </div>
+            
+            <div class="disclaimer-text">
+                <strong>Please note:</strong> We do not provide investment advice, engaging with us is subject to successful completion of requisite KYC/AML and due diligence requirements. We are not a fiduciary. We are not a licensed precious metals dealer. Nothing herein is investment advice, the decision to purchase and what to purchase is always the client's.
+            </div>
+
+            <div class="footer-bottom">
+                © 2024 FK Physical Assets. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

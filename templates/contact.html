@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block title %}Contact | STRATOS UAE Advisory{% endblock %}
+{% block content %}
+
+<style>
+    /* Keep H1 left-aligned to prevent awkward word gaps */
+    .contact-layout h1 {
+        text-align: left !important;
+    }
+
+    /* Only justify paragraphs and labels */
+    .contact-layout p,
+    .contact-layout label {
+        text-align: justify !important;
+    }
+    
+    /* Keep button text centered */
+    .contact-layout .btn-outline {
+        text-align: center !important;
+    }
+</style>
+
+<section class="contact-layout">
+    <div>
+        <p class="eyebrow">YOUR UAE BUSINESS JOURNEY BEGINS HERE</p>
+        <h1>Let's build successful next step.</h1>
+        <p class="lead">Tell us about your business objectives, and a dedicated Relationship Manager will help identify the right path for formation, compliance, banking, or ongoing corporate support.</p>
+        <div class="contact-details">
+            <p><strong>Email</strong><br>hello@stratos.ae</p>
+            <p><strong>Location</strong><br>Dubai, United Arab Emirates</p>
+        </div>
+    </div>
+    <form class="contact-form" action="{{ url_for('contact') }}" method="post">
+        <label for="name">Your name</label>
+        <input id="name" name="name" required>
+        
+        <label for="email">Email address</label>
+        <input id="email" name="email" type="email" required>
+        
+        <label for="message">How can we help?</label>
+        <textarea id="message" name="message" rows="5" required placeholder="Tell us about your business needs"></textarea>
+        
+        <button class="btn-outline" type="submit">Start a conversation</button>
+    </form>
+</section>
+
+{% endblock %}

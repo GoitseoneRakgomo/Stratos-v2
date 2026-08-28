@@ -1,0 +1,362 @@
+{% extends 'base.html' %}
+{% block title %}Contact & Appointments | STRATOS UAE Advisory{% endblock %}
+
+{% block content %}
+<style>
+    /* Premium Contact Page Layout */
+    .contact-page-wrapper {
+        background: #ffffff;
+    }
+
+    .contact-hero {
+        padding: 80px 10% 40px;
+    }
+
+    .contact-hero p.eyebrow {
+        color: var(--navy-light);
+        margin-bottom: 12px;
+    }
+
+    .contact-hero h1 {
+        margin: 0;
+        color: var(--navy-dark);
+    }
+
+    /* Top Section: Split Info/Map & General Form */
+    .contact-primary-split {
+        display: grid;
+        grid-template-columns: 0.8fr 1.2fr;
+        gap: 64px;
+        padding: 0 10% 80px;
+        align-items: stretch;
+    }
+
+    .contact-info-panel {
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+    }
+
+    .contact-info-block h3 {
+        font-family: var(--font-heading);
+        font-size: 20px;
+        color: var(--navy-dark);
+        margin: 0 0 8px;
+    }
+
+    .contact-info-block p {
+        color: var(--navy-light);
+        margin: 0;
+        font-size: 15px;
+        line-height: 1.6;
+    }
+
+    .map-container {
+        width: 100%;
+        height: 100%;
+        min-height: 320px;
+        border: 1px solid rgba(7, 14, 40, 0.15);
+        border-radius: 4px;
+        overflow: hidden;
+        margin-top: 8px;
+    }
+
+    .general-inquiry-panel {
+        background: #ffffff;
+        border: 1px solid var(--navy-dark);
+        padding: 48px;
+        height: 100%;
+    }
+
+    .general-inquiry-panel h2 {
+        font-size: 28px !important;
+        margin: 0 0 8px;
+    }
+
+    .general-inquiry-panel > p {
+        margin-bottom: 32px;
+        color: var(--navy-light);
+    }
+
+    /* Bottom Section: Dedicated Booking System */
+    .booking-section-wrapper {
+        background: #f8f9fb;
+        padding: 80px 10%;
+        border-top: 1px solid rgba(7, 14, 40, 0.1);
+    }
+
+    .booking-section-header {
+        width: 100%; /* Ensures header stretches left to right */
+        margin-bottom: 48px;
+        text-align: left;
+    }
+
+    .booking-section-header h2 {
+        margin: 0 0 12px;
+        color: var(--navy-dark);
+    }
+
+    /* FIX: Force Blocks to Align with Header & Match Heights */
+    .appointment-layout {
+        display: grid;
+        grid-template-columns: 1fr 1fr; /* Splits 50/50 */
+        gap: 48px; /* Automatic equal spacing */
+        align-items: stretch; /* Forces both boxes to the exact same height */
+        width: 100%;
+    }
+
+    .booking-container, 
+    .appointment-note {
+        background: #ffffff;
+        border: 1px solid var(--navy-dark);
+        padding: 48px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+
+    /* Mobile Adjustments */
+    @media (max-width: 1024px) {
+        .contact-primary-split {
+            grid-template-columns: 1fr;
+            gap: 48px;
+        }
+        .general-inquiry-panel {
+            padding: 32px;
+        }
+        .appointment-layout {
+            grid-template-columns: 1fr;
+            gap: 32px;
+        }
+        .booking-container, 
+        .appointment-note {
+            padding: 32px;
+        }
+    }
+</style>
+
+<div class="contact-page-wrapper">
+    
+    <!-- HEADER -->
+    <section class="contact-hero">
+        <p class="eyebrow">GET IN TOUCH</p>
+        <h1>Contact &amp; Appointments</h1>
+    </section>
+
+    <!-- TOP SECTION: DIRECT CONTACT & INQUIRY FORM -->
+    <section class="contact-primary-split">
+        
+        <!-- Left: Quick Contact & Map -->
+        <div class="contact-info-panel">
+            <div class="contact-info-block">
+                <h3>Direct Contact</h3>
+                <p><strong>Call / WhatsApp:</strong> +971 58 586 4940</p>
+                <p><strong>Email:</strong> hello@stratos.ae</p>
+            </div>
+            
+            <div class="contact-info-block">
+                <h3>Office Location</h3>
+                <p>Nad Al Sheba 1<br>Dubai, United Arab Emirates</p>
+            </div>
+
+            <div class="map-container">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d115560.2599264359!2d55.200000!3d25.150000!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f684807f4bb59%3A0xb6d1b282d8c303f!2sNad%20Al%20Sheba%201%20-%20Dubai%20-%20United%20Arab%20Emirates!5e0!3m2!1sen!2s!4v1700000000000!5m2!1sen!2s" 
+                    width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+        </div>
+
+        <!-- Right: General Inquiry Form -->
+        <div class="general-inquiry-panel">
+            <h2>Send Us a Message</h2>
+            <p>Prefer to write to us? Fill out the form below and an advisor will reply shortly.</p>
+
+            <form class="contact-form-grid" action="{{ url_for('contact') }}" method="POST">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone Number (Incl. Code)</label>
+                    <input type="tel" id="phone" name="phone" required value="+971 ">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="company">Company</label>
+                    <input type="text" id="company" name="company">
+                </div>
+
+                <div class="form-group full-width">
+                    <label>Preferred Contact Method:</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="contact_method" value="call"> Call</label>
+                        <label><input type="radio" name="contact_method" value="whatsapp"> WhatsApp</label>
+                        <label><input type="radio" name="contact_method" value="email" checked> Email</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="nationality">Nationality</label>
+                    <select id="nationality" name="nationality">
+                        <option value="Austria" selected>Austria</option>
+                        <option value="South Africa">South Africa</option>
+                        <option value="United Arab Emirates">United Arab Emirates</option>
+                        <option value="United Kingdom">United Kingdom</option>
+                        <option value="United States">United States</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="business_activity">Business Activity</label>
+                    <input type="text" id="business_activity" name="business_activity">
+                </div>
+
+                <div class="form-group full-width">
+                    <label>Services Required:</label>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox" name="services" value="formation"> UAE Company Formation</label>
+                        <label><input type="checkbox" name="services" value="tax"> Accounting &amp; Tax</label>
+                        <label><input type="checkbox" name="services" value="banking"> Banking Support</label>
+                        <label><input type="checkbox" name="services" value="residency"> Residency &amp; Visas</label>
+                    </div>
+                </div>
+
+                <div class="form-group full-width">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" rows="4"></textarea>
+                </div>
+
+                <div class="form-group full-width" style="margin-top: 16px;">
+                    <button type="submit" class="btn-outline-pill">Submit Inquiry</button>
+                </div>
+            </form>
+        </div>
+
+    </section>
+
+   <style>
+    /* Add/Update these specific rules in your existing style block */
+    .booking-section-header {
+        width: 100%;
+        margin: 0 0 48px 0;
+        padding: 0;
+        text-align: left;
+    }
+
+    .appointment-layout {
+        display: flex;
+        justify-content: space-between; /* Creates the automatic gap */
+        align-items: stretch; /* Forces equal height */
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    .booking-container, 
+    .appointment-note {
+        width: 48%; /* Forces exact width, leaving 4% auto gap in center */
+        box-sizing: border-box;
+        background: #ffffff;
+        border: 1px solid var(--navy-dark);
+        padding: 48px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* Mobile fallback for the auto-gap layout */
+    @media (max-width: 1024px) {
+        .appointment-layout {
+            flex-direction: column;
+            gap: 32px;
+        }
+        .booking-container, 
+        .appointment-note {
+            width: 100%;
+            padding: 32px;
+        }
+    }
+</style>
+
+<!-- BOTTOM SECTION: DEDICATED BOOKING SYSTEM -->
+<section class="booking-section-wrapper">
+    <div class="booking-section-header">
+        <p class="eyebrow">DEDICATED ADVISORY</p>
+        <h2>Schedule a Consultation</h2>
+        <p>Select an available date and time slot to book a strategy session with a dedicated Relationship Manager.</p>
+    </div>
+
+    <div class="appointment-layout">
+        <!-- Interactive Calendar & Slot Picker -->
+        <div class="booking-container">
+            <form id="appointmentForm" class="contact-form" onsubmit="handleBooking(event)">
+                <div class="calendar-wrapper">
+                    <div class="calendar-header">
+                        <button type="button" id="prevMonth" class="cal-nav-btn">&larr;</button>
+                        <span id="currentMonthYear" class="cal-title"></span>
+                        <button type="button" id="nextMonth" class="cal-nav-btn">&rarr;</button>
+                    </div>
+                    
+                    <div class="calendar-weekdays">
+                        <div>Su</div><div>Mo</div><div>Tu</div><div>We</div><div>Th</div><div>Fr</div><div>Sa</div>
+                    </div>
+                    
+                    <div id="calendarDays" class="calendar-days"></div>
+                </div>
+
+                <div class="time-slot-section">
+                    <label style="margin-top:0;">AVAILABLE TIME SLOTS (GST / UAE TIME)</label>
+                    <div id="timeSlots" class="time-slots-grid">
+                        <span class="placeholder-text">Please select an available weekday above.</span>
+                    </div>
+                </div>
+
+                <input type="hidden" id="selectedDateInput" name="booking_date" required>
+                <input type="hidden" id="selectedTimeInput" name="booking_time" required>
+
+                <label for="fullName">FULL NAME</label>
+                <input type="text" id="fullName" name="full_name" required placeholder="e.g. Executive Name">
+
+                <label for="workEmail">CORPORATE EMAIL</label>
+                <input type="email" id="workEmail" name="work_email" required placeholder="name@company.com">
+
+                <label for="advisoryTopic">ENGAGEMENT FOCUS</label>
+                <input type="text" id="advisoryTopic" name="advisory_topic" placeholder="e.g. Free Zone Structuring">
+
+                <button type="submit" class="btn-outline" style="margin-top: 24px; width: 100%;">Confirm Appointment Request</button>
+            </form>
+        </div>
+
+        <!-- Operating Hours & Protocol Details -->
+        <div class="appointment-note">
+            <h2>Your dedicated first step</h2>
+            <p>We combine cutting-edge technology with unmatched human expertise to deliver tailored solutions around your business objectives.</p>
+            
+            <div class="working-hours-card">
+                <h4>CONSULTATION HOURS</h4>
+                <ul>
+                    <li><strong>Mon – Thu:</strong> 08:30 – 17:30 (GST)</li>
+                    <li><strong>Friday:</strong> 08:30 – 12:30 (GST)</li>
+                    <li><strong>Sat – Sun:</strong> Closed</li>
+                </ul>
+            </div>
+
+            <h4 style="font-family: var(--font-heading); color: var(--navy-dark); margin-top: 32px;">Engagement Notice</h4>
+            <ul style="padding-left: 16px;">
+                <li>Submissions undergo conflicts-of-interest review prior to confirmation.</li>
+                <li>Consultations are strictly confidential.</li>
+                <li>Time slots display in UAE Standard Time (UTC+4).</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+</div>
+{% endblock %}

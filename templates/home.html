@@ -1,0 +1,907 @@
+{% extends 'base.html' %}
+{% block title %}STRATOS - Business & Corporate Advisory UAE{% endblock %}
+
+{% block content %}
+<!-- ANIMATED HERO BANNER SECTION -->
+<section class="hero-banner">
+    <!-- Cross-fading background images -->
+    <div class="hero-bg-slider">
+        <div class="hero-bg-slide slide-1"></div>
+        <div class="hero-bg-slide slide-2"></div>
+        <div class="hero-bg-slide slide-3"></div>
+    </div>
+    
+    <!-- Dark overlay to ensure crisp contrast and readability -->
+    <div class="hero-banner-overlay"></div>
+
+    <!-- Foreground Content -->
+    <div class="hero-banner-content">
+        <h2>Bespoke Corporate Services, Delivered with Precision.</h2>
+        <p class="lead-light">Your trusted partner for seamless business formation and corporate compliance in the UAE.</p>
+    </div>
+</section>
+
+<!-- ABOUT STRATOS ADVISORY SECTION -->
+<section class="about-split-section">
+    <div class="about-photo-wrap">
+        <img class="about-photo" src="{{ url_for('image_asset', filename='claudio-poggio-0xC7iBAgtr8-unsplash.jpg') }}" alt="Dubai skyscraper architecture">
+    </div>
+    
+    <div class="about-content">
+        <h2>About Stratos Consulting</h2>
+        
+        <p>At Stratos Consulting, we provide elite-level support in company formation, accounting and auditing, VAT registration, bank account setup, and a comprehensive suite of corporate services across the UAE.</p>
+        
+        <p>We do not just offer services, we cultivate lasting partnerships. From your initial consultation, you are assigned a dedicated Relationship Manager who acts as your personal liaison, intimately understanding your business needs, providing strategic guidance, and ensuring seamless execution at every step.</p>
+        
+        <p>By combining cutting-edge technology with unmatched human expertise, we deliver tailored, highly-responsive solutions designed around your business objectives. At Stratos, excellence is not just a promise, it is our standard.</p>
+        
+        <p><strong>Your UAE business journey begins here: structured, strategic, and successful.</strong></p>
+        
+        <div class="about-action">
+            <a href="{{ url_for('services') }}" class="btn-outline-pill">Discover Our Services</a>
+        </div>
+    </div>
+</section>
+
+<!-- HIGH-END DIRECTORY: SERVICES SECTION -->
+<style>
+    .directory-services-section {
+        padding: 80px 10%;
+        background: #ffffff;
+        display: grid;
+        grid-template-columns: 350px 1fr;
+        gap: 80px;
+        align-items: start;
+    }
+
+    /* Sticky Left Header */
+    .directory-services-header {
+        position: sticky;
+        top: 120px; /* Keeps it in view while scrolling through the rows */
+    }
+
+    .directory-services-header h2 {
+        font-family: var(--font-title);
+        font-size: 38px;
+        color: var(--navy-dark);
+        margin: 12px 0 16px;
+        line-height: 1.15;
+    }
+    
+    .directory-services-header p {
+        color: var(--navy-light);
+        font-size: 14px;
+        line-height: 1.6;
+    }
+
+    /* Right Column: Rows */
+    .directory-services-list {
+        display: flex;
+        flex-direction: column;
+        border-top: 1px solid rgba(7, 14, 40, 0.15);
+    }
+
+    /* Individual Service Row */
+    .directory-service-row {
+        display: grid;
+        grid-template-columns: 70px 1fr auto;
+        gap: 32px;
+        align-items: center;
+        padding: 40px 0;
+        border-bottom: 1px solid rgba(7, 14, 40, 0.15);
+        text-decoration: none;
+        transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        cursor: pointer;
+    }
+
+    /* Hover Expansion Effect */
+    .directory-service-row:hover {
+        padding-left: 24px;
+        padding-right: 24px;
+        margin-left: -24px;
+        margin-right: -24px;
+        background: #f8f9fb; /* Very subtle grey/blue tint on hover */
+        border-bottom-color: var(--navy-dark);
+    }
+
+    /* Icon Container */
+    .directory-icon-wrap {
+        width: 70px;
+        height: 70px;
+        background: #ffffff;
+        border: 1px solid rgba(7, 14, 40, 0.1);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.4s ease;
+    }
+
+    .directory-service-row:hover .directory-icon-wrap {
+        background: var(--navy-dark);
+        border-color: var(--navy-dark);
+    }
+
+    .directory-icon {
+        width: 32px;
+        height: 32px;
+        object-fit: contain;
+        transition: filter 0.4s ease;
+    }
+
+    /* Inverts SVG to white on hover */
+    .directory-service-row:hover .directory-icon {
+        filter: brightness(0) invert(1);
+    }
+
+    /* Text Content */
+    .directory-content h3 {
+        font-family: var(--font-title);
+        font-size: 24px;
+        color: var(--navy-dark);
+        margin: 0 0 8px;
+    }
+
+    .directory-content p {
+        font-size: 13px;
+        color: var(--navy-light);
+        margin: 0;
+        line-height: 1.6;
+        max-width: 520px;
+    }
+
+    /* Action Arrow */
+    .directory-action {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-size: 11px;
+        font-weight: 700;
+        color: var(--navy-dark);
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        opacity: 0.5;
+        transition: all 0.3s ease;
+    }
+
+    .directory-action svg {
+        transition: transform 0.4s ease;
+    }
+
+    .directory-service-row:hover .directory-action {
+        opacity: 1;
+    }
+
+    .directory-service-row:hover .directory-action svg {
+        transform: translateX(12px);
+    }
+
+    /* Mobile Adjustments */
+    @media (max-width: 1024px) {
+        .directory-services-section {
+            grid-template-columns: 1fr;
+            gap: 48px;
+        }
+        .directory-services-header {
+            position: static;
+            text-align: center;
+        }
+        .directory-services-header h2 {
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+    
+    @media (max-width: 600px) {
+        .directory-service-row {
+            grid-template-columns: 1fr;
+            gap: 20px;
+            padding: 32px 0;
+        }
+        .directory-service-row:hover {
+            padding-left: 0;
+            padding-right: 0;
+            margin-left: 0;
+            margin-right: 0;
+            background: transparent;
+        }
+        .directory-action {
+            margin-top: 12px;
+        }
+    }
+</style>
+
+<section class="directory-services-section">
+    
+    <!-- Sticky Left Column -->
+    <div class="directory-services-header">
+        <p class="eyebrow">OUR SERVICES</p>
+        <h2>Empowering Businesses to Reach New Heights</h2>
+        <p>We provide tailored, highly responsive solutions designed around your exact corporate objectives.</p>
+    </div>
+    
+    <!-- Interactive Right Rows -->
+    <div class="directory-services-list">
+        
+        <a href="{{ url_for('services') }}" class="directory-service-row">
+            <div class="directory-icon-wrap">
+                <img class="directory-icon" src="{{ url_for('image_asset', filename='icons/business-formation_icon.svg') }}" alt="">
+            </div>
+            <div class="directory-content">
+                <h3>Business Formation</h3>
+                <p>Complete company setup and licensing from start to finish, ensuring structural integrity.</p>
+            </div>
+            <div class="directory-action">
+                View <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+        </a>
+
+        <a href="{{ url_for('services') }}" class="directory-service-row">
+            <div class="directory-icon-wrap">
+                <img class="directory-icon" src="{{ url_for('image_asset', filename='icons/accounting-and-bookkeeping_icon.svg') }}" alt="">
+            </div>
+            <div class="directory-content">
+                <h3>Accounting &amp; Bookkeeping</h3>
+                <p>Value-packed accounting and bookkeeping packages tailored to complex business requirements.</p>
+            </div>
+            <div class="directory-action">
+                View <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+        </a>
+
+        <a href="{{ url_for('services') }}" class="directory-service-row">
+            <div class="directory-icon-wrap">
+                <img class="directory-icon" src="{{ url_for('image_asset', filename='icons/auditing_icon.svg') }}" alt="">
+            </div>
+            <div class="directory-content">
+                <h3>Auditing</h3>
+                <p>Expert support to keep your enterprise fully compliant with strict UAE auditing requirements.</p>
+            </div>
+            <div class="directory-action">
+                View <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+        </a>
+
+        <a href="{{ url_for('services') }}" class="directory-service-row">
+            <div class="directory-icon-wrap">
+                <img class="directory-icon" src="{{ url_for('image_asset', filename='icons/residency-and-visas_icon.svg') }}" alt="">
+            </div>
+            <div class="directory-content">
+                <h3>Residency &amp; Visas</h3>
+                <p>A smooth, highly discreet, and hassle-free process for obtaining long-term residency in the UAE.</p>
+            </div>
+            <div class="directory-action">
+                View <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+        </a>
+
+        <a href="{{ url_for('services') }}" class="directory-service-row">
+            <div class="directory-icon-wrap">
+                <img class="directory-icon" src="{{ url_for('image_asset', filename='icons/bank-account-opening_icon.svg') }}" alt="">
+            </div>
+            <div class="directory-content">
+                <h3>Bank Account Opening</h3>
+                <p>Facilitated access to the region's leading tier-one banks and bespoke financial institutions.</p>
+            </div>
+            <div class="directory-action">
+                View <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+        </a>
+
+        <a href="{{ url_for('services') }}" class="directory-service-row">
+            <div class="directory-icon-wrap">
+                <img class="directory-icon" src="{{ url_for('image_asset', filename='icons/golden-visas_icon.svg') }}" alt="">
+            </div>
+            <div class="directory-content">
+                <h3>Golden Visas</h3>
+                <p>Streamlined assistance with obtaining long-term Golden Visa residency for executives and investors.</p>
+            </div>
+            <div class="directory-action">
+                View <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+        </a>
+        
+    </div>
+</section>
+
+<!-- UPDATE THESE RULES IN YOUR <style> BLOCK -->
+<style>
+    .home-approach-section {
+        padding: 80px 10%;
+        background: #ffffff;
+    }
+
+    .home-approach-grid {
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr; /* Left side wider, right side slightly narrower */
+        gap: 64px;
+        align-items: stretch; /* FIX: Forces both columns to be exactly the same height */
+    }
+
+    .home-approach-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    /* Right Column Image Setup */
+    .home-approach-image-wrap {
+        position: relative;
+        width: 100%;
+        height: 100%; /* Fills the stretched column */
+        border-radius: 4px;
+        overflow: hidden;
+    }
+
+    .home-approach-image-wrap img {
+        position: absolute; /* Allows image to fill container perfectly without breaking layout */
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    /* List Styling */
+    .home-approach-list {
+        display: flex;
+        flex-direction: column;
+        border-top: 1px solid rgba(7, 14, 40, 0.15);
+        margin-top: 24px;
+    }
+
+    .home-approach-row {
+        display: grid;
+        grid-template-columns: 48px 1fr; /* Icon on left, text stacked on right */
+        gap: 24px;
+        padding: 32px 0;
+        border-bottom: 1px solid rgba(7, 14, 40, 0.15);
+        align-items: start;
+        transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .home-approach-row:hover {
+        padding-left: 24px;
+        padding-right: 24px;
+        margin-left: -24px;
+        margin-right: -24px;
+        background: #f8f9fb;
+        border-bottom-color: var(--navy-dark);
+    }
+
+    .home-approach-icon {
+        width: 48px;
+        height: 48px;
+        object-fit: contain;
+        transition: transform 0.4s ease;
+    }
+
+    .home-approach-row:hover .home-approach-icon {
+        transform: scale(1.1);
+    }
+
+    .home-approach-row h3 {
+        font-family: var(--font-heading);
+        font-size: 20px;
+        color: var(--navy-dark);
+        margin: 0 0 8px 0;
+    }
+
+    .home-approach-row p {
+        color: var(--navy-light);
+        margin: 0;
+        font-size: 14px;
+        line-height: 1.7;
+    }
+
+    /* Mobile Adjustments */
+    @media (max-width: 1024px) {
+        .home-approach-grid {
+            grid-template-columns: 1fr;
+            gap: 40px;
+        }
+        .home-approach-image-wrap {
+            min-height: 400px;
+        }
+        .home-approach-row {
+            padding: 24px 0;
+            gap: 16px;
+        }
+    }
+</style>
+
+<!-- WHY CHOOSE STRATOS / OUR APPROACH (HOME PAGE) -->
+<section class="home-approach-section">
+    <div class="home-approach-grid">
+        
+        <!-- Left Side: Header & Interactive List -->
+        <div class="home-approach-content">
+            
+            <div class="section-header" style="text-align: left; margin: 0;">
+                <p class="eyebrow">WHY CHOOSE STRATOS / OUR APPROACH</p>
+                <h2>Guidance with clarity and confidence.</h2>
+                <p>Establishing a business in a new country can be complex. We guide you through every step with clarity, confidence, and deep UAE expertise.</p>
+            </div>
+            
+            <div class="home-approach-list">
+                
+                <div class="home-approach-row">
+                    <img class="home-approach-icon" src="{{ url_for('image_asset', filename='icons/expert-knowledge_icon.svg') }}" alt="">
+                    <div>
+                        <h3>Expertise You Can Trust</h3>
+                        <p>With extensive local and global knowledge in business formation, compliance, tax strategy, accounting, and residency services, our seasoned experts navigate regulatory complexities, delivering insightful, strategic advice tailored specifically to your needs.</p>
+                    </div>
+                </div>
+
+                <div class="home-approach-row">
+                    <img class="home-approach-icon" src="{{ url_for('image_asset', filename='icons/single-point-of-accountability_icon.svg') }}" alt="">
+                    <div>
+                        <h3>Deep Business Understanding</h3>
+                        <p>Each business is unique. We take the time to deeply understand your goals, market challenges, and competitive positioning, aligning our solutions precisely to your strategic vision for maximum impact and efficiency.</p>
+                    </div>
+                </div>
+
+                <div class="home-approach-row">
+                    <img class="home-approach-icon" src="{{ url_for('image_asset', filename='icons/transparent-pricing_icon.svg') }}" alt="">
+                    <div>
+                        <h3>Customized Solutions</h3>
+                        <p>Rejecting one-size-fits-all solutions, we carefully craft customized packages from bespoke licensing structures to optimize tax and visa strategies ensuring your business is fully compliant and operationally agile.</p>
+                    </div>
+                </div>
+
+                <div class="home-approach-row">
+                    <img class="home-approach-icon" src="{{ url_for('image_asset', filename='icons/fast-and-efficient-turnaround_icon.svg') }}" alt="">
+                    <div>
+                        <h3>Continuous Improvement and Innovation</h3>
+                        <p>In a rapidly evolving market, adaptability is key. We proactively refine our processes, technology, and services to continuously enhance value delivery, ensuring you're always one step ahead.</p>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div style="margin-top: 40px;">
+                <a href="{{ url_for('about') }}" class="btn-outline">Learn More About Us &rarr;</a>
+            </div>
+            
+        </div>
+
+        <!-- Right Side: Auto-Stretching Image -->
+        <div class="home-approach-image-wrap">
+            <img src="{{ url_for('image_asset', filename='gabriel-santos-DgLksCjEfB0-unsplash.jpg') }}" alt="Modern Dubai architecture">
+        </div>
+        
+    </div>
+</section>
+
+<!-- HIGH-END LIGHT MODE BENTO TESTIMONIALS SECTION -->
+<style>
+    .premium-testimonials-section {
+        padding: 100px 10%;
+        background: #ffffff; /* Crisp white background */
+        color: var(--navy-dark);
+    }
+
+    .testimonials-header {
+        text-align: center;
+        max-width: 600px;
+        margin: 0 auto 64px;
+    }
+
+    .testimonials-header h2 {
+        font-family: var(--font-title);
+        font-size: 38px;
+        color: var(--navy-dark);
+        margin: 12px 0 16px;
+    }
+
+    .testimonials-bento-grid {
+        display: grid;
+        grid-template-columns: 1.2fr 1fr;
+        gap: 24px;
+    }
+
+    /* Base Card Styling - Light Mode */
+    .testi-card {
+        background: #ffffff;
+        border: 1px solid rgba(7, 14, 40, 0.1); /* Subtle dark border */
+        padding: 48px;
+        border-radius: 4px;
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    /* The Giant Watermark Quote Mark - Dark Tint */
+    .testi-card::before {
+        content: '“';
+        position: absolute;
+        top: -40px;
+        left: 24px;
+        font-family: var(--font-heading);
+        font-size: 220px;
+        color: rgba(7, 14, 40, 0.04); /* Faint navy watermark */
+        line-height: 1;
+        transition: color 0.5s ease, transform 0.5s ease;
+        z-index: 0;
+    }
+
+    /* Hover Interactions - Light Mode */
+    .testi-card:hover {
+        background: #fdfdfd;
+        border-color: rgba(7, 14, 40, 0.25);
+        transform: translateY(-6px);
+        box-shadow: 0 20px 40px rgba(7, 14, 40, 0.08); /* Soft dark shadow */
+    }
+
+    .testi-card:hover::before {
+        color: rgba(7, 14, 40, 0.08);
+        transform: translateY(10px);
+    }
+
+    /* Featured Left Card */
+    .testi-featured {
+        grid-row: span 2;
+        padding: 64px 56px;
+    }
+
+    /* Typography */
+    .testi-quote-text {
+        position: relative;
+        z-index: 2;
+        font-style: italic;
+        color: var(--navy-light);
+        font-size: 15px;
+        line-height: 1.7;
+        margin: 0;
+    }
+
+    .testi-featured .testi-quote-text {
+        font-size: 24px;
+        font-weight: 300;
+        line-height: 1.6;
+        color: var(--navy-dark);
+    }
+
+    .testi-author {
+        position: relative;
+        z-index: 2;
+        font-family: var(--font-heading);
+        font-size: 16px;
+        font-weight: 600;
+        color: var(--navy-dark);
+        margin-top: 40px;
+        display: flex;
+        align-items: center;
+        gap: 16px;
+    }
+
+    /* Sleek line before the author name - Dark */
+    .testi-author::before {
+        content: '';
+        width: 40px;
+        height: 1px;
+        background: rgba(7, 14, 40, 0.3);
+        transition: width 0.4s ease, background 0.4s ease;
+    }
+
+    .testi-card:hover .testi-author::before {
+        width: 60px;
+        background: var(--navy-dark);
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 900px) {
+        .testimonials-bento-grid {
+            grid-template-columns: 1fr;
+        }
+        .testi-featured {
+            grid-row: span 1;
+            padding: 48px;
+        }
+        .testi-featured .testi-quote-text {
+            font-size: 20px;
+        }
+    }
+</style>
+
+<section class="premium-testimonials-section">
+    <div class="testimonials-header">
+        <p class="eyebrow">TESTIMONIALS</p>
+        <h2>Client Success Stories</h2>
+        <p style="color: var(--navy-light);">Hear from entrepreneurs and business leaders who built their UAE presence with Stratos.</p>
+    </div>
+    
+    <div class="testimonials-bento-grid">
+        
+        <!-- Featured Testimonial (Left Column, Spans 2 Rows) -->
+        <article class="testi-card testi-featured">
+            <p class="testi-quote-text">Stratos turned what seemed like a mountain into a molehill. Everything just worked — fast, accurate, and hands-on. Our UAE launch wouldn’t have happened without them.</p>
+            <div class="testi-author">Jin Tao</div>
+        </article>
+        
+        <!-- Standard Testimonial 1 (Right Column, Top) -->
+        <article class="testi-card">
+            <p class="testi-quote-text">I used to dread anything to do with tax and accounting. With Stratos, I get clarity, accuracy, and peace of mind. They’ve become an extension of our team.</p>
+            <div class="testi-author">Faisal</div>
+        </article>
+        
+        <!-- Standard Testimonial 2 (Right Column, Bottom) -->
+        <article class="testi-card">
+            <p class="testi-quote-text">Stratos delivered Swiss-level efficiency in the Emirates. Everything was smooth, discreet, and handled with care. I’ve recommended them to three friends already.</p>
+            <div class="testi-author">Anna</div>
+        </article>
+        
+    </div>
+</section>
+
+<!-- HIGH-END EDITORIAL TEAM SECTION -->
+<style>
+    .premium-team-section {
+        padding: 80px 10%;
+        background: var(--navy-dark); /* Dark background for premium contrast */
+        color: #ffffff;
+    }
+
+    .premium-team-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        margin-bottom: 60px;
+        gap: 40px;
+    }
+
+    .premium-team-header-left {
+        max-width: 650px;
+    }
+
+    .premium-team-header-left p.eyebrow {
+        color: #ffffff !important;
+        opacity: 0.7;
+    }
+
+    .premium-team-header-left h2 {
+        color: #ffffff;
+        font-size: 38px;
+        margin: 12px 0 16px;
+    }
+    
+    .premium-team-header-left p:not(.eyebrow) {
+        color: rgba(255, 255, 255, 0.8);
+        font-size: 14px;
+        margin: 0;
+    }
+
+    .premium-team-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 24px;
+    }
+
+    .premium-team-card {
+        position: relative;
+        height: 480px; /* Tall portrait style */
+        border-radius: 2px;
+        overflow: hidden;
+        cursor: pointer;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .premium-team-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: grayscale(100%) contrast(1.1); /* High contrast B&W by default */
+        transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    /* Hover State: Color burst and scale */
+    .premium-team-card:hover .premium-team-img {
+        filter: grayscale(0%) contrast(1);
+        transform: scale(1.06);
+    }
+
+    .premium-team-overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        padding: 40px 24px 24px;
+        background: linear-gradient(to top, rgba(7, 14, 40, 0.95) 0%, rgba(7, 14, 40, 0.7) 50%, transparent 100%);
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        transform: translateY(32px); /* Pushes the hidden content down */
+        transition: transform 0.5s ease;
+    }
+
+    .premium-team-card:hover .premium-team-overlay {
+        transform: translateY(0); /* Slides up on hover */
+    }
+
+    .premium-team-info h3 {
+        font-family: var(--font-heading);
+        font-size: 22px;
+        color: #ffffff;
+        margin: 0 0 4px;
+        font-weight: 500;
+    }
+
+    .premium-team-role {
+        font-size: 12px;
+        font-weight: 600;
+        color: #ffffff;
+        opacity: 0.9;
+        margin: 0 0 16px !important;
+        letter-spacing: 0.5px;
+    }
+
+    .premium-team-spec {
+        font-size: 12px;
+        color: rgba(255, 255, 255, 0.7);
+        opacity: 0;
+        max-height: 0;
+        transition: all 0.5s ease;
+        line-height: 1.5;
+        margin: 0;
+    }
+
+    /* Reveal the specialty text on hover */
+    .premium-team-card:hover .premium-team-spec {
+        opacity: 1;
+        max-height: 60px;
+        margin-bottom: 16px;
+    }
+
+    .premium-team-action {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 11px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: #ffffff;
+        opacity: 0;
+        transition: all 0.5s ease;
+    }
+
+    .premium-team-action svg {
+        transition: transform 0.3s ease;
+    }
+
+    .premium-team-card:hover .premium-team-action {
+        opacity: 1;
+    }
+
+    .premium-team-card:hover .premium-team-action svg {
+        transform: translateX(6px);
+    }
+
+    /* Mobile & Tablet Adjustments */
+    @media (max-width: 1024px) {
+        .premium-team-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+        .premium-team-header {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 24px;
+        }
+    }
+
+    @media (max-width: 600px) {
+        .premium-team-grid {
+            grid-template-columns: 1fr;
+        }
+        .premium-team-card {
+            height: 420px;
+        }
+        /* Lock hover states to "on" for mobile touchscreens */
+        .premium-team-overlay {
+            transform: translateY(0); 
+        }
+        .premium-team-spec, .premium-team-action {
+            opacity: 1;
+            max-height: 60px;
+            margin-bottom: 16px;
+        }
+    }
+</style>
+
+<section class="premium-team-section">
+    
+    <div class="premium-team-header">
+        <div class="premium-team-header-left">
+            <p class="eyebrow">OUR LEADERSHIP</p>
+            <h2>Meet the Stratos Team</h2>
+            <p>Our multidisciplinary advisors bring together global expertise in corporate structuring, UAE regulatory compliance, finance, and cross-border advisory.</p>
+        </div>
+        <div>
+            <a href="{{ url_for('about') }}" class="btn-banner">View Full Bios &rarr;</a>
+        </div>
+    </div>
+
+    <!-- 4-Column Editorial Grid (Removed the infinite scroll duplicates) -->
+    <div class="premium-team-grid">
+        
+        <!-- Team Member 1 -->
+        <div class="premium-team-card" onclick="window.location.href='{{ url_for('about') }}'">
+            <img class="premium-team-img" src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=600&q=80" alt="Alexander Stratos">
+            <div class="premium-team-overlay">
+                <div class="premium-team-info">
+                    <h3>Alexander Stratos</h3>
+                    <p class="premium-team-role">Managing Partner</p>
+                    <p class="premium-team-spec">Specializes in macro corporate structuring and cross-border market entry strategy.</p>
+                </div>
+                <div class="premium-team-action">
+                    Read Bio <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </div>
+            </div>
+        </div>
+
+        <!-- Team Member 2 -->
+        <div class="premium-team-card" onclick="window.location.href='{{ url_for('about') }}'">
+            <img class="premium-team-img" src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80" alt="Elena Rostova">
+            <div class="premium-team-overlay">
+                <div class="premium-team-info">
+                    <h3>Elena Rostova</h3>
+                    <p class="premium-team-role">Head of Banking &amp; Compliance</p>
+                    <p class="premium-team-spec">Expert in financial institution advisory and risk mitigation protocols.</p>
+                </div>
+                <div class="premium-team-action">
+                    Read Bio <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </div>
+            </div>
+        </div>
+
+        <!-- Team Member 3 -->
+        <div class="premium-team-card" onclick="window.location.href='{{ url_for('about') }}'">
+            <img class="premium-team-img" src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=600&q=80" alt="Tariq Al-Mansoor">
+            <div class="premium-team-overlay">
+                <div class="premium-team-info">
+                    <h3>Tariq Al-Mansoor</h3>
+                    <p class="premium-team-role">Senior Tax &amp; Regulatory Advisor</p>
+                    <p class="premium-team-spec">Leading authority on UAE Corporate Tax, VAT integration, and regional compliance.</p>
+                </div>
+                <div class="premium-team-action">
+                    Read Bio <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </div>
+            </div>
+        </div>
+
+        <!-- Team Member 4 -->
+        <div class="premium-team-card" onclick="window.location.href='{{ url_for('about') }}'">
+            <img class="premium-team-img" src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=600&q=80" alt="Sarah Jenkins">
+            <div class="premium-team-overlay">
+                <div class="premium-team-info">
+                    <h3>Sarah Jenkins</h3>
+                    <p class="premium-team-role">Head of Client Operations</p>
+                    <p class="premium-team-spec">Ensures seamless residency, visa processing, and elite government liaison services.</p>
+                </div>
+                <div class="premium-team-action">
+                    Read Bio <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- CALL TO ACTION BAND -->
+<section class="dark-band vision-band">
+    <img class="section-photo" src="{{ url_for('image_asset', filename='dubai-7237750_1920.jpg') }}" alt="Dubai skyline at dusk">
+    <div>
+        <p class="eyebrow">GET STARTED</p>
+        <h2>Ready to start your UAE business journey?</h2>
+        <p class="band-copy">Your trusted partner for seamless business formation and corporate compliance in the UAE.</p>
+    </div>
+    <a href="{{ url_for('appointments') }}" class="btn-banner">Schedule Your Consultation</a>
+</section>
+
+{% endblock %}

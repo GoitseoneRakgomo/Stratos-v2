@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block title %}Client Workspace | STRATOS{% endblock %}
+{% block content %}
+    <section class="dashboard-shell page-hero hero-client">
+    <div class="dashboard-heading"><div><p class="eyebrow">CLIENT WORKSPACE</p><h1>Good morning, {{ session.get('display_name', 'Client') }}.</h1><p class="lead">Here is the current view of your UAE setup.</p></div><a class="btn-outline" href="{{ url_for('logout') }}">Sign out</a></div>
+    <div class="dashboard-grid"><article class="dashboard-card dashboard-card-wide"><p class="eyebrow">CURRENT ENGAGEMENT</p><h2>UAE market entry</h2><p>Your advisory engagement is being coordinated across structure, documentation, and banking preparation.</p><div class="progress-line"><span style="width: 64%"></span></div><div class="dashboard-meta"><span>64% complete</span><span>Next review: 28 Aug 2026</span></div></article><article class="dashboard-card"><p class="eyebrow">ACCOUNT STATUS</p><h2 class="status-good">On track</h2><p>No action is currently required from your side.</p><a href="{{ url_for('contact') }}" class="card-link">Message your advisor</a></article><article class="dashboard-card"><p class="eyebrow">UPCOMING</p><h2>Document review</h2><p>Review of formation documents and supporting records.</p><strong>28 Aug 2026 · 10:00 GST</strong></article></div>
+    <div class="dashboard-table"><div class="table-heading"><h2>Recent activity</h2><a href="{{ url_for('appointments') }}" class="card-link">Book an appointment</a></div><div class="activity-row"><span>Corporate structure assessment</span><span class="activity-status">Complete</span></div><div class="activity-row"><span>Banking preparation checklist</span><span class="activity-status">In review</span></div><div class="activity-row"><span>Trade name reservation</span><span class="activity-status">Scheduled</span></div></div>
+</section>
+{% endblock %}

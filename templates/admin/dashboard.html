@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block title %}Admin Dashboard | STRATOS{% endblock %}
+{% block content %}
+    <section class="dashboard-shell page-hero hero-admin">
+    <div class="dashboard-heading"><div><p class="eyebrow">STRATOS ADMINISTRATION</p><h1>Operations overview.</h1><p class="lead">Keep engagements moving and clients informed.</p></div><a class="btn-outline" href="{{ url_for('logout') }}">Sign out</a></div>
+    <div class="metric-grid"><article class="metric-card"><span class="eyebrow">ACTIVE CLIENTS</span><strong>24</strong><span>+3 this month</span></article><article class="metric-card"><span class="eyebrow">OPEN ENGAGEMENTS</span><strong>18</strong><span>6 need review</span></article><article class="metric-card"><span class="eyebrow">UPCOMING CALLS</span><strong>07</strong><span>Next in 45 minutes</span></article><article class="metric-card"><span class="eyebrow">COMPLIANCE TASKS</span><strong>31</strong><span>92% on schedule</span></article></div>
+    <div class="dashboard-table"><div class="table-heading"><h2>Priority engagements</h2><a href="{{ url_for('contact') }}" class="card-link">Create update</a></div><div class="activity-row"><span><strong>Al Noor Ventures</strong><small>Company formation · Assigned to Matthew</small></span><span class="activity-status status-warn">Review today</span></div><div class="activity-row"><span><strong>Horizon Studio FZ</strong><small>VAT filing · Assigned to Andrew</small></span><span class="activity-status">In progress</span></div><div class="activity-row"><span><strong>Meridian Holdings</strong><small>Banking preparation · Assigned to Gregory</small></span><span class="activity-status">Awaiting client</span></div></div>
+</section>
+{% endblock %}
