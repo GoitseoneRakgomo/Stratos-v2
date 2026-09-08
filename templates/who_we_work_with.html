@@ -1,0 +1,148 @@
+{% extends 'base.html' %}
+{% block title %}Who We Work With | Stratos Consulting{% endblock %}
+{% block content %}
+
+<style>
+    /* Page-specific styling */
+    .who-we-work-with-page {
+        padding: 80px 10%;
+    }
+
+    .wwww-intro-section {
+        margin-bottom: 80px;
+    }
+
+    .wwww-intro-section h1 {
+        font-size: 48px;
+        color: var(--navy-dark);
+        margin-bottom: 24px;
+    }
+
+    .wwww-intro-section p {
+        font-size: 16px;
+        color: var(--navy-light);
+        line-height: 1.75;
+        margin-bottom: 16px;
+    }
+
+    .wwww-clients-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 32px;
+        margin-bottom: 64px;
+    }
+
+    .client-type-card {
+        background: #ffffff;
+        padding: 32px;
+        border: 1px solid rgba(7, 14, 40, 0.12);
+        border-radius: 4px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .client-type-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 24px rgba(7, 14, 40, 0.08);
+    }
+
+    .client-type-card h3 {
+        font-family: var(--font-heading);
+        font-size: 20px;
+        font-weight: 600;
+        color: var(--navy-dark);
+        margin: 0 0 16px;
+    }
+
+    .client-type-card p {
+        font-size: 15px;
+        color: var(--navy-light);
+        line-height: 1.7;
+        margin: 0;
+    }
+
+    .industries-section {
+        background: #f8fafc;
+        padding: 48px;
+        border-radius: 4px;
+        margin-bottom: 48px;
+    }
+
+    .industries-section h2 {
+        font-size: 24px;
+        font-weight: 600;
+        color: var(--navy-dark);
+        margin: 0 0 16px;
+    }
+
+    .industries-section p {
+        font-size: 15px;
+        color: var(--navy-light);
+        line-height: 1.7;
+        margin: 0;
+    }
+
+    /* Mobile responsive */
+    @media (max-width: 768px) {
+        .who-we-work-with-page {
+            padding: 56px 6%;
+        }
+
+        .wwww-intro-section h1 {
+            font-size: 32px;
+        }
+
+        .wwww-clients-grid {
+            grid-template-columns: 1fr;
+            gap: 24px;
+        }
+    }
+</style>
+
+<!-- HERO BANNER -->
+<section class="page-intro compact page-hero hero-who-we-work-with" style="background: linear-gradient(rgba(7, 14, 40, 0.62), rgba(7, 14, 40, 0.62)), url('{{ url_for('image_asset', filename='dubai-7237750_1920.jpg') }}') center center / cover no-repeat !important; width: 100vw !important; max-width: 100vw !important; margin-left: calc(50% - 50vw) !important; margin-right: calc(50% - 50vw) !important;">
+    <p class="eyebrow">WHO WE WORK WITH</p>
+    <h1>Built for Situations That Do Not Fit Neatly into a Package.</h1>
+    <p class="lead">We work with international founders, private investment groups and established businesses that have cross-border or operational complexity.</p>
+</section>
+
+<!-- MAIN CONTENT -->
+<div class="who-we-work-with-page">
+    <section class="wwww-intro-section">
+        <p style="font-size: 16px; color: var(--navy-light); line-height: 1.75; margin-bottom: 32px;">
+            Stratos Consulting serves clients whose UAE establishment involves commercial assessment, cross-border considerations, or operational complexity. We are most useful to businesses that need more than a standard licence package or a simple company formation process.
+        </p>
+    </section>
+
+    <!-- CLIENT TYPES GRID -->
+    <section class="wwww-clients-grid">
+        <div class="client-type-card">
+            <h3>Family Offices &amp; Private Investment Groups</h3>
+            <p>UAE entity establishment, bookkeeping and corporate administration for family offices and private investment groups with cross-border ownership or operations.</p>
+        </div>
+
+        <div class="client-type-card">
+            <h3>Cross-Border Founders</h3>
+            <p>Founders whose shareholders, customers, suppliers, employees or existing companies sit across more than one jurisdiction.</p>
+        </div>
+
+        <div class="client-type-card">
+            <h3>Established Businesses Entering the UAE</h3>
+            <p>Owner-managed and operational businesses that need a UAE entity to fit an existing commercial model and wider group structure.</p>
+        </div>
+    </section>
+
+    <!-- TYPICAL INDUSTRIES -->
+    <section class="industries-section">
+        <h2>Typical Enquiries Involve:</h2>
+        <p>International trade and commodities, technology and professional services, property and hospitality, private investment, manufacturing, logistics and other operational businesses.</p>
+    </section>
+
+    <!-- CTA SECTION -->
+    <section style="text-align: center; padding: 48px; background: #ffffff; border: 1px solid rgba(7, 14, 40, 0.1); border-radius: 4px;">
+        <h3 style="font-size: 24px; color: var(--navy-dark); margin: 0 0 16px;">Ready to Discuss Your UAE Plans?</h3>
+        <p style="font-size: 16px; color: var(--navy-light); margin: 0 0 24px;">Let's explore whether Stratos is the right fit for your business establishment.</p>
+        <a href="{{ url_for('contact') }}" class="btn-outline">Tell Us About Your Plans</a>
+    </section>
+</div>
+
+{% endblock %}

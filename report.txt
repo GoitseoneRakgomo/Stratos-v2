@@ -1,0 +1,428 @@
+STRATOS SYSTEM REPORT
+=====================
+Generated: 2026-09-03
+Scope: Current workspace implementation in C:\Users\HP\Downloads\Stratos
+
+1. SYSTEM SUMMARY
+-----------------
+Stratos is a small server-rendered Flask website for UAE business advisory and
+corporate services. Flask handles routing, authentication, session state,
+template rendering, and local asset delivery. Jinja templates provide the page
+markup. CSS provides the visual system and responsive layout. JavaScript adds
+client-side navigation behavior, loading transitions, search, and an appointment
+calendar.
+
+The current system is primarily a presentation and prototype portal. It does not
+currently contain a database, ORM, email integration, CRM integration, payment
+integration, booking API, or external business workflow service.
+
+High-level architecture:
+
+  Browser
+     |
+     | HTTP GET/POST
+     v
+  Flask application (app.py)
+     |
+     +--> Jinja templates (templates/)
+     +--> In-memory service content (SERVICE_PAGES)
+     +--> In-memory demo users (USERS)
+     +--> Signed Flask session cookie
+     +--> Local images, logos, and icons
+     v
+  Rendered HTML + static CSS/JavaScript
+
+
+2. BACKEND
+----------
+
+2.1 Application setup
+
+- Framework: Flask.
+- Entry point: app.py.
+- Template directory: templates/.
+- Static directory: static/.
+- Base directory: derived from the location of app.py with pathlib.Path.
+- Secret key: hard-coded development value.
+- Development startup: app.run(debug=True).
+- Server-side page rendering: render_template().
+- Redirects: redirect() and url_for().
+- Static/local asset delivery: Flask's static route plus custom /logo and
+  /images/<path:filename> routes.
+
+2.2 Route inventory
+
+Public content:
+
+- GET /                         Home page.
+- GET /about                    About page.
+- GET /services                 Services directory.
+- GET /services/complete-uae-establishment/
+- GET /services/uae-company-formation/
+- GET /services/accounting-management-reporting/
+- GET /services/business-bank-account-support/
+- GET /services/residence-visa-support/
+- GET /services/corporate-tax-vat-coordination/
+- GET /services/corporate-administration-governance/
+- GET /who-we-work-with         Client profile and industries page.
+- GET /articles                 Insights/article listing.
+- GET /faqs                    FAQ page.
+- GET /contact                 Contact page.
+- GET /appointments            Contact and appointment page.
+- GET /privacy                 Privacy policy.
+- GET /cookie-policy           Cookie policy.
+- GET /terms                  Terms of use.
+
+Authentication and portal:
+
+- GET, POST /login             Login form and credential validation.
+- GET /logout                  Clears the Flask session and redirects to login.
+- GET /client/                 Client dashboard; requires role=client.
+- GET /admin/                  Admin dashboard; requires role=admin.
+
+Utilities and assets:
+
+- GET /health                  Returns {"status": "ok"}.
+- GET /logo                   Sends the primary logo SVG from the project root.
+- GET /images/<path:filename> Sends files from images/.
+- GET /static/<path:filename> Flask's built-in static asset route.
+
+2.3 Backend responsibilities
+
+Home and content routes render fixed templates. The seven detailed service
+routes call service_page(key), which looks up a service in SERVICE_PAGES and
+passes the resulting dictionary to service_detail.html. SERVICE_PAGES contains
+the page title, description, heading, introduction, sections, FAQs, CTA copy,
+and service path.
+
+The service detail template supports these section data shapes:
+
+- paragraphs: a list of text paragraphs.
+- items: a list rendered as an unordered list.
+- cards: pairs of card heading and description.
+- steps: pairs of step heading and description.
+- note: an optional note below the section content.
+
+Dictionary access uses explicit get() calls where key names can conflict with
+dictionary methods. This prevents Jinja from resolving section.items to the
+built-in dict.items method.
+
+2.4 Authentication and authorization
+
+USERS is an in-memory dictionary containing two demo accounts:
+
+- client / stratos2026 / client role.
+- admin / stratos2026 / admin role.
+
+On successful login, Flask stores username, role, and display_name in the
+session. The login route redirects according to the role. The client and admin
+routes independently check session role and redirect unauthorised visitors to
+/login.
+
+This is role-based access control at route level, but it is only suitable for a
+demo or local prototype. Credentials are hard-coded, there is no user database,
+password hashing, account recovery, multi-factor authentication, audit logging,
+session timeout, or admin management interface.
+
+2.5 Form handling
+
+The login form is fully processed by Flask. The contact and appointment routes
+accept POST in their route declarations, but the current Python handlers always
+render the page and do not read or store submitted contact or appointment data.
+
+The general contact forms post back to /contact. A contact submission therefore
+has no persistence, success state, email delivery, validation response, or
+server-side error handling beyond browser-required fields.
+
+
+3. FRONTEND
+-----------
+
+3.1 Shared layout
+
+base.html is the common layout for nearly all pages. It provides:
+
+- HTML document structure and viewport metadata.
+- Google Fonts imports.
+- Shared style.css reference.
+- Loading screen using the Stratos logo.
+- Sticky header with logo and primary navigation.
+- Services dropdown navigation.
+- Mobile hamburger navigation hook.
+- Shared footer with firm, service, and legal links.
+- Shared script.js reference.
+
+index.html appears to be an older standalone page implementation. The active
+Flask home() route renders home.html, so index.html is not part of the current
+route flow unless opened or wired separately.
+
+3.2 Page groups
+
+Marketing and information pages:
+
+- home.html: hero, proof points, structural advisory positioning, audiences,
+  establishment process, service directory, FAQs, insights, and CTAs.
+- about.html: mission, values, reasons to work with Stratos, team/content
+  sections, and imagery.
+- services.html: service directory and six linked service detail pages.
+- service_detail.html: reusable data-driven service page layout with sections,
+  cards, steps, FAQs, and CTA.
+- who_we_work_with.html: target client profiles and industries.
+- articles.html: three editorial article cards; article links currently use #.
+- faqs.html: static accordion FAQ content using HTML details/summary.
+
+Lead capture and scheduling:
+
+- contact.html: simple name, email, and message form.
+- appointments.html: direct contact details, embedded Google map, detailed
+  inquiry form, and browser-side calendar/time-slot picker.
+
+Portal and policy pages:
+
+- login.html: role selector, username, password, and demo credentials.
+- client/dashboard.html: hard-coded engagement progress, status, upcoming item,
+  and activity list.
+- admin/dashboard.html: hard-coded metrics and priority engagements.
+- privacy.html, cookie_policy.html, terms.html: legal/policy content.
+
+3.3 Visual system
+
+style.css defines the main navy-based palette, typography variables, page layout,
+hero treatments, buttons, forms, dashboards, service detail components, footer,
+loading screen, responsive breakpoints, and calendar styling. Most pages use
+Playfair Display for headings and Raleway for body text through Google Fonts.
+
+Several templates also contain page-specific inline style blocks and inline
+styles. appointments.html contains multiple overlapping style definitions for
+the appointment layout. This works as a prototype but makes global visual
+maintenance more difficult.
+
+3.4 Client-side JavaScript
+
+script.js runs after DOMContentLoaded and has four main responsibilities:
+
+- Hides the loading screen after 500 ms or when the window loads; includes a
+  four-second fallback for the page loader.
+- Opens/closes the mobile navigation drawer and toggles the services dropdown
+  on smaller screens.
+- Searches visible section text using prompt() or the mobile search input, then
+  scrolls to the first matching section.
+- Provides a client-only appointment calendar. It disables past dates and
+  weekends, offers weekday and Friday time slots, writes selected values into
+  hidden form fields, and displays a confirmation alert on submit.
+
+There are no fetch(), XMLHttpRequest, WebSocket, or AJAX calls. JavaScript does
+not send appointment data to Flask or any external service.
+
+3.5 Assets
+
+- Two logo SVG files exist in the project root.
+- Local photography is stored in images/.
+- Service/about icon SVGs are stored in images/icons/.
+- CSS and JavaScript are stored in static/.
+- appointments.html embeds a Google Maps iframe, which is the main visible
+  third-party frontend integration.
+
+
+4. DATA FLOW
+------------
+
+4.1 Public page request
+
+  1. A visitor selects a navigation link or enters a URL.
+  2. The browser sends an HTTP GET request to Flask.
+  3. Flask matches the URL to a view function.
+  4. The view function selects a template and, for service details, selects a
+     dictionary from SERVICE_PAGES.
+  5. Jinja renders the template, including shared base.html content.
+  6. The browser receives HTML and requests CSS, JavaScript, and image assets.
+  7. script.js attaches interaction handlers and updates the rendered DOM.
+
+4.2 Service detail data flow
+
+  Browser GET /services/<service>/
+       -> service-specific Flask view
+       -> service_page(service_key)
+       -> SERVICE_PAGES[service_key]
+       -> render_template(service_detail.html, page=...)
+       -> Jinja loops through page.sections and page.faq
+       -> rendered service page
+
+No service content is loaded from a database or API. Changes require editing
+SERVICE_PAGES in app.py or the template.
+
+4.3 Login data flow
+
+  Browser submits POST /login
+       -> Flask reads username, password, and role from request.form
+       -> USERS dictionary lookup and exact password comparison
+       -> on success: write username, role, display_name to session
+       -> redirect to /client/ or /admin/
+       -> protected route checks session role
+       -> render dashboard template
+
+  Invalid credentials
+       -> no session update
+       -> render login.html with error message
+
+The session is stored using Flask's signed cookie mechanism by default. No
+server-side user or engagement record is loaded after login.
+
+4.4 Contact form data flow (current behavior)
+
+  Browser submits POST /contact
+       -> Flask contact() receives the request
+       -> current handler ignores form fields
+       -> contact.html is rendered again
+       -> no database, email, CRM, confirmation record, or redirect
+
+4.5 Appointment data flow (current behavior)
+
+  Browser selects a date
+       -> JavaScript writes booking_date hidden input
+  Browser selects a time
+       -> JavaScript writes booking_time hidden input
+  Browser submits form
+       -> handleBooking(event) prevents default browser submission
+       -> validates date/time in the DOM
+       -> displays a JavaScript alert
+       -> appointment is not sent to Flask or stored anywhere
+
+
+5. USER FLOW
+------------
+
+5.1 Public visitor flow
+
+  Home
+    -> review positioning and proof points
+    -> browse Services, About, Who We Work With, Insights, or FAQ
+    -> open a service detail page
+    -> read service scope, steps, limitations, and FAQs
+    -> select Tell Us About Your Plans
+    -> open Contact or Appointments
+
+5.2 Enquiry flow
+
+  Visitor opens Contact or Appointments
+    -> reads direct contact details and service context
+    -> enters contact/business information
+    -> selects preferred contact method and required services where available
+    -> submits inquiry
+    -> current application re-renders the page without recording the inquiry
+
+Expected production flow would continue with server validation, persistence,
+notification, staff assignment, and a user-visible confirmation, but those
+steps are not implemented.
+
+5.3 Appointment flow
+
+  Visitor opens Appointments
+    -> moves calendar between months
+    -> selects a future weekday
+    -> selects an available time slot
+    -> enters full name, corporate email, and engagement focus
+    -> submits appointment request
+    -> receives an alert only; no appointment record or confirmation exists
+
+5.4 Client portal flow
+
+  Visitor opens Login
+    -> selects Client workspace
+    -> enters demo client credentials
+    -> Flask creates a client session
+    -> redirect to /client/
+    -> view hard-coded engagement progress and recent activity
+    -> use Message your advisor, Book an appointment, or Sign out
+    -> Sign out clears session and redirects to Login
+
+5.5 Admin portal flow
+
+  Visitor opens Login
+    -> selects Admin dashboard
+    -> enters demo admin credentials
+    -> Flask creates an admin session
+    -> redirect to /admin/
+    -> view hard-coded operational metrics and priority engagements
+    -> use Create update or Sign out
+    -> Sign out clears session and redirects to Login
+
+Unauthorised direct access to either dashboard redirects to /login. The current
+role check prevents the client role from opening the admin dashboard and vice
+versa, but it does not provide object-level permissions because no persisted
+business objects exist.
+
+
+6. CURRENT LIMITATIONS AND PRODUCTION RISKS
+-------------------------------------------
+
+Functional limitations:
+
+- Contact submissions are not persisted or forwarded.
+- Appointment submissions are intentionally intercepted in JavaScript and are
+  not persisted or forwarded.
+- Dashboard metrics, client activity, and engagement status are static demo
+  content rather than live records.
+- Article cards point to # and have no article detail routes.
+- Cookie Settings is a placeholder link.
+- No server-side validation exists for contact or appointment fields.
+- No success, failure, or duplicate-submission handling exists.
+
+Security and deployment risks:
+
+- Demo credentials and a development secret key are hard-coded in app.py.
+- Passwords are compared as plaintext and are not hashed.
+- debug=True should not be enabled in production.
+- Forms have no CSRF protection.
+- There is no rate limiting, brute-force protection, or login audit trail.
+- Uploaded files are not currently supported, so file validation is not an
+  active risk in the current flow.
+- The custom image route should be reviewed before production deployment to
+  confirm that send_from_directory remains constrained to the images folder.
+- Privacy and terms pages describe Odoo, analytics, cookies, and data handling
+  that are not visibly implemented by this local codebase. Those documents
+  should be reconciled with the actual production infrastructure.
+
+Operational risks:
+
+- No requirements.txt, pyproject.toml, or other dependency lock file is present
+  in the current workspace inventory.
+- No automated test suite is present in the current workspace inventory.
+- No deployment configuration, WSGI entrypoint, environment variable setup, or
+  database migration system is present.
+- Google Fonts and Google Maps require external network access in the browser.
+
+
+7. RECOMMENDED NEXT IMPLEMENTATION STEPS
+-----------------------------------------
+
+1. Add environment-based configuration for SECRET_KEY, debug mode, database
+   URL, mail settings, and external integrations.
+2. Add a production database and models for users, clients, engagements,
+   inquiries, appointments, service tasks, and activity history.
+3. Replace demo authentication with hashed passwords, secure session settings,
+   CSRF protection, rate limiting, and explicit permission checks.
+4. Implement POST /contact with validation, persistence, duplicate handling,
+   notification, and a confirmation page or flash message.
+5. Implement POST /appointments or an external scheduling integration. Validate
+   date/time on the server and prevent duplicate or unavailable bookings.
+6. Load client and admin dashboard values from persisted data and scope every
+   record to the authenticated user or permitted staff role.
+7. Add article routes and replace placeholder # links.
+8. Consolidate inline page CSS into maintainable stylesheet sections.
+9. Add automated route/template tests, authentication tests, form tests, and
+   appointment availability tests.
+10. Add dependency locking and a documented production deployment process.
+
+
+8. CONCLUSION
+------------
+
+The current Stratos system is a coherent Flask/Jinja marketing website with a
+small role-gated demo portal and useful browser-side interactions. Its strongest
+implemented path is server-rendered public content plus session-based demo login.
+Its main boundary is that business transactions are not yet connected to a
+backend data store: enquiries, appointments, dashboards, and article content
+are either ignored, hard-coded, or client-only. A production version should
+prioritise persistence, secure authentication, server-side validation, and
+operational notifications before relying on the portal for real client work.

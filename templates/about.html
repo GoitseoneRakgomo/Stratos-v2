@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% block title %}About Stratos | UAE Business Advisory{% endblock %}
+{% block title %}About Stratos | UAE Company Formation & Corporate Services{% endblock %}
 {% block content %}
 
 <!-- NEW PREMIUM ABOUT PAGE STYLES -->
@@ -254,11 +254,9 @@
     </div>
 
     <div class="hero-col-content">
-        <h1>Our Story &amp; Core Values</h1>
-        <p>Stratos Consulting was founded on a simple but powerful premise: What do we want as a boutique business services firm?</p>
-        <p>After years of working in corporate advisory, finance, and international business development, our founding team saw a recurring pattern — entrepreneurs and investors entering the UAE market were too often overwhelmed by bureaucracy, misled by generic service providers, or forced into rigid packages that didn’t reflect their ambitions.</p>
-        <p>We created Stratos to break that cycle.</p>
-        <p>What began as a boutique consulting firm has evolved into a high-performance business platform designed for visionary entrepreneurs, multinational companies, and high-net-worth individuals who demand more — more clarity, more control, more impact. From first-time founders to seasoned investors, we offer a curated, precise, and deeply strategic approach to business formation, compliance, and long-term operational success in the UAE.</p>
+        <h1>UAE Corporate Services Built Around the Business.</h1>
+        <p>Stratos Consulting helps international founders, private investment groups and established businesses structure, establish and operate companies in the UAE.</p>
+        <p>We combine commercial assessment, company formation, bookkeeping, banking preparation, residence support and corporate administration in one managed relationship.</p>
     </div>
 </section>
 <style>
@@ -318,52 +316,262 @@
 <section class="mission-split-section">
     <div class="mission-statement">
         <!-- Removed the inline style so it defaults to the dark eyebrow style -->
-        <p class="eyebrow">OUR MISSION STATEMENT</p>
-        <h2>"To empower businesses in the UAE by delivering world-class corporate services and innovative, strategic solutions tailored to their specific needs."</h2>
+        <p class="eyebrow">OUR APPROACH</p>
+        <h2>We Start with the Operating Model.</h2>
+        <p style="color: var(--navy-light); font-size: 14px !important; margin-top: 16px;">A UAE company should be designed around what the business needs to do. That means understanding what it will sell, where it will trade, who will own it, how money will move, which people need to reside in the UAE and how the company fits within any wider group. Only then does it make sense to compare mainland and free-zone routes. Our role is to turn those commercial facts into a practical establishment plan. For structuring engagements, this includes a written comparison of the appropriate routes and a reasoned recommendation before implementation begins.</p>
     </div>
     
     <div class="vision-goals">
         <div class="vg-block">
-            <h3>Vision</h3>
-            <p>To become the leading consultancy partner for corporate excellence and growth in the UAE.</p>
+            <h3>The Relationship Model</h3>
+            <p>Every engagement is led by a Relationship Manager who remains responsible for communication, coordination and progress. Senior advisers review the structural recommendation and other material decisions. Bookkeeping, immigration, corporate administration and external specialist work are brought into the engagement when required. You do not have to manage a collection of disconnected providers or repeatedly explain the business to different people.</p>
         </div>
         <div class="vg-block">
-            <h3>Goals</h3>
-            <p>Establish long-term, meaningful client relationships built on trust, transparency, and measurable results.</p>
+            <h3>Professional Boundaries</h3>
+            <p>Stratos directly provides commercial assessment, formation coordination, bookkeeping and management reporting, banking-preparation, residence support and corporate administration. Tax advice, legal advice and other regulated services are delivered by appropriately licensed independent professionals. We coordinate the relationship and documentation as part of the wider engagement.</p>
         </div>
     </div>
 </section>
 
 <!-- SECTION 3: CORE VALUES BENTO GRID -->
+<style>
+    /* Section 3: Values Bento Grid (2 Columns x 2 Rows) */
+    .values-bento-section {
+        padding: 80px 10%;
+        background: #fdfdfd;
+    }
+
+    /* Section Header */
+    .values-bento-section .section-header {
+        margin-bottom: 40px;
+        text-align: left;
+    }
+
+    .values-bento-section .section-header h2 {
+        font-family: var(--font-heading);
+        font-size: 36px !important;
+        color: var(--navy-dark);
+        margin: 12px 0 0;
+        font-weight: 500;
+    }
+    
+    .values-bento-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+        margin-bottom: 48px;
+    }
+
+    .value-card {
+        background: #ffffff;
+        border: 1px solid rgba(7, 14, 40, 0.12);
+        padding: 40px;
+        position: relative;
+        overflow: hidden;
+        border-radius: 4px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    }
+
+    .value-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 16px 32px rgba(7, 14, 40, 0.06);
+        border-color: var(--navy-dark);
+    }
+
+    .value-card h3 {
+        font-family: var(--font-heading);
+        font-size: 22px !important;
+        color: var(--navy-dark);
+        margin: 0 0 12px;
+        font-weight: 500;
+    }
+
+    .value-card p {
+        color: var(--navy-light);
+        font-size: 14px !important;
+        line-height: 1.65;
+        margin: 0;
+    }
+
+    /* Watermark Numbers */
+    .value-card::after {
+        content: attr(data-num);
+        position: absolute;
+        top: -15px;
+        right: -5px;
+        font-family: var(--font-heading);
+        font-size: 140px;
+        line-height: 1;
+        color: var(--navy-dark);
+        opacity: 0.03;
+        transition: opacity 0.3s ease;
+        pointer-events: none;
+    }
+
+    .value-card:hover::after {
+        opacity: 0.07;
+    }
+
+    /* Hero Ribbon Style Stat Strip (Matching Home Page Banner) */
+    .about-proof-strip {
+        background: var(--navy-dark);
+        padding: 40px 8%;
+        border-radius: 4px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 32px;
+        color: #ffffff;
+        box-shadow: 0 12px 28px rgba(7, 14, 40, 0.15);
+    }
+
+    .about-proof-item {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        padding: 0 16px;
+    }
+
+    .about-proof-item:first-child {
+        border-right: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .about-proof-item strong {
+        font-family: var(--font-heading);
+        font-size: 34px !important;
+        color: #ffffff;
+        line-height: 1.1;
+        margin-bottom: 8px;
+        letter-spacing: 0.5px;
+    }
+
+    .about-proof-item p {
+        font-size: 13px !important;
+        color: rgba(255, 255, 255, 0.85);
+        margin: 0;
+        line-height: 1.5;
+    }
+
+    /* Mobile Adjustments */
+    @media (max-width: 768px) {
+        .values-bento-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .about-proof-strip {
+            grid-template-columns: 1fr;
+            gap: 24px;
+            padding: 32px 24px;
+        }
+
+        .about-proof-item:first-child {
+            border-right: none;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+            padding-bottom: 24px;
+        }
+    }
+</style>
+<style>
+    /* Metallic Silver Ribbon Style */
+    .about-proof-strip {
+        /* Premium silver metallic gradient */
+        background: linear-gradient(135deg, #e2e8f0 0%, #ffffff 50%, #cbd5e1 100%) !important;
+        border: 1px solid #94a3b8 !important;
+        padding: 40px 8%;
+        border-radius: 4px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 32px;
+        color: var(--navy-dark) !important;
+        box-shadow: 0 8px 24px rgba(7, 14, 40, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.8) !important;
+    }
+
+    .about-proof-item {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        padding: 0 16px;
+    }
+
+    .about-proof-item:first-child {
+        border-right: 1px solid rgba(7, 14, 40, 0.15) !important; /* Dark subtle divider line */
+    }
+
+    .about-proof-item strong {
+        font-family: var(--font-heading);
+        font-size: 34px !important;
+        color: var(--navy-dark) !important; /* Dark navy text for maximum contrast on silver */
+        line-height: 1.1;
+        margin-bottom: 8px;
+        letter-spacing: 0.5px;
+    }
+
+    .about-proof-item p {
+        font-size: 13px !important;
+        color: var(--navy-light) !important; /* Dark navy secondary text */
+        margin: 0;
+        line-height: 1.5;
+    }
+
+    /* Mobile Adjustments */
+    @media (max-width: 768px) {
+        .about-proof-strip {
+            grid-template-columns: 1fr;
+            gap: 24px;
+            padding: 32px 24px;
+        }
+
+        .about-proof-item:first-child {
+            border-right: none !important;
+            border-bottom: 1px solid rgba(7, 14, 40, 0.15) !important;
+            padding-bottom: 24px;
+        }
+    }
+</style>
+
 <section class="values-bento-section">
+    <!-- Section Header -->
+    <div class="section-header">
+        <p class="eyebrow">OUR CORE VALUES</p>
+        <h2>What Guides Our Advisory & Implementation</h2>
+    </div>
+
+    <!-- 2x2 Values Bento Grid -->
     <div class="values-bento-grid">
         <div class="value-card" data-num="01">
-            <h3>Integrity</h3>
-            <p>We act with transparency, professionalism, and honesty in everything we do. We say what we mean and do what we say — with your best interests always at the center.</p>
+            <h3>Structure and Establish</h3>
+            <p>We assess proposed activities, ownership, markets, banking requirements, visa needs and ongoing obligations before coordinating mainland or free-zone formation.</p>
         </div>
 
         <div class="value-card" data-num="02">
-            <h3>Client-Centricity</h3>
-            <p>Every client is unique, and so is our approach. We take the time to understand your goals, challenges, and vision — then build solutions around you, not the other way around.</p>
+            <h3>Prepare the Business for Banking</h3>
+            <p>We assess potential bank fit, identify gaps in the application profile and prepare the business narrative, KYC information and supporting application pack.</p>
         </div>
 
         <div class="value-card" data-num="03">
-            <h3>Innovation</h3>
-            <p>We integrate cutting-edge technology and forward-thinking strategies to simplify complexity and unlock new possibilities for our clients. Innovation isn’t a buzzword — it’s how we stay ahead.</p>
+            <h3>Establish the Financial Records</h3>
+            <p>We set up and maintain bookkeeping processes, reconciliations and management reporting suited to the company's operations.</p>
         </div>
 
         <div class="value-card" data-num="04">
-            <h3>Excellence</h3>
-            <p>Mediocrity is never acceptable. Every document, deadline, and decision is handled with precision and care. Excellence is our baseline — not our aspiration.</p>
+            <h3>Keep the Company in Good Order</h3>
+            <p>We coordinate renewals, amendments, residence processes, corporate records, governance actions and recurring corporate requirements.</p>
         </div>
+    </div>
 
-        <div class="value-card" data-num="05">
-            <h3>Agility</h3>
-            <p>Business never stands still. Neither do we. We adapt quickly to market shifts, regulatory changes, and client needs — ensuring your business remains resilient and responsive at every stage.</p>
+    <!-- Two-Div Hero Ribbon Banner -->
+    <div class="about-proof-strip">
+        <div class="about-proof-item">
+            <strong>10+ YEARS</strong>
+            <p>Relevant combined experience across UAE establishment, bookkeeping and international business operations.</p>
+        </div>
+        <div class="about-proof-item">
+            <strong>50+ PROJECTS</strong>
+            <p>UAE establishment projects completed or directly supported across mainland and free-zone jurisdictions.</p>
         </div>
     </div>
 </section>
-
 
 <!-- UPDATE THESE RULES IN YOUR <style> BLOCK -->
 <style>
@@ -428,38 +636,37 @@
     }
 </style>
 
-<!-- SECTION 4: INTERACTIVE DIRECTORY (WHY CHOOSE US) -->
+<!-- SECTION 4: INTERACTIVE DIRECTORY (WHO WE SUPPORT) -->
 <section class="why-directory-section">
     <div class="section-header">
-        <p class="eyebrow">WHY CLIENTS CHOOSE STRATOS</p>
-        <p>At Stratos Consulting, we aren’t in the business of pushing paperwork — we’re in the business of building powerful foundations for long-term success in the UAE.</p>
-        <p>Our clients choose us because we deliver far more than checklists and compliance — we provide clarity, strategic foresight, and dedicated partnership from day one. In short: We don’t sell company setups. We engineer your success. Here’s what sets us apart:</p>
+        <p class="eyebrow">WHO WE SUPPORT</p>
+        <h2 style="font-family: var(--font-heading); font-size: 28px !important; color: var(--navy-dark); margin: 16px 0 32px; font-weight: 400;">Built for Businesses with More to Consider.</h2>
     </div>
     
     <div class="why-directory-list">
         
         <div class="why-row">
-            <img class="why-icon" src="{{ url_for('image_asset', filename='icons/expert-knowledge_icon.svg') }}" alt="Expertise">
-            <h3 class="why-title">Expertise You Can Trust</h3>
-            <p class="why-desc">With extensive local and global knowledge in business formation, compliance, tax strategy, accounting, and residency services, our seasoned experts navigate regulatory complexities, delivering insightful, strategic advice tailored specifically to your needs.</p>
+            <img class="why-icon" src="{{ url_for('image_asset', filename='icons/expert-knowledge_icon.svg') }}" alt="Family Offices">
+            <h3 class="why-title">Family Offices &amp; Private Investment Groups</h3>
+            <p class="why-desc">For family-owned and private investment groups establishing UAE holding, investment or operating companies that require clear ownership records, discretion and coordination across advisers.</p>
         </div>
 
         <div class="why-row">
-            <img class="why-icon" src="{{ url_for('image_asset', filename='icons/single-point-of-accountability_icon.svg') }}" alt="Understanding">
-            <h3 class="why-title">Deep Business Understanding</h3>
-            <p class="why-desc">Each business is unique. We take the time to deeply understand your goals, market challenges, and competitive positioning, aligning our solutions precisely to your strategic vision for maximum impact and efficiency.</p>
+            <img class="why-icon" src="{{ url_for('image_asset', filename='icons/single-point-of-accountability_icon.svg') }}" alt="Cross-Border Founders">
+            <h3 class="why-title">Cross-Border Founders</h3>
+            <p class="why-desc">For founders whose shareholders, customers, suppliers, intellectual property, employees or existing companies span more than one country.</p>
         </div>
 
         <div class="why-row">
-            <img class="why-icon" src="{{ url_for('image_asset', filename='icons/transparent-pricing_icon.svg') }}" alt="Customized Solutions">
-            <h3 class="why-title">Customized Solutions</h3>
-            <p class="why-desc">Rejecting one-size-fits-all solutions, we carefully craft customized packages from bespoke licensing structures to optimize tax and visa strategies ensuring your business is fully compliant and operationally agile.</p>
+            <img class="why-icon" src="{{ url_for('image_asset', filename='icons/transparent-pricing_icon.svg') }}" alt="Established Businesses">
+            <h3 class="why-title">Established Businesses Entering the UAE</h3>
+            <p class="why-desc">For owner-managed, trading and operating businesses that need the UAE company to function as part of a real commercial expansion—not simply to obtain a licence.</p>
         </div>
 
         <div class="why-row">
-            <img class="why-icon" src="{{ url_for('image_asset', filename='icons/fast-and-efficient-turnaround_icon.svg') }}" alt="Innovation">
-            <h3 class="why-title">Continuous Improvement and Innovation</h3>
-            <p class="why-desc">In a rapidly evolving market, adaptability is key. We proactively refine our processes, technology, and services to continuously enhance value delivery, ensuring you're always one step ahead.</p>
+            <img class="why-icon" src="{{ url_for('image_asset', filename='icons/fast-and-efficient-turnaround_icon.svg') }}" alt="Sectors">
+            <h3 class="why-title">Sectors We Commonly Understand</h3>
+            <p class="why-desc">Our experience and areas of interest include holding and private investment structures; international trade, commodities and distribution; technology, consulting and professional services; property and hospitality; and manufacturing, logistics and operational businesses.</p>
         </div>
 
     </div>
@@ -525,11 +732,11 @@
 <section class="dark-band vision-band">
     <img class="section-photo" src="{{ url_for('image_asset', filename='dubai-7237750_1920.jpg') }}" alt="Dubai skyline at dusk">
     <div>
-        <p class="eyebrow">READY TO GROW?</p>
-        <h2>Start your UAE business journey.</h2>
-        <p class="band-copy">Connect with our expert team today for personalized guidance.</p>
+        <p class="eyebrow">START A CONVERSATION</p>
+        <h2>A More Considered Way to Establish in the UAE.</h2>
+        <p class="band-copy">Tell us what the business will do, who will own it and what it needs from the UAE. If the engagement appears suited to our model, we will invite you to a consultation.</p>
     </div>
-    <a href="{{ url_for('contact') }}" class="btn-banner">Work with Us</a>
+    <a href="{{ url_for('contact') }}" class="btn-banner">Tell Us About Your Plans</a>
 </section>
 
 {% endblock %}

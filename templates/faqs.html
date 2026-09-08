@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% block title %}FAQs &amp; Advisory Protocol | STRATOS UAE Advisory{% endblock %}
+{% block title %}FAQs | Stratos Consulting{% endblock %}
 {% block content %}
 
 <!-- PAGE-SPECIFIC EXECUTIVE STYLES -->
@@ -185,9 +185,9 @@
 
     <!-- HERO BANNER -->
     <section class="faq-hero-section page-hero hero-faqs">
-        <p class="eyebrow">QUESTIONS &amp; ADVISORY PROTOCOL</p>
-        <h1 style="text-align: left !important;">Clarity for your UAE business journey.</h1>
-        <p class="lead">Structured guidance on formation, onboarding requirements, government fees, and complete setup timelines.</p>
+        <p class="eyebrow">FREQUENTLY ASKED QUESTIONS</p>
+        <h1 style="text-align: left !important;">Questions Worth Asking Before Formation.</h1>
+        <p class="lead">Clear answers for decisions that are easy to oversimplify.</p>
     </section>
 
     <!-- SECTION 1: GENERAL QUESTIONS -->
@@ -199,36 +199,43 @@
 
         <div class="faq-accordion-group">
             <details open>
-                <summary>What corporate services does Stratos provide?</summary>
+                <summary>Should I establish a UAE mainland or free-zone company?</summary>
                 <div class="faq-content-body">
-                    <p>We support business formation, accounting and bookkeeping, auditing, VAT registration, residency and visas, bank account opening, Golden Visas, and ongoing corporate compliance across the UAE.</p>
+                    <p>That depends on how the company will operate. Its activities, customers, place of business, ownership, staffing, visa requirements, banking profile and ongoing obligations all matter. We compare the appropriate routes against those requirements before recommending one.</p>
                 </div>
             </details>
 
             <details>
-                <summary>How do I choose the right business structure?</summary>
+                <summary>What do I receive before formation begins?</summary>
                 <div class="faq-content-body">
-                    <p>We consider your business activity, ownership structure, target customers, visa requirements, banking needs, and long-term objectives before recommending the most suitable setup (Free Zone, Mainland, or Offshore).</p>
+                    <p>Under our Complete UAE Establishment engagement, you receive a written comparison of the appropriate mainland and free-zone options and a reasoned structural recommendation. You also receive an itemised proposal setting out the agreed scope, professional fees, government charges, known third-party costs, assumptions and exclusions.</p>
                 </div>
             </details>
 
             <details>
-                <summary>Can my UAE business be established remotely?</summary>
+                <summary>Does forming a UAE company include opening a bank account?</summary>
                 <div class="faq-content-body">
-                    <p>Many steps can be completed remotely through our streamlined digital processes. Government and banking procedures may require in-person attendance, which we coordinate and assist you with on-site.</p>
+                    <p>No. Company incorporation and bank-account approval are separate processes. Stratos can assess potential bank fit, prepare the business profile and KYC application pack, support the application process where appropriate and assist with follow-up. The bank makes the final decision independently.</p>
                 </div>
             </details>
 
             <details>
-                <summary>How does dedicated Relationship Manager support work?</summary>
+                <summary>How much does UAE company formation cost?</summary>
                 <div class="faq-content-body">
-                    <p>From your initial consultation, you receive a dedicated Relationship Manager who understands your goals, acts as your single point of contact, and coordinates execution at every step.</p>
+                    <p>A meaningful figure depends on the activities, ownership, jurisdiction, premises, visas and connected services required. Suitable clients receive an itemised proposal following the initial assessment.</p>
+                </div>
+            </details>
+
+            <details>
+                <summary>What happens after I submit an enquiry?</summary>
+                <div class="faq-content-body">
+                    <p>We review the proposed business, ownership, timing and required services. If the engagement appears suited to our model, we will invite you to a consultation or request additional information.</p>
                 </div>
             </details>
         </div>
     </section>
 
-    <!-- SECTION 2: CLIENT ONBOARDING & DOCUMENTATION -->
+
     <section class="faq-category-section">
         <div class="faq-category-header">
             <p class="eyebrow">STAGE 1 PROTOCOL</p>
@@ -359,11 +366,11 @@
     <section class="dark-band vision-band">
         <img class="section-photo" src="{{ url_for('image_asset', filename='dubai-7237750_1920.jpg') }}" alt="Dubai skyline at dusk">
         <div>
-            <p class="eyebrow">STILL HAVE QUESTIONS?</p>
-            <h2>Didn’t find your answer?</h2>
-            <p class="band-copy">Connect directly with our advisory team for personalized clarifications and support.</p>
+            <p class="eyebrow">NOT SURE WHERE TO START?</p>
+            <h2>Let's discuss your UAE plans.</h2>
+            <p class="band-copy">Submit a short enquiry and our advisors will respond with next steps and a suitable engagement path.</p>
         </div>
-        <a href="{{ url_for('contact') }}" class="btn-banner">Contact Us &rarr;</a>
+        <a href="{{ url_for('contact') }}" class="btn-banner">Tell Us About Your Plans</a>
     </section>
 
 </div>

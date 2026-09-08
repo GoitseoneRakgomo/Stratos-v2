@@ -1,3 +1,126 @@
+// =========================================
+// PAGE LOADER & LOADING SCREEN
+// =========================================
+document.addEventListener('DOMContentLoaded', () => {
+    const loadingScreen = document.getElementById('loadingScreen');
+    if (loadingScreen) {
+        setTimeout(() => {
+            loadingScreen.classList.add('hidden');
+        }, 500);
+    }
+});
+
+// Fallback: Hide loading screen if page takes too long
+window.addEventListener('load', () => {
+    const loadingScreen = document.getElementById('loadingScreen');
+    if (loadingScreen) {
+        loadingScreen.classList.add('hidden');
+    }
+
+    const pageLoader = document.getElementById("pageLoader");
+    if (pageLoader) {
+        pageLoader.classList.add("loader-hidden");
+    }
+});
+
+// Force hide page loader fallback
+setTimeout(() => {
+    const pageLoader = document.getElementById("pageLoader");
+    if (pageLoader && !pageLoader.classList.contains("loader-hidden")) {
+        pageLoader.classList.add("loader-hidden");
+    }
+}, 4000);
+
+// =========================================
+// NAVIGATION DRAWER & DROPDOWN ACCORDION
+// =========================================
+document.addEventListener('DOMContentLoaded', () => {
+    const hamburgerBtn = document.getElementById('hamburgerBtn');
+    const primaryNav = document.getElementById('primaryNav');
+    const dropdowns = document.querySelectorAll('.nav-dropdown');
+    const mobileSearchBtn = document.getElementById('mobileSearchBtn');
+    const mobileSearchInput = document.getElementById('mobileSearchInput');
+
+    const setNavOpen = (isOpen) => {
+        primaryNav?.classList.toggle('nav-open', isOpen);
+        if (hamburgerBtn) {
+            hamburgerBtn.setAttribute('aria-expanded', String(isOpen));
+            hamburgerBtn.setAttribute('aria-label', isOpen ? 'Close navigation' : 'Toggle navigation');
+        }
+    };
+
+    // Toggle Mobile Navigation Drawer
+    hamburgerBtn?.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        const isOpen = !primaryNav?.classList.contains('nav-open');
+        setNavOpen(Boolean(isOpen));
+    });
+
+    // Close drawer when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!primaryNav || !primaryNav.classList.contains('nav-open')) return;
+        if (!primaryNav.contains(e.target) && !hamburgerBtn?.contains(e.target)) {
+            setNavOpen(false);
+        }
+    });
+
+    // Dropdown handling for Desktop & Mobile
+    dropdowns.forEach(dropdown => {
+        const menu = dropdown.querySelector('.dropdown-menu');
+        const triggerLink = dropdown.querySelector('a');
+
+        // Desktop: Hover behaviors
+        dropdown.addEventListener('mouseenter', () => {
+            if (window.innerWidth > 1024) {
+                menu?.classList.add('dropdown-active');
+            }
+        });
+
+        dropdown.addEventListener('mouseleave', () => {
+            if (window.innerWidth > 1024) {
+                menu?.classList.remove('dropdown-active');
+            }
+        });
+
+        // Mobile & Tablet: Toggle accordion on click
+        triggerLink?.addEventListener('click', (e) => {
+            if (window.innerWidth <= 1024) {
+                e.preventDefault();
+                e.stopPropagation();
+                menu?.classList.toggle('dropdown-active');
+            }
+        });
+    });
+
+    // Mobile Search inside drawer
+    mobileSearchBtn?.addEventListener('click', () => {
+        const query = mobileSearchInput?.value.trim().toLowerCase();
+        if (!query) return;
+
+        const sections = document.querySelectorAll('section');
+        const match = [...sections].find((section) =>
+            section.textContent.toLowerCase().includes(query)
+        );
+
+        if (match) {
+            setNavOpen(false);
+            match.scrollIntoView({ behavior: 'smooth' });
+        } else {
+            window.alert('No matching content found.');
+        }
+    });
+
+    window.addEventListener('resize', () => {
+        if (window.innerWidth > 1024) {
+            setNavOpen(false);
+        }
+    });
+});
+
+// =========================================
+// SEARCH & CART ACTIONS
+// =========================================
 document.addEventListener('DOMContentLoaded', () => {
     const sections = document.querySelectorAll('section');
     const searchButton = document.querySelector('[aria-label="Search"]');
@@ -17,8 +140,9 @@ document.addEventListener('DOMContentLoaded', () => {
         window.alert('Your engagement list is currently empty.');
     });
 });
-
-// Interactive Calendar & Appointment System
+// =========================================
+// INTERACTIVE CALENDAR & APPOINTMENT SYSTEM
+// =========================================
 document.addEventListener('DOMContentLoaded', () => {
     const calendarDays = document.getElementById('calendarDays');
     const currentMonthYear = document.getElementById('currentMonthYear');
@@ -43,7 +167,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const month = currentDate.getMonth();
 
         const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-        currentMonthYear.textContent = `${monthNames[month]} ${year}`;
+        if (currentMonthYear) {
+            currentMonthYear.textContent = `${monthNames[month]} ${year}`;
+        }
 
         const firstDay = new Date(year, month, 1).getDay();
         const daysInMonth = new Date(year, month + 1, 0).getDate();
@@ -85,15 +211,20 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelectorAll('.cal-day').forEach(el => el.classList.remove('selected'));
         element.classList.add('selected');
         selectedDate = date;
-        selectedDateInput.value = date.toISOString().split('T')[0];
+        if (selectedDateInput) {
+            selectedDateInput.value = date.toISOString().split('T')[0];
+        }
         
         renderTimeSlots(date.getDay());
     }
 
     function renderTimeSlots(dayOfWeek) {
+        if (!timeSlotsContainer) return;
         timeSlotsContainer.innerHTML = '';
         selectedTime = null;
-        selectedTimeInput.value = '';
+        if (selectedTimeInput) {
+            selectedTimeInput.value = '';
+        }
 
         const slots = (dayOfWeek === 5) ? availableTimesFridays : availableTimesWeekdays;
 
@@ -105,7 +236,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 document.querySelectorAll('.slot-btn').forEach(b => b.classList.remove('selected'));
                 slotBtn.classList.add('selected');
                 selectedTime = time;
-                selectedTimeInput.value = time;
+                if (selectedTimeInput) {
+                    selectedTimeInput.value = time;
+                }
             });
             timeSlotsContainer.appendChild(slotBtn);
         });
@@ -123,7 +256,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     window.handleBooking = function(e) {
         e.preventDefault();
-        if (!selectedDateInput.value || !selectedTimeInput.value) {
+        if (!selectedDateInput?.value || !selectedTimeInput?.value) {
             alert('Please select both a date and an available time slot.');
             return;
         }
@@ -131,51 +264,4 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     renderCalendar();
-});
-
-document.addEventListener('DOMContentLoaded', () => {
-    const hamburgerBtn = document.getElementById('hamburgerBtn');
-    const primaryNav = document.getElementById('primaryNav');
-    const mobileSearchBtn = document.getElementById('mobileSearchBtn');
-    const mobileSearchInput = document.getElementById('mobileSearchInput');
-
-    // Hamburger Menu Toggle
-    hamburgerBtn?.addEventListener('click', () => {
-        primaryNav?.classList.toggle('nav-open');
-    });
-
-    // Mobile Search Functionality inside Navigation Drawer
-    mobileSearchBtn?.addEventListener('click', () => {
-        const query = mobileSearchInput?.value.trim().toLowerCase();
-        if (!query) return;
-
-        const sections = document.querySelectorAll('section');
-        const match = [...sections].find((section) =>
-            section.textContent.toLowerCase().includes(query)
-        );
-
-        if (match) {
-            primaryNav?.classList.remove('nav-open'); // Close drawer on match
-            match.scrollIntoView({ behavior: 'smooth' });
-        } else {
-            window.alert('No matching content found.');
-        }
-    });
-});
-document.addEventListener("DOMContentLoaded", function () {
-    const pageLoader = document.getElementById("pageLoader");
-
-    // Hide loader once all page assets (images, stylesheets, fonts) are 100% loaded
-    window.addEventListener("load", function () {
-        if (pageLoader) {
-            pageLoader.classList.add("loader-hidden");
-        }
-    });
-
-    // Fallback: Force hide after 4 seconds to avoid infinite loading on slow connections
-    setTimeout(function () {
-        if (pageLoader && !pageLoader.classList.contains("loader-hidden")) {
-            pageLoader.classList.add("loader-hidden");
-        }
-    }, 4000);
 });

@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% block title %}Services | STRATOS UAE Advisory{% endblock %}
+{% block title %}UAE Company Formation & Corporate Services | Stratos{% endblock %}
 {% block content %}
 
 <style>
@@ -39,140 +39,87 @@
 
 <!-- HERO BANNER -->
 <section class="page-intro compact page-hero hero-services">
-    <p class="eyebrow">OUR SERVICES &amp; ENGAGEMENTS</p>
-    <h1>Empowering Businesses to Reach New Heights</h1>
-    <p class="lead">Bespoke corporate services delivered with precision—from business setup and banking to institutional advisory and compliance.</p>
+    <p class="eyebrow">OUR SERVICES</p>
+    <h1>UAE Establishment and Corporate Services.</h1>
+    <p class="lead">The work involved in establishing a UAE business does not end when the licence is issued. Stratos connects the structural, formation, banking, residence, bookkeeping and administrative workstreams required to move from an initial plan to a functioning company.</p>
 </section>
 
 <!-- SERVICE BENEFITS SUMMARY BAND -->
 <section class="statement-band" style="background: var(--navy-dark); color: #ffffff; text-align: left; padding: 60px 10%;">
-    <div style="width: 100%; max-width: 100%; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 32px;">
-        <div>
-            <strong style="color: #ffffff; display: block; font-size: 14px; margin-bottom: 4px;">Rapid Market Entry</strong>
-            <p style="font-size: 12px; margin: 0; opacity: 0.85;">Streamlined execution ensuring fast, hassle-free setup across mainland and free zones.</p>
-        </div>
-        <div>
-            <strong style="color: #ffffff; display: block; font-size: 14px; margin-bottom: 4px;">Full Regulatory Compliance</strong>
-            <p style="font-size: 12px; margin: 0; opacity: 0.85;">Proactive advisory aligning your business with UAE corporate tax, VAT, and legal standards.</p>
-        </div>
-        <div>
-            <strong style="color: #ffffff; display: block; font-size: 14px; margin-bottom: 4px;">Risk Mitigation</strong>
-            <p style="font-size: 12px; margin: 0; opacity: 0.85;">Thorough documentation and due diligence to prevent banking and authority rejections.</p>
-        </div>
-        <div>
-            <strong style="color: #ffffff; display: block; font-size: 14px; margin-bottom: 4px;">Cost-Efficiency</strong>
-            <p style="font-size: 12px; margin: 0; opacity: 0.85;">Tailored packages designed to eliminate redundant administrative costs and delays.</p>
-        </div>
+    <div style="width: 100%; max-width: 100%;">
+        <h2 style="color: #ffffff; font-size: 28px; margin: 0 0 32px; font-weight: 400;">One Business. Connected Decisions.</h2>
+        <p style="color: rgba(255, 255, 255, 0.9); margin: 0 0 16px; font-size: 14px;">The proposed activities affect the licence. The ownership affects the documents required. The operating model affects the choice of jurisdiction. All three influence banking, visas, bookkeeping and ongoing administration. Treating each requirement as a separate transaction creates avoidable gaps.</p>
+        <p style="color: rgba(255, 255, 255, 0.9); margin: 0; font-size: 14px;">We begin with the whole business, establish the appropriate sequence and coordinate the agreed work through one accountable Relationship Manager.</p>
     </div>
 </section>
 
 <!-- CORE SERVICES LIST -->
 <section class="services-section services-page">
     <div class="section-header" style="text-align: left; margin-bottom: 36px;">
-        <p class="eyebrow">PRACTICE AREAS</p>
-        <h2>Core UAE Solutions</h2>
+        <p class="eyebrow">FLAGSHIP ENGAGEMENT</p>
+        <h2>Complete UAE Establishment</h2>
+        <p style="font-size: 14px; color: var(--navy-light); margin-top: 16px;">For international groups that require more than a standard formation package. We assess the business, compare appropriate mainland and free-zone routes, provide a written commercial recommendation and coordinate the agreed work through formation and operational set-up. Depending on the scope, this can include banking preparation, residence applications, bookkeeping set-up, corporate administration and tax-specialist coordination.</p>
     </div>
 
     <div class="service-list">
-        <!-- 01: Business Formation -->
+        <!-- 01: UAE Company Formation -->
         <article class="service-row">
             <span class="card-number">01</span>
             <div>
-                <h2>Business Formation</h2>
-                <p>Complete company setup and licensing from start to finish, structured around your specific business objectives.</p>
-                <ul>
-                    <li>Company Registration (Mainland, Free Zone, Offshore)</li>
-                    <li>Trade Licensing &amp; Business Activity Advisory</li>
-                    <li>Visa Processing (Investors, Employees, Dependents)</li>
-                    <li>Corporate Tax &amp; VAT Registration</li>
-                    <li>Regulatory Compliance Advisory</li>
-                    <li>Legal Document Drafting &amp; Assistance</li>
-                    <li>Golden Visa Facilitation</li>
-                </ul>
+                <h2>UAE Company Formation</h2>
+                <p>Implementation of an agreed mainland or free-zone route, including activity and legal-form confirmation, document preparation, application coordination and licensing.</p>
             </div>
-            <a href="{{ url_for('appointments') }}" class="btn-outline">Request a Consultation</a>
+            <a href="{{ url_for('uae_company_formation') }}" class="btn-outline">Explore UAE Company Formation</a>
         </article>
 
-        <!-- 02: Accounting & Bookkeeping -->
+        <!-- 02: Business Bank Account Application Support -->
         <article class="service-row">
             <span class="card-number">02</span>
             <div>
-                <h2>Accounting &amp; Bookkeeping</h2>
-                <p>Value-packed financial management and compliance packages tailored to regional IFRS and statutory standards.</p>
-                <ul>
-                    <li>General Ledger &amp; Financial Records Maintenance</li>
-                    <li>Accounts Payable &amp; Receivable Management</li>
-                    <li>Financial Statement Preparation (IFRS compliant)</li>
-                    <li>Payroll Processing</li>
-                    <li>VAT &amp; Tax Filing</li>
-                    <li>Periodic Financial Reporting</li>
-                </ul>
+                <h2>Business Bank Account Application Support</h2>
+                <p>Assessment of potential bank fit, preparation of the business profile and KYC pack, submission or introduction support where appropriate, and assistance during the bank's review.</p>
             </div>
-            <a href="{{ url_for('appointments') }}" class="btn-outline">Request a Consultation</a>
+            <a href="{{ url_for('business_bank_account_support') }}" class="btn-outline">Explore Banking Support</a>
         </article>
 
-        <!-- 03: Auditing Services -->
+        <!-- 03: Residence & Visa Application Support -->
         <article class="service-row">
             <span class="card-number">03</span>
             <div>
-                <h2>Auditing Services</h2>
-                <p>Independent evaluation and statutory compliance oversight to ensure complete operational health.</p>
-                <ul>
-                    <li>External &amp; Internal Audits</li>
-                    <li>Compliance &amp; Financial Health Audits</li>
-                    <li>Due Diligence (M&amp;A) Audits</li>
-                </ul>
+                <h2>Residence &amp; Visa Application Support</h2>
+                <p>Preliminary eligibility review and application or renewal coordination for eligible investors, employees and dependants, planned around the company's establishment and operating requirements.</p>
             </div>
-            <a href="{{ url_for('appointments') }}" class="btn-outline">Request a Consultation</a>
+            <a href="{{ url_for('residence_visa_support') }}" class="btn-outline">Explore Residence & Visa Support</a>
         </article>
 
-        <!-- 04: Residency & Visa Services -->
+        <!-- 04: Accounting, Bookkeeping & Management Reporting -->
         <article class="service-row">
             <span class="card-number">04</span>
             <div>
-                <h2>Residency &amp; Visa Services</h2>
-                <p>A smooth, hassle-free process for obtaining and maintaining corporate and personal residency in the UAE.</p>
-                <ul>
-                    <li>Residency Visa Applications &amp; Renewals</li>
-                    <li>Golden Visa Services (Eligibility, Documentation, Submission)</li>
-                    <li>Family &amp; Dependent Visas</li>
-                    <li>Status Adjustments &amp; Compliance Management</li>
-                </ul>
+                <h2>Accounting, Bookkeeping &amp; Management Reporting</h2>
+                <p>Accounting set-up, bookkeeping, reconciliations, management reporting and year-end preparation aligned with the way the company operates.</p>
             </div>
-            <a href="{{ url_for('appointments') }}" class="btn-outline">Request a Consultation</a>
+            <a href="{{ url_for('accounting_management_reporting') }}" class="btn-outline">Explore Accounting & Reporting</a>
         </article>
 
-        <!-- 05: Bank Account Opening -->
+        <!-- 05: Corporate Tax & VAT Coordination -->
         <article class="service-row">
             <span class="card-number">05</span>
             <div>
-                <h2>Bank Account Opening</h2>
-                <p>Connecting you with the region's leading financial institutions to establish compliant corporate banking.</p>
-                <ul>
-                    <li>Advisory &amp; Bank Selection</li>
-                    <li>Documentation &amp; Submission Coordination</li>
-                    <li>Relationship Management Facilitation</li>
-                    <li>Corporate Account Activation Support</li>
-                </ul>
-                <p style="font-size: 11px; margin-top: 12px; color: var(--navy-dark);"><strong>Who Benefits:</strong> All businesses establishing a financial presence in the UAE.</p>
+                <h2>Corporate Tax &amp; VAT Coordination</h2>
+                <p>Accounting readiness, information preparation and coordination with appropriately registered or licensed tax professionals for assessment, registration, returns and formal advice.</p>
             </div>
-            <a href="{{ url_for('appointments') }}" class="btn-outline">Request a Consultation</a>
+            <a href="{{ url_for('corporate_tax_vat_coordination') }}" class="btn-outline">Explore Tax & VAT Coordination</a>
         </article>
 
-        <!-- 06: Golden Visa Services -->
+        <!-- 06: Corporate Administration & Governance -->
         <article class="service-row">
             <span class="card-number">06</span>
             <div>
-                <h2>Golden Visa Services</h2>
-                <p>Streamlined assistance with obtaining long-term 10-year Golden Visa residency in the UAE.</p>
-                <ul>
-                    <li>Comprehensive Eligibility Assessments</li>
-                    <li>Application Preparation &amp; Tracking</li>
-                    <li>Visa Renewals &amp; Family Sponsorship Management</li>
-                </ul>
-                <p style="font-size: 11px; margin-top: 12px; color: var(--navy-dark);"><strong>Who Benefits:</strong> Investors, property owners, entrepreneurs, and high-level professionals.</p>
+                <h2>Corporate Administration &amp; Governance</h2>
+                <p>Licence renewals, company amendments, corporate records, governance actions and continuing corporate-requirement coordination after incorporation.</p>
             </div>
-            <a href="{{ url_for('appointments') }}" class="btn-outline">Request a Consultation</a>
+            <a href="{{ url_for('corporate_administration_governance') }}" class="btn-outline">Explore Corporate Administration</a>
         </article>
     </div>
 </section>
@@ -180,12 +127,13 @@
 <!-- CALL TO ACTION BANNER -->
 <section class="dark-band vision-band">
     <img class="section-photo" src="{{ url_for('image_asset', filename='dubai-7237750_1920.jpg') }}" alt="Dubai skyline at dusk">
-    <div>
-        <p class="eyebrow">READY TO GET STARTED?</p>
-        <h2>Engineer your UAE success today.</h2>
-        <p class="band-copy">Connect with our advisors for a personalized, strategy-first consultation.</p>
+    
+    <div class="vision-band-content">
+        <p class="eyebrow-light">START WITH THE BUSINESS</p>
+        <h2>Not Sure Which Service You Need?</h2>
+        <p class="band-copy">Describe the proposed activities, ownership, timing, banking requirements, visas and ongoing support required. We will identify the appropriate starting point before suggesting a consultation.</p>
+        <a href="{{ url_for('contact') }}" class="btn-banner">Tell Us About Your Plans</a>
     </div>
-    <a href="{{ url_for('appointments') }}" class="btn-banner">Request a Consultation</a>
 </section>
 
 {% endblock %}
