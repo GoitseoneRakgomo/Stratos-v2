@@ -35,13 +35,75 @@
     .service-row li {
         text-align: justify !important;
     }
+    /* =========================================
+   MOBILE BAND BACKGROUND DARKNESS FIX
+========================================= */
+
+@media (max-width: 768px) {
+    /* 1. Ensure dark navy backdrop and position context */
+    .dark-band,
+    .dark-band.vision-band {
+        position: relative !important;
+        background-color: var(--navy-dark) !important;
+        padding: 60px 6% !important;
+    }
+
+    /* 2. Darken the photo significantly for mobile readability */
+    .dark-band .section-photo,
+    .dark-band.vision-band .section-photo {
+        opacity: 0.18 !important; /* Lowers image brightness so white text pops */
+        filter: brightness(0.4) contrast(1.2) !important; /* Darkens image tones */
+        object-fit: cover !important;
+    }
+
+    /* 3. Keep content explicitly high-contrast white */
+    .dark-band h2,
+    .dark-band .band-copy,
+    .dark-band p,
+    .dark-band .eyebrow,
+    .dark-band p.eyebrow {
+        color: #ffffff !important;
+        position: relative !important;
+        z-index: 3 !important;
+        text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6) !important; /* Adds subtle drop-shadow for legibility */
+    }
+
+    .dark-band .band-copy,
+    .dark-band p {
+        opacity: 0.9 !important;
+        font-size: 14px !important;
+        line-height: 1.6 !important;
+    }
+
+    /* 4. Solid contrast button styling on mobile */
+    .dark-band .btn-banner {
+        background-color: #ffffff !important;
+        color: var(--navy-dark) !important;
+        border: 1px solid #ffffff !important;
+        font-weight: 600 !important;
+        position: relative !important;
+        z-index: 3 !important;
+    }
+}
 </style>
 
-<!-- HERO BANNER -->
-<section class="page-intro compact page-hero hero-services">
-    <p class="eyebrow">OUR SERVICES</p>
-    <h1>UAE Establishment and Corporate Services.</h1>
-    <p class="lead">The work involved in establishing a UAE business does not end when the licence is issued. Stratos connects the structural, formation, banking, residence, bookkeeping and administrative workstreams required to move from an initial plan to a functioning company.</p>
+<!-- SERVICES HERO BANNER (STATIC BACKGROUND) -->
+<section class="hero-banner static-hero" style="background-image: url('{{ url_for('image_asset', filename='kate-trysh-70vza4NysS8-unsplash.jpg') }}');">
+    <div class="hero-banner-overlay"></div>
+    
+    <!-- Unified Content Container -->
+    <div class="hero-banner-content">
+        <p class="eyebrow-light">OUR SERVICES</p>
+        <h1>UAE Establishment and Corporate Services.</h1>
+        
+        <p class="lead-light">The work involved in establishing a UAE business does not end when the licence is issued. Stratos connects the structure, formation, banking, residence, bookkeeping and administrative workstreams required to move from an initial plan to a functioning company.</p>
+
+        <div class="button-row">
+            <a href="{{ url_for('contact') }}" class="btn-banner">Book a Consultation</a>
+            <a href="#complete-establishment" class="btn-banner btn-banner-transparent">Explore Complete Establishment</a>
+        </div>
+        <p class="microcopy">New enquiries begin with a short suitability review.</p>
+    </div>
 </section>
 
 <!-- SERVICE BENEFITS SUMMARY BAND -->
@@ -126,7 +188,7 @@
 
 <!-- CALL TO ACTION BANNER -->
 <section class="dark-band vision-band">
-    <img class="section-photo" src="{{ url_for('image_asset', filename='dubai-7237750_1920.jpg') }}" alt="Dubai skyline at dusk">
+    <img class="section-photo" src="{{ url_for('image_asset', filename='b3.jfif') }}" alt="Dubai skyline at dusk">
     
     <div class="vision-band-content">
         <p class="eyebrow-light">START WITH THE BUSINESS</p>

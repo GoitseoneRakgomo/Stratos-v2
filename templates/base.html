@@ -23,8 +23,6 @@
 
 <header>
     <div class="header-top">
-        <div class="header-left"></div>
-
         <a class="logo-container" href="{{ url_for('home') }}" aria-label="Stratos home">
             <img class="brand-logo" src="{{ url_for('logo') }}" alt="STRATOS">
         </a>
@@ -57,7 +55,6 @@
             <li><a href="{{ url_for('who_we_work_with') }}">Who We Work With</a></li>
             <li><a href="{{ url_for('articles') }}">Insights</a></li>
             <li><a href="{{ url_for('faqs') }}">FAQ</a></li>
-            <li><a href="{{ url_for('contact') }}">Contact</a></li>
             <li><a href="{{ url_for('appointments') }}">Book Appointment</a></li>
         </ul>
         
@@ -71,51 +68,56 @@
     <main>{% block content %}{% endblock %}</main>
 
     <!-- GLOBAL FOOTER -->
-    <footer class="site-footer">
-        <div class="footer-top">
-            <div class="footer-brand">
-                <a href="{{ url_for('home') }}">
-                    <img class="brand-logo" src="{{ url_for('logo') }}" alt="STRATOS">
-                </a>
-                <p>Advisory-led UAE company formation, bookkeeping, banking preparation and ongoing corporate support for international founders, private investment groups and established businesses.</p>
+<footer class="site-footer">
+    <div class="footer-container">
+        <!-- 4 Column Main Links Area -->
+        <div class="footer-links footer-grid">
+            <div class="footer-col">
+                <strong>Firm</strong>
+                <a href="{{ url_for('about') }}">About Stratos</a>
+                <a href="{{ url_for('services') }}">Our Services</a>
+                <a href="{{ url_for('who_we_work_with') }}">Who We Work With</a>
+                <a href="{{ url_for('articles') }}">Insights</a>
+                <a href="{{ url_for('faqs') }}">FAQ</a>
+                <a href="{{ url_for('contact') }}">Contact</a>
+                <a href="{{ url_for('contact') }}">Tell Us About Your Plans</a>
             </div>
             
-            <div class="footer-links footer-grid">
-                <div class="footer-col">
-                    <strong>Firm</strong>
-                    <a href="{{ url_for('about') }}">About Stratos</a>
-                    <a href="{{ url_for('services') }}">Our Services</a>
-                    <a href="{{ url_for('who_we_work_with') }}">Who We Work With</a>
-                    <a href="{{ url_for('articles') }}">Insights</a>
-                    <a href="{{ url_for('faqs') }}">FAQ</a>
-                    <a href="{{ url_for('contact') }}">Contact</a>
-                    <a href="{{ url_for('contact') }}">Tell Us About Your Plans</a>
-                </div>
-                <div class="footer-col">
-                    <strong>Services</strong>
-                    <a href="{{ url_for('complete_uae_establishment') }}">Complete UAE Establishment</a>
-                    <a href="{{ url_for('uae_company_formation') }}">UAE Company Formation</a>
-                    <a href="{{ url_for('accounting_management_reporting') }}">Accounting, Bookkeeping & Management Reporting</a>
-                    <a href="{{ url_for('business_bank_account_support') }}">Business Bank Account Application Support</a>
-                    <a href="{{ url_for('residence_visa_support') }}">Residence & Visa Application Support</a>
-                    <a href="{{ url_for('corporate_administration_governance') }}">Corporate Administration & Governance</a>
-                    <a href="{{ url_for('corporate_tax_vat_coordination') }}">Corporate Tax & VAT Coordination</a>
-                </div>
-                <div class="footer-col">
-                    <strong>Legal</strong>
-                    <a href="{{ url_for('privacy') }}">Privacy Notice</a>
-                    <a href="{{ url_for('cookie_policy') }}">Cookie Policy</a>
-                    <a href="{{ url_for('terms') }}">Terms of Use</a>
-                    <a href="#">Cookie Settings</a>
-                </div>
+            <div class="footer-col">
+                <strong>Services</strong>
+                <a href="{{ url_for('complete_uae_establishment') }}">Complete UAE Establishment</a>
+                <a href="{{ url_for('uae_company_formation') }}">UAE Company Formation</a>
+                <a href="{{ url_for('accounting_management_reporting') }}">Accounting, Bookkeeping & Management Reporting</a>
+                <a href="{{ url_for('business_bank_account_support') }}">Business Bank Account Application Support</a>
+                <a href="{{ url_for('residence_visa_support') }}">Residence & Visa Application Support</a>
+                <a href="{{ url_for('corporate_administration_governance') }}">Corporate Administration & Governance</a>
+                <a href="{{ url_for('corporate_tax_vat_coordination') }}">Corporate Tax & VAT Coordination</a>
+            </div>
+            
+            <div class="footer-col">
+                <strong>Legal</strong>
+                <a href="{{ url_for('privacy') }}">Privacy Notice</a>
+                <a href="{{ url_for('cookie_policy') }}">Cookie Policy</a>
+                <a href="{{ url_for('terms') }}">Terms of Use</a>
+               
+            </div>
+
+            <!-- Rightmost Brand Column -->
+            <div class="footer-col footer-brand-col">
+                <a href="{{ url_for('home') }}" class="footer-logo-link">
+                    <img class="brand-logo" src="{{ url_for('logo') }}" alt="STRATOS">
+                </a>
+                <p class="footer-brand-text">Advisory-led UAE company formation, bookkeeping, banking preparation and ongoing corporate support for international founders, private investment groups and established businesses.</p>
             </div>
         </div>
 
-        <div class="footer-bottom footer-bottom-row">
-            <span>Licensed in Dubai through Meydan Free Zone. Serving clients across the UAE.</span>
-            <span>&copy; 2026 [EXACT LEGAL NAME]. All rights reserved.<br>Commercial licence no. [LICENCE NUMBER], issued by Meydan Free Zone, Dubai.</span>
+        <!-- Full Width Bottom Disclaimer -->
+        <div class="footer-bottom-row">
+            <p>Licensed in Dubai through Meydan Free Zone. Serving clients across the UAE.</p>
+            <p>&copy; 2026 [EXACT LEGAL NAME]. All rights reserved. Commercial licence no. [LICENCE NUMBER], issued by Meydan Free Zone, Dubai.</p>
         </div>
-    </footer>
+    </div>
+</footer>
 
     <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>

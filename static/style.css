@@ -186,7 +186,7 @@ nav a {
     color: #ffffff;
     opacity: 0.75;
     text-decoration: none;
-    font-size: 13px;
+    font-size: 16px;
     transition: opacity 0.3s;
 }
 
@@ -242,7 +242,7 @@ nav a:hover {
 .hero-content p,
 .page-intro p,
 .prose p {
-    font-size: 15px;
+    font-size: 16px;
     color: var(--text-dark);
     margin-bottom: 20px;
 }
@@ -393,7 +393,7 @@ nav a:hover {
 ========================================= */
 
 .proof-strip-section {
-    background: var(--navy-light);
+    background: var(--navy-dark);
     padding: 64px 10% !important; /* Locks to global 10% margins */
     width: 100%;
     box-sizing: border-box;
@@ -1134,7 +1134,7 @@ details p {
 }
 
 .slide-1 {
-    background-image: url('/images/dubai-1351569_1920.jpg');
+    background-image: url('/images/b1.jfif');
     animation-delay: 0s;
 }
 
@@ -1144,7 +1144,7 @@ details p {
 }
 
 .slide-3 {
-    background-image: url('/images/claudio-poggio-0xC7iBAgtr8-unsplash.jpg');
+    background-image: url('/images/b3.jfif');
     animation-delay: 10s;
 }
 
@@ -1446,7 +1446,7 @@ input,
 textarea,
 select,
 button {
-    font-size: 12px;
+    font-size: 16px;
 }
 
 .lead,
@@ -1740,7 +1740,7 @@ details p,
 .dashboard-card p,
 .activity-row,
 .form-hint {
-    font-size: 12px;
+    font-size: 16px;
 }
 
 /* Mobile Responsive Styling (max-width: 768px) */
@@ -3336,7 +3336,7 @@ header {
     }
 
     #primaryNav a {
-        font-size: 15px !important;
+        font-size: 16px !important;
         width: 100% !important;
         justify-content: flex-start !important;
         height: auto !important;
@@ -4152,7 +4152,7 @@ p.lead {
     }
 
     #primaryNav a {
-        font-size: 15px !important;
+        font-size: 16px !important;
         width: 100% !important;
         justify-content: flex-start !important;
         height: auto !important;
@@ -4533,5 +4533,2381 @@ img, video, iframe, canvas, svg {
 
     #primaryNav.nav-open {
         display: block !important;
+    }
+}
+/* Container Layout */
+.luxury-features-section {
+    background-color: var(--navy-dark);
+    padding: 60px 10% 80px !important;
+    width: 100%;
+    box-sizing: border-box;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* 3-Card Grid Setup */
+.luxury-services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    margin-bottom: 60px;
+}
+
+.luxury-card {
+    background-color: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.luxury-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+.luxury-card-image {
+    position: relative;
+    width: 100%;
+    height: 190px;
+    overflow: hidden;
+}
+
+.luxury-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.luxury-icon-badge {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    width: 38px;
+    height: 38px;
+    background: var(--navy-dark);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    z-index: 2;
+}
+
+.luxury-card-body {
+    padding: 24px;
+    text-align: left;
+}
+
+.luxury-card-body h3 {
+    font-family: var(--font-heading) !important;
+    font-size: 20px !important;
+    font-weight: 500 !important;
+    color: #ffffff !important;
+    margin: 0 0 10px 0 !important;
+}
+
+.luxury-card-body p {
+    font-family: var(--font-body);
+    font-size: 13px !important;
+    line-height: 1.6 !important;
+    color: rgba(255, 255, 255, 0.75) !important;
+    margin-bottom: 18px !important;
+}
+
+.luxury-read-more {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.6);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.luxury-card:hover .luxury-read-more {
+    color: #ffffff;
+}
+
+/* Map Section & Silver Filter Styling */
+.luxury-map-banner {
+    position: relative;
+    width: 100%;
+    padding: 20px 0 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.silver-world-map-wrap {
+    width: 100%;
+    max-width: 900px;
+    height: 360px;
+    margin: 0 auto 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none;
+    /* Mix-blend-mode blends dark background naturally into theme */
+    mix-blend-mode: screen; 
+}
+
+.silver-map-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    /* Converts Gold dots to Bright Metallic Silver */
+    filter: grayscale(100%) brightness(150%) contrast(110%);
+    opacity: 0.85;
+}
+
+.luxury-map-content {
+    position: relative;
+    z-index: 2;
+    max-width: 750px;
+}
+
+.luxury-map-content h2 {
+    font-family: var(--font-heading) !important;
+    font-size: 32px !important;
+    font-weight: 500 !important;
+    color: #ffffff !important;
+    text-align: center !important;
+    line-height: 1.3 !important;
+    margin: 8px 0 16px !important;
+}
+
+.luxury-map-content p.lead-light {
+    font-size: 16px !important;
+    color: rgba(255, 255, 255, 0.85) !important;
+    text-align: center !important;
+    margin-bottom: 28px !important;
+}
+
+.luxury-btn-group {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+@media (max-width: 900px) {
+    .luxury-services-grid {
+        grid-template-columns: 1fr;
+    }
+    .luxury-map-content h2 {
+        font-size: 24px !important;
+    }
+}
+/* Map Section Outer Wrapper */
+.luxury-map-banner {
+    position: relative;
+    width: 100%;
+    padding: 20px 0 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: transparent; /* Ensures section background flows through */
+}
+
+/* Image Wrapper (No Borders & Background Blending) */
+.silver-world-map-wrap {
+    width: 100%;
+    max-width: 900px;
+    height: 380px;
+    margin: 0 auto 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    background: transparent !important;
+    /* Blends dark background out, leaving only the silver elements visible */
+    mix-blend-mode: screen; 
+}
+
+/* Silver Map Image Filtering */
+.silver-map-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    background: transparent !important;
+    /* Strips warm gold tone and enhances crisp metallic silver contrast */
+    filter: grayscale(100%) brightness(160%) contrast(120%);
+    opacity: 0.85;
+}
+/* Expanded Silver World Map Wrapper */
+.silver-world-map-wrap {
+    width: 100%;
+    max-width: 1000px; /* Increased from 900px */
+    height: 450px;      /* Increased from 380px */
+    margin: 0 auto 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    background: transparent !important;
+    mix-blend-mode: screen; 
+}
+/* Footer Layout Base */
+.site-footer {
+    background: var(--navy-dark);
+    color: #ffffff;
+    padding: 60px 8% 40px;
+    width: 100%;
+    box-sizing: border-box;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-container {
+    max-width: 1300px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+/* 4-Column Grid: 3 Left Navigation Columns + 1 Right Brand Column */
+.footer-links.footer-grid {
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 40px !important;
+    width: 100%;
+    margin-bottom: 48px;
+    align-items: start;
+}
+
+.footer-col {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start !important;
+    text-align: left !important;
+}
+
+/* Column Titles (Playfair Display) */
+.footer-col strong {
+    font-family: var(--font-heading);
+    font-size: 22px !important;
+    font-weight: 500;
+    color: #ffffff;
+    margin-bottom: 18px;
+    display: block;
+}
+
+/* Arrow Bullet Links matching reference screenshot */
+.footer-col a {
+    color: rgba(255, 255, 255, 0.75);
+    text-decoration: none;
+    font-size: 13px !important;
+    margin-bottom: 10px;
+    display: inline-flex;
+    align-items: center;
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.footer-col a::before {
+    content: "›";
+    font-weight: bold;
+    font-size: 16px;
+    margin-right: 8px;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.footer-col a:hover {
+    color: #ffffff;
+    transform: translateX(4px);
+}
+
+/* Right-most Brand Column */
+.footer-brand-col {
+    align-items: flex-start;
+}
+
+.footer-logo-link {
+    margin-bottom: 16px;
+}
+
+.footer-logo-link::before {
+    content: none !important; /* Exclude arrow from logo */
+}
+
+.footer-brand-text {
+    font-size: 13px !important;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0;
+    text-align: left !important;
+}
+
+/* Bottom Legal Strip */
+.footer-bottom-row {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 24px;
+    text-align: center !important;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.footer-bottom-row p {
+    font-size: 11px !important;
+    color: rgba(255, 255, 255, 0.5);
+    margin: 0;
+    text-align: center !important;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 900px) {
+    .footer-links.footer-grid {
+        grid-template-columns: 1fr !important;
+        gap: 32px !important;
+    }
+}
+/* Tightened Footer Columns Spacing */
+.footer-col {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start !important;
+    text-align: left !important;
+    gap: 4px !important; /* Reduces vertical gap between items */
+}
+
+/* Reduced Spacing and Line-Height for Links */
+.footer-col a {
+    color: rgba(255, 255, 255, 0.75);
+    text-decoration: none;
+    font-size: 13px !important;
+    line-height: 1.25 !important; /* Compact line-height prevents vertical stretching */
+    margin-bottom: 6px !important; /* Removes exaggerated bottom spacing */
+    display: inline-flex;
+    align-items: flex-start;
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.footer-col a::before {
+    content: "›";
+    font-weight: bold;
+    font-size: 15px;
+    line-height: 1;
+    margin-right: 8px;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+/* If you strictly want line-height: 0 as requested */
+/* (Use only if all links stay strictly on 1 single line) */
+.footer-col-tight-zero a {
+    line-height: 0 !important;
+    margin-bottom: 14px !important;
+}
+/* Mobile Header Layout (Logo Left, Hamburger Right) */
+@media (max-width: 1024px) {
+    header {
+        position: sticky !important;
+        top: 0 !important;
+        padding: 12px 5% !important;
+        z-index: 1000 !important;
+    }
+
+    .header-top {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important; /* Pushes Logo Left and Hamburger Right */
+        width: 100% !important;
+        position: relative !important;
+        margin-bottom: 0 !important;
+    }
+
+    /* Pushes Logo to Far Left */
+    .logo-container {
+        order: 1 !important;
+        margin: 0 !important;
+        display: flex !important;
+        justify-content: flex-start !important;
+        align-items: center !important;
+    }
+
+    /* Pushes Hamburger Menu to Far Right */
+    .header-actions.mobile-only {
+        order: 2 !important;
+        position: static !important;
+        transform: none !important;
+        display: flex !important;
+        align-items: center !important;
+        margin: 0 !important;
+    }
+
+    /* Primary Nav Mobile Dropdown Drawer */
+    #primaryNav {
+        display: none;
+        position: absolute !important;
+        top: 100% !important;
+        left: 0 !important;
+        width: 100% !important;
+        background: var(--navy-dark) !important;
+        border-top: 1px solid rgba(255, 255, 255, 0.15) !important;
+        padding: 24px 6% 36px !important;
+        box-shadow: 0 16px 32px rgba(0, 0, 0, 0.6) !important;
+        z-index: 9999 !important;
+    }
+
+    #primaryNav.nav-open {
+        display: block !important;
+    }
+}
+
+
+/* Mobile Header Sticky/Fixed Positioning */
+@media (max-width: 1024px) {
+    header {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        padding: 12px 5% !important;
+        z-index: 10000 !important;
+    }
+
+    body {
+        padding-top: 70px !important;
+    }
+
+    .header-top {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        width: 100% !important;
+        position: relative !important;
+        margin-bottom: 0 !important;
+    }
+
+    .logo-container {
+        order: 1 !important;
+        margin: 0 !important;
+        display: flex !important;
+        justify-content: flex-start !important;
+        align-items: center !important;
+        flex-grow: 0 !important;
+    }
+
+    .header-actions.mobile-only {
+        order: 2 !important;
+        position: static !important;
+        transform: none !important;
+        display: flex !important;
+        align-items: center !important;
+        margin: 0 !important;
+    }
+
+    #primaryNav {
+        display: none;
+        position: absolute !important;
+        top: 100% !important;
+        left: 0 !important;
+        width: 100% !important;
+        background: var(--navy-dark) !important;
+        border-top: 1px solid rgba(255, 255, 255, 0.15) !important;
+        padding: 24px 6% 36px !important;
+        box-shadow: 0 16px 32px rgba(0, 0, 0, 0.6) !important;
+        z-index: 9999 !important;
+    }
+
+    #primaryNav.nav-open {
+        display: block !important;
+    }
+}
+/* Mobile Styling for Dark Band / Featured Statement Section */
+@media (max-width: 900px) {
+    .dark-band.image-band {
+        background-color: var(--navy-dark) !important; /* Forces solid dark navy background on mobile */
+        grid-template-columns: 1fr !important;
+        padding-left: 8% !important;
+        padding-right: 8% !important;
+        padding-top: 300px !important; /* Maintains spacing for the top faded image */
+        position: relative !important;
+    }
+
+    .dark-band.image-band .section-photo {
+        width: 100% !important;
+        height: 260px !important;
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
+        mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%) !important;
+        -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%) !important;
+    }
+
+    .dark-band.image-band .banner-text-content {
+        position: relative !important;
+        z-index: 2 !important;
+        background: transparent !important;
+    }
+}
+/* Mobile Header Layout (Logo Far Left, Hamburger Far Right) */
+@media (max-width: 1024px) {
+    header {
+        position: sticky !important;
+        top: 0 !important;
+        padding: 12px 5% !important;
+        z-index: 1000 !important;
+    }
+
+    .header-top {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        width: 100% !important;
+        position: relative !important;
+        margin-bottom: 0 !important;
+    }
+
+    /* Force Logo Container to the Far Left */
+    .logo-container {
+        order: 1 !important;
+        margin: 0 0 0 40px !important;
+        display: flex !important;
+        justify-content: flex-start !important;
+        align-items: center !important;
+        flex-grow: 0 !important;
+    }
+
+    /* Force Hamburger Menu to the Far Right */
+    .header-actions.mobile-only {
+        order: 2 !important;
+        position: static !important;
+        transform: none !important;
+        display: flex !important;
+        align-items: center !important;
+        margin: 0 !important;
+    }
+
+    /* Ensure primary nav dropdown stays positioned cleanly below */
+    #primaryNav {
+        display: none;
+        position: absolute !important;
+        top: 100% !important;
+        left: 0 !important;
+        width: 100% !important;
+        background: var(--navy-dark) !important;
+        border-top: 1px solid rgba(255, 255, 255, 0.15) !important;
+        padding: 24px 6% 36px !important;
+        box-shadow: 0 16px 32px rgba(0, 0, 0, 0.6) !important;
+        z-index: 9999 !important;
+    }
+
+    #primaryNav.nav-open {
+        display: block !important;
+    }
+}
+/* Fixed Navigation Bar at Screen Top */
+header {
+    background: var(--navy-dark) !important;
+    color: #ffffff;
+    padding: 14px 5%;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    z-index: 10000 !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Offset top page padding to prevent content overlap beneath fixed header */
+body {
+    padding-top: 80px !important;
+}
+/* Mobile Header Layout (Logo Far Left, Hamburger Far Right) */
+@media (max-width: 1024px) {
+    header {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        padding: 12px 5% !important;
+        z-index: 10000 !important;
+    }
+
+    .header-top {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        width: 100% !important;
+        margin-bottom: 0 !important;
+    }
+
+    .logo-container {
+        margin: 0 !important;
+        padding: 0 !important;
+        display: flex !important;
+        justify-content: flex-start !important;
+        align-items: center !important;
+        flex-grow: 0 !important;
+    }
+
+    .header-actions.mobile-only {
+        position: static !important;
+        transform: none !important;
+        display: flex !important;
+        align-items: center !important;
+        margin: 0 !important;
+    }
+}
+/* Update eyebrow colors globally */
+.eyebrow,
+.eyebrow-light,
+.page-intro .eyebrow,
+.hero-banner-content .eyebrow-light,
+.dark-band .eyebrow,
+.luxury-map-content .eyebrow-light {
+    color: #80868b !important;
+    opacity: 1 !important; /* Ensures full color rendering */
+}
+/* Reset Who We Work With to Single Column Match Layout Width */
+.who-we-work-with-section {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 40px 10% !important;
+    margin: 0 auto !important;
+    box-sizing: border-box !important;
+}
+
+@media (max-width: 900px) {
+    .who-we-work-with-section {
+        padding-left: 6% !important;
+        padding-right: 6% !important;
+    }
+}
+/* =========================================
+   A CLEARER WAY FORWARD BANNER
+========================================= */
+.clarity-banner {
+    background-color: var(--navy-dark) !important;
+    padding: 72px 10% !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    text-align: center !important;
+}
+
+.clarity-banner-content {
+    max-width: 800px !important;
+    width: 100% !important;
+    margin: 0 auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+}
+
+.clarity-banner .eyebrow-light {
+    color: rgba(255, 255, 255, 0.7) !important;
+    font-size: 11px !important;
+    letter-spacing: 2px !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    margin: 0 0 12px 0 !important;
+    text-align: center !important;
+}
+
+.clarity-banner h2 {
+    font-family: var(--font-heading) !important;
+    font-size: 42px !important;
+    font-weight: 500 !important;
+    color: #ffffff !important;
+    margin: 0 0 16px 0 !important;
+    line-height: 1.2 !important;
+    text-align: center !important;
+}
+
+.clarity-banner .lead-light {
+    font-family: var(--font-body) !important;
+    font-size: 16px !important;
+    line-height: 1.6 !important;
+    color: rgba(255, 255, 255, 0.85) !important;
+    margin: 0 !important;
+    max-width: 640px !important;
+    text-align: center !important;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .clarity-banner {
+        padding: 48px 6% !important;
+    }
+
+    .clarity-banner h2 {
+        font-size: 28px !important;
+    }
+
+    .clarity-banner .lead-light {
+        font-size: 14px !important;
+    }
+}
+/* Fix Desktop Navigation Overlap & Gap Spacing */
+@media (min-width: 1025px) {
+    #primaryNav {
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        width: 100% !important;
+        position: relative !important;
+    }
+
+    #primaryNav ul {
+        display: flex !important;
+        align-items: center !important;
+        gap: 20px !important; /* Spacing between navigation links */
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    .nav-right-cta {
+        position: static !important; /* Removes absolute positioning overlap */
+        transform: none !important;
+        margin-left: 32px !important; /* Provides clear separation gap before the button */
+        flex-shrink: 0 !important;
+    }
+}
+/* Fix Desktop Navigation Overlap & Gap Spacing */
+@media (min-width: 1025px) {
+    #primaryNav {
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        width: 100% !important;
+        position: relative !important;
+    }
+
+    #primaryNav ul {
+        display: flex !important;
+        align-items: center !important;
+        gap: 20px !important; /* Spacing between navigation links */
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    .nav-right-cta {
+        position: static !important; /* Removes absolute positioning overlap */
+        transform: none !important;
+        margin-left: 32px !important; /* Provides clear separation gap before the button */
+        flex-shrink: 0 !important;
+    }
+}
+/* Align Desktop Navigation Links to the Right */
+@media (min-width: 1025px) {
+    #primaryNav {
+        display: flex !important;
+        justify-content: flex-end !important; /* Align nav container contents to the right */
+        align-items: center !important;
+        width: 100% !important;
+    }
+
+    #primaryNav ul {
+        display: flex !important;
+        align-items: center !important;
+        gap: 16px !important;
+        margin-left: auto !important; /* Pushes the menu list flush to the right */
+        margin-right: 24px !important; /* Adds a comfortable gap before the CTA button */
+        padding: 0 30px !important;
+    }
+
+    .nav-right-cta {
+        margin-left: 0 !important;
+        flex-shrink: 0 !important;
+    }
+}
+/* =========================================
+   A STRONGER TOMORROW BANNER
+========================================= */
+.tomorrow-banner {
+    position: relative;
+    width: 100% !important;
+    min-height: 420px;
+    display: flex;
+    align-items: flex-end;
+    padding: 60px 8% !important;
+    box-sizing: border-box;
+    background-image: url('/images/p1.jfif'); /* Adjust image filename if needed */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow: hidden;
+}
+
+.tomorrow-banner-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        180deg, 
+        rgba(7, 14, 40, 0.2) 0%, 
+        rgba(7, 14, 40, 0.75) 100%
+    );
+    z-index: 1;
+}
+
+.tomorrow-banner-content {
+    position: relative;
+    z-index: 2;
+    max-width: 500px;
+    color: #ffffff;
+}
+
+.tomorrow-banner h2 {
+    font-family: var(--font-heading) !important;
+    font-size: 42px !important;
+    line-height: 1.15 !important;
+    font-weight: 500 !important;
+    color: #ffffff !important;
+    margin: 0 0 20px 0 !important;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.tomorrow-banner .eyebrow-light {
+    font-family: var(--font-body) !important;
+    font-size: 11px !important;
+    letter-spacing: 2px !important;
+    font-weight: 600 !important;
+    color: rgba(255, 255, 255, 0.85) !important;
+    text-transform: uppercase !important;
+    margin: 0 !important;
+    border-bottom: 2px solid #ffffff;
+    display: inline-block;
+    padding-bottom: 4px;
+}
+
+/* Mobile Responsive Adjustments */
+@media (max-width: 768px) {
+    .tomorrow-banner {
+        min-height: 320px;
+        padding: 40px 6% !important;
+    }
+
+    .tomorrow-banner h2 {
+        font-size: 32px !important;
+    }
+}
+
+/* Remove Image & Grid Layout for Complete UAE Establishment */
+.uae-establishment-section {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 60px 10% !important;
+    box-sizing: border-box !important;
+}
+
+.uae-establishment-section .establishment-text-content {
+    width: 100% !important;
+    max-width: 100% !important;
+}
+
+.uae-establishment-section .establishment-photo-wrap {
+    display: none !important; /* Safety fallback to hide image wrapper if still in DOM */
+}
+/* =========================================
+   ZERO LINE-HEIGHT & MARGIN FOR ALL EYEBROWS
+========================================= */
+.eyebrow,
+.eyebrow-light,
+.page-intro .eyebrow,
+.hero-banner-content .eyebrow-light,
+.dark-band .eyebrow,
+.luxury-map-content .eyebrow-light,
+.clarity-banner .eyebrow-light,
+.tomorrow-banner .eyebrow-light,
+.section-header .eyebrow {
+    letter-spacing: 0 !important;
+   
+}
+/* Unify About Section Paragraph Text Justification & Color */
+.about-content p,
+.about-split-section p {
+    text-align: justify !important;
+    text-justify: inter-word !important;
+    color: var(--navy-dark) !important; /* Matches solid navy/black of the callout text */
+    opacity: 1 !important;              /* Removes faded transparency */
+    font-size: 16px !important;
+    line-height: 1.65 !important;
+}
+/* Restrict Image Height to Match Natural Text Height on Large Screens */
+@media (min-width: 1025px) {
+    .about-split-section {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important; /* Equal column distribution */
+        gap: 48px !important;
+        align-items: center !important; /* Vertically centers the image relative to text */
+    }
+
+    .about-split-section .about-photo-wrap {
+        height: 100% !important;
+        max-height: 460px !important; /* Caps image height to align flush with text block */
+        width: 100% !important;
+        overflow: hidden !important;
+    }
+
+    .about-split-section .about-photo {
+        width: 100% !important;
+        height: 100% !important;
+        max-height: 460px !important;
+        object-fit: cover !important;
+    }
+}
+/* =========================================
+   COMPLETE UAE ESTABLISHMENT CARDS
+========================================= */
+.establishment-cards-grid {
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 24px !important;
+    width: 100% !important;
+    margin-bottom: 32px !important;
+}
+
+.establishment-card {
+    background: #ffffff !important;
+    border: 1px solid var(--navy-dark) !important;
+    padding: 28px 24px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+    transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+.establishment-card:hover {
+    transform: translateY(-4px) !important;
+    box-shadow: 0 8px 24px rgba(7, 14, 40, 0.08) !important;
+}
+
+.establishment-card .card-step-num {
+    font-family: var(--font-body) !important;
+    font-size: 12px !important;
+    font-weight: 700 !important;
+    letter-spacing: 2px !important;
+    color: var(--navy-dark) !important;
+    opacity: 0.4 !important;
+    margin-bottom: 12px !important;
+    display: block !important;
+}
+
+.establishment-card h3 {
+    font-family: var(--font-heading) !important;
+    font-size: 18px !important;
+    font-weight: 600 !important;
+    color: var(--navy-dark) !important;
+    margin: 0 0 12px 0 !important;
+    line-height: 1.3 !important;
+}
+
+.establishment-card p {
+    font-size: 14px !important;
+    line-height: 1.6 !important;
+    color: var(--text-dark) !important;
+    margin: 0 !important;
+    text-align: justify !important;
+}
+
+/* Tablet & Mobile Layout Adaptations */
+@media (max-width: 1024px) {
+    .establishment-cards-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 20px !important;
+    }
+}
+
+@media (max-width: 600px) {
+    .establishment-cards-grid {
+        grid-template-columns: 1fr !important;
+        gap: 16px !important;
+    }
+}
+/* =========================================
+   UNIFIED MOBILE TYPOGRAPHY SYSTEM (<= 768px)
+========================================= */
+@media (max-width: 768px) {
+    /* 1. All Main Page Titles (H1) */
+    h1,
+    .hero-content h1,
+    .page-intro h1,
+    .hero-banner-content h1,
+    .auth-intro h1,
+    .dashboard-heading h1 {
+        font-size: 28px !important;
+        line-height: 1.25 !important;
+    }
+
+    /* 2. All Section Headings (H2) */
+    h2,
+    .section-header h2,
+    .split-section h2,
+    .dark-band h2,
+    .service-row h2,
+    .article-card h2,
+    .appointment-note h2,
+    .legal-content h2,
+    .auth-form h2,
+    .dashboard-card h2,
+    .clarity-banner h2,
+    .tomorrow-banner h2,
+    .luxury-map-content h2 {
+        font-size: 24px !important;
+        line-height: 1.3 !important;
+    }
+
+    /* 3. All Card & Component Titles (H3) */
+    h3,
+    .service-card h3,
+    .article-card h3,
+    .feature-text h3,
+    .establishment-card h3,
+    .luxury-card-body h3 {
+        font-size: 18px !important;
+        line-height: 1.35 !important;
+    }
+
+    /* 4. All Eyebrows (Small Labels) */
+    .eyebrow,
+    .eyebrow-light,
+    .page-intro .eyebrow,
+    .hero-banner-content .eyebrow-light,
+    .dark-band .eyebrow,
+    .luxury-map-content .eyebrow-light,
+    .clarity-banner .eyebrow-light,
+    .tomorrow-banner .eyebrow-light,
+    .section-header .eyebrow {
+        font-size: 10px !important;
+        letter-spacing: 1.5px !important;
+        text-transform: uppercase !important;
+    }
+
+    /* 5. All Body Paragraphs, Lead Text, and Lists */
+    p,
+    section p,
+    .hero-content p,
+    .page-intro p,
+    .prose p,
+    .lead,
+    .lead-light,
+    .sub-lead,
+    .service-card p,
+    .article-card p,
+    .feature-text p,
+    .service-row p,
+    details p,
+    .legal-content p,
+    .appointment-note p,
+    .dashboard-card p,
+    .about-content p,
+    .about-prose-body p,
+    .home-about-section p,
+    .luxury-card-body p,
+    .establishment-card p,
+    .contact-layout p {
+        font-size: 14px !important;
+        line-height: 1.55 !important;
+    }
+}
+/* Tighten Hero Slider Container & Button Gap */
+.hero-banner .text-slider-container {
+    min-height: 55px !important;
+    margin-bottom: 8px !important;
+}
+
+.hero-banner .button-row .btn-banner {
+    margin-top: 0 !important;
+}
+
+@media (max-width: 768px) {
+    .hero-banner .text-slider-container {
+        min-height: 80px !important;
+        margin-bottom: 12px !important;
+    }
+}
+/* =========================================
+   UNIFIED DESKTOP TYPOGRAPHY SYSTEM (>= 1025px)
+========================================= */
+@media (min-width: 1025px) {
+    /* 1. All Main Page Titles (H1) */
+    h1,
+    .hero-content h1,
+    .page-intro h1,
+    .hero-banner-content h1,
+    .auth-intro h1,
+    .dashboard-heading h1 {
+        font-family: var(--font-heading) !important;
+        font-size: 48px !important;
+        line-height: 1.18 !important;
+        font-weight: 500 !important;
+    }
+
+    /* 2. All Major Section Headings (H2) */
+    h2,
+    .section-header h2,
+    .split-section h2,
+    .dark-band h2,
+    .service-row h2,
+    .article-card h2,
+    .appointment-note h2,
+    .legal-content h2,
+    .auth-form h2,
+    .dashboard-card h2,
+    .clarity-banner h2,
+    .tomorrow-banner h2,
+    .luxury-map-content h2,
+    .home-about-section h2 {
+        font-family: var(--font-heading) !important;
+        font-size: 36px !important;
+        line-height: 1.25 !important;
+        font-weight: 500 !important;
+    }
+
+    /* 3. All Card & Sub-section Headings (H3) */
+    h3,
+    .service-card h3,
+    .article-card h3,
+    .feature-text h3,
+    .establishment-card h3,
+    .luxury-card-body h3 {
+        font-family: var(--font-heading) !important;
+        font-size: 22px !important;
+        line-height: 1.3 !important;
+        font-weight: 600 !important;
+    }
+
+    /* 4. All Minor Titles & Feature Subheads (H4 / Summaries) */
+    h4,
+    .feature-text h4,
+    .working-hours-card h4,
+    summary {
+        font-family: var(--font-body) !important;
+        font-size: 18px !important;
+        line-height: 1.35 !important;
+        font-weight: 700 !important;
+    }
+
+    /* 5. All Eyebrow Badges & Small Labels */
+    .eyebrow,
+    .eyebrow-light,
+    .page-intro .eyebrow,
+    .hero-banner-content .eyebrow-light,
+    .dark-band .eyebrow,
+    .luxury-map-content .eyebrow-light,
+    .clarity-banner .eyebrow-light,
+    .tomorrow-banner .eyebrow-light,
+    .section-header .eyebrow {
+        font-family: var(--font-body) !important;
+        font-size: 11px !important;
+        letter-spacing: 2px !important;
+        font-weight: 600 !important;
+        text-transform: uppercase !important;
+    }
+
+    /* 6. All Lead Paragraphs & Introductory Subtext */
+    .lead,
+    .lead-light,
+    .sub-lead,
+    .section-header p:not(.eyebrow) {
+        font-size: 16px !important;
+        line-height: 1.65 !important;
+    }
+
+    /* 7. All Standard Paragraphs & Body Copy */
+    p,
+    section p,
+    .prose p,
+    .service-card p,
+    .article-card p,
+    .feature-text p,
+    .service-row p,
+    details p,
+    .legal-content p,
+    .appointment-note p,
+    .about-content p,
+    .about-prose-body p,
+    .home-about-section p,
+    .luxury-card-body p,
+    .establishment-card p,
+    .contact-layout p {
+        font-size: 16px !important;
+        line-height: 1.65 !important;
+    }
+}
+/* =========================================
+   FULL-WIDTH LEFT-ALIGNED SECTION HEADINGS
+========================================= */
+.section-header,
+.services-section .section-header,
+.uae-establishment-section .section-header,
+.who-we-work-with-section .section-header {
+    text-align: left !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    max-width: 100% !important;
+    width: 100% !important;
+}
+
+.section-header h2,
+.services-section h2,
+.uae-establishment-section h2,
+.who-we-work-with-section h2 {
+    text-align: left !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    white-space: normal !important; /* Allows natural full-width span */
+    margin-left: 0 !important;
+}
+
+.section-header .eyebrow,
+.services-section .eyebrow,
+.uae-establishment-section .eyebrow,
+.who-we-work-with-section .eyebrow {
+    text-align: left !important;
+    margin-left: 0 !important;
+    display: block !important;
+}
+/* Standardize Line Height and Paragraph Spacing in About/Split Section */
+.about-split-section p,
+.about-content p {
+    line-height: 1.1 !important;
+    margin-bottom: 10px !important;
+    font-size: 16px !important;
+    color: var(--text-dark) !important;
+    opacity: 1 !important;
+}
+
+/* Ensure the callout paragraph keeps its standard line-height and left border padding */
+.about-content p[style*="border-left"] {
+    line-height: 1.1 !important;
+    margin-top: 10px !important;
+    margin-bottom: 10px !important;
+}
+
+
+/* =========================================
+   SITE-WIDE ALIGNMENT & EYEBROW HARMONIZATION
+========================================= */
+
+/* 1. Standardise Global Page & Section Alignment */
+header,
+main section,
+.hero-banner,
+.proof-strip-section,
+.about-split-section,
+.services-section,
+.tomorrow-banner,
+.dark-band,
+.luxury-features-section,
+footer.site-footer {
+    padding-left: 8% !important;
+    padding-right: 8% !important;
+    box-sizing: border-box !important;
+    max-width: 1440px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+/* 2. Unify All Eyebrow Badges */
+.eyebrow,
+.page-intro .eyebrow,
+.section-header .eyebrow,
+.about-content .eyebrow {
+    font-family: var(--font-body) !important;
+    font-size: 11px !important;
+    font-weight: 600 !important;
+    letter-spacing: 2px !important;
+    color: #80868b !important;
+    text-transform: uppercase !important;
+    line-height: 0 !important;
+    margin-top: 0 !important;
+    margin-bottom: 12px !important;
+    display: block !important;
+    text-align: left !important;
+}
+
+/* 3. Unify Light Eyebrows (On Dark Banners) */
+.eyebrow-light,
+.hero-banner-content .eyebrow-light,
+.dark-band .eyebrow-light,
+.luxury-map-content .eyebrow-light,
+.tomorrow-banner .eyebrow-light {
+    font-family: var(--font-body) !important;
+    font-size: 11px !important;
+    font-weight: 600 !important;
+    letter-spacing: 2px !important;
+    color: rgba(255, 255, 255, 0.85) !important;
+    text-transform: uppercase !important;
+    line-height: 0 !important;
+    margin-top: 0 !important;
+    margin-bottom: 12px !important;
+    display: block !important;
+}
+/* Remove Underline from Banner Eyebrow */
+.tomorrow-banner .eyebrow-light {
+    border-bottom: none !important;
+    padding-bottom: 0 !important;
+}
+/* =========================================
+   BEFORE YOU ENQUIRE SECTION
+========================================= */
+
+.before-you-enquire-section {
+    background-color: #ffffff;
+    padding: 80px 10%;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.before-enquire-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: stretch;
+}
+
+.before-enquire-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.section-accent-line {
+    display: block;
+    width: 32px;
+    height: 1px;
+    background-color: rgba(7, 14, 40, 0.25);
+    margin-bottom: 12px;
+}
+
+.before-enquire-content .section-title {
+    font-family: var(--font-heading);
+    font-size: 34px !important;
+    font-weight: 500;
+    color: var(--navy-dark);
+    margin: 0 0 24px 0 !important;
+    line-height: 1.2 !important;
+}
+
+.before-enquire-content .lead-prose {
+    font-size: 16px !important;
+    line-height: 1.65 !important;
+    color: var(--navy-light) !important;
+    margin-bottom: 16px !important;
+    text-align: justify;
+}
+
+.before-enquire-content .disclaimer-note {
+    font-size: 16px !important;
+    font-style: italic;
+    color: var(--navy-light);
+    margin-top: 8px;
+    margin-bottom: 28px !important;
+}
+
+.fit-card {
+    background: #ffffff;
+    border: 1px solid rgba(7, 14, 40, 0.12);
+    padding: 32px;
+    margin-top: 8px;
+}
+
+.fit-card h3 {
+    font-family: var(--font-heading) !important;
+    font-size: 20px !important;
+    font-weight: 600;
+    color: var(--navy-dark);
+    margin: 0 0 16px 0 !important;
+}
+
+.fit-list {
+    margin: 0;
+    padding-left: 18px;
+    list-style-type: disc;
+}
+
+.fit-list li {
+    font-size: 13px !important;
+    line-height: 1.6 !important;
+    color: var(--text-dark);
+    margin-bottom: 10px;
+}
+
+.fit-list li:last-child {
+    margin-bottom: 0;
+}
+
+.before-enquire-photo-wrap {
+    width: 100%;
+    height: 100%;
+    min-height: 480px;
+}
+
+.before-enquire-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Tablet & Mobile Layout Adaptations */
+@media (max-width: 900px) {
+    .before-enquire-container {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+
+    .before-enquire-photo-wrap {
+        min-height: 320px;
+        height: 320px;
+    }
+}
+/* =========================================
+   NAVIGATION DROPDOWN MENU & SCROLLING
+========================================= */
+
+#primaryNav ul.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(15px);
+    background: var(--navy-dark);
+    min-width: 340px;
+    
+    /* SCROLLING ENANCEMENTS */
+    max-height: 380px;            /* Constrains height so menu stays on screen */
+    overflow-y: auto;             /* Enables vertical scrolling when items overflow */
+    overflow-x: hidden;           /* Prevents horizontal scrollbars */
+    
+    display: flex;
+    flex-direction: column;
+    padding: 12px 0;
+    margin: 0;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 8px 24px rgba(7, 14, 40, 0.4);
+    z-index: 1000;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+}
+
+/* Custom Sleek Scrollbar for Dropdown Menu */
+#primaryNav ul.dropdown-menu::-webkit-scrollbar {
+    width: 5px;
+}
+
+#primaryNav ul.dropdown-menu::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+#primaryNav ul.dropdown-menu::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.25);
+    border-radius: 3px;
+}
+
+#primaryNav ul.dropdown-menu::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.5);
+}
+.luxury-map-content h2 {
+    font-family: var(--font-heading) !important;
+    font-size: clamp(20px, 2.8vw, 32px) !important; /* Dynamically scales font size to fit viewport */
+    font-weight: 500 !important;
+    color: #ffffff !important;
+    text-align: center !important;
+    line-height: 1.2 !important;
+    margin: 8px 0 16px !important;
+    
+    /* FORCE SINGLE LINE */
+    white-space: nowrap !important;
+    max-width: 100% !important;
+}
+/* Solid Banner Button - Blue Hover Effect */
+.btn-banner:not(.btn-banner-transparent) {
+    background: #ffffff !important;
+    color: var(--navy-dark) !important;
+    border: 1px solid #ffffff !important;
+    font-weight: 700 !important; 
+    letter-spacing: 0.3px;
+    box-shadow: 0 6px 16px rgba(7, 14, 40, 0.25) !important;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.btn-banner:not(.btn-banner-transparent):hover {
+    background:var(--navy-dark) !important;/* Deep Navy Blue */
+    color: #ffffff !important;        /* White text on hover */
+    border-color:#ffffff !important;
+    transform: translateY(-2px);
+    box-shadow: 0 12px 24px rgba(7, 14, 40, 0.35) !important;
+}
+/* Position dark band content and shift to the right */
+.dark-band.image-band {
+    display: flex !important;
+    justify-content: flex-end !important; /* Anchors the content container to the right side */
+    padding-left: 10% !important;
+    padding-right: 6% !important;         /* Brings content closer to the right viewport edge */
+}
+
+/* Text Container Alignment & Right Shift */
+.dark-band.image-band .banner-text-content {
+    position: relative !important;
+    z-index: 2 !important;
+    max-width: 580px !important;
+    margin-left: auto !important;          /* Pushes the container flush to the right */
+    margin-right: 0 !important;
+    transform: translateX(40px);          /* Shifts the text block 40px further to the right */
+}
+
+.dark-band.image-band .banner-text-content h2 {
+    color: #ffffff !important;
+    margin-bottom: 24px !important;
+    text-align: left !important;
+}
+
+.dark-band.image-band .banner-text-content p {
+    text-align: justify !important;
+    text-justify: inter-word !important;
+}
+
+/* Responsive Fallback for Mobile Viewports */
+@media (max-width: 900px) {
+    .dark-band.image-band .banner-text-content {
+        max-width: 100% !important;
+        transform: none !important;
+        margin-left: 0 !important;
+    }
+}
+/* Eyebrow styling inside Dark Band / Image Band */
+.dark-band.image-band .banner-text-content .eyebrow-light {
+    font-family: var(--font-body) !important;
+    font-size: 11px !important;
+    font-weight: 600 !important;
+    letter-spacing: 2px !important;
+    color: rgba(255, 255, 255, 0.7) !important;
+    text-transform: uppercase !important;
+    margin-bottom: 12px !important;
+    display: block !important;
+    text-align: left !important;
+}
+@media (max-width: 1024px) {
+    .header-top {
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        width: 100% !important;
+        position: relative !important;
+    }
+
+    /* Force logo link container flush left */
+    .logo-container {
+        margin: 0 !important;
+        padding: 0 !important;
+        flex-grow: 0 !important;
+        display: flex !important;
+        justify-content: flex-start !important;
+        align-items: center !important;
+    }
+
+    /* Force logo image flush left */
+    .brand-logo {
+        margin: 0 !important;
+        display: block !important;
+    }
+
+    /* Keep hamburger button flush right */
+    .header-actions.mobile-only {
+        margin: 0 !important;
+        display: flex !important;
+        align-items: center !important;
+    }
+}
+/* Mobile Viewport Fix for Dark Band / Recommendation Section */
+@media (max-width: 900px) {
+    .dark-band.image-band {
+        background-color: var(--navy-dark) !important;
+        grid-template-columns: 1fr !important;
+        padding-left: 6% !important;
+        padding-right: 6% !important;
+        
+        /* INCREASED TOP PADDING TO LOWER TEXT BELOW IMAGE */
+        padding-top: 460px !important; 
+        position: relative !important;
+    }
+
+    /* Keep background photo pinned to the top */
+    .dark-band.image-band .section-photo {
+        width: 100% !important;
+        height: 320px !important;
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 70%, rgba(0,0,0,0) 100%) !important;
+        -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 70%, rgba(0,0,0,0) 100%) !important;
+    }
+
+    .dark-band.image-band .banner-text-content {
+        position: relative !important;
+        z-index: 2 !important;
+        margin-top: 0 !important;
+        transform: none !important;
+    }
+}
+/* =========================================
+   LUXURY MAP BANNER - MOBILE TEXT FIX
+========================================= */
+
+@media (max-width: 768px) {
+    .luxury-map-banner {
+        padding: 40px 6% !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    .luxury-map-content {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 0 !important;
+        margin: 0 auto !important;
+        box-sizing: border-box !important;
+    }
+
+    /* Allow Heading to Wrap & Fit Screen Width */
+    .luxury-map-content h2 {
+        font-family: var(--font-heading) !important;
+        font-size: clamp(20px, 5.5vw, 26px) !important; /* Dynamically scales font */
+        line-height: 1.25 !important;
+        font-weight: 500 !important;
+        color: #ffffff !important;
+        text-align: center !important;
+        margin: 12px 0 16px 0 !important;
+        
+        /* OVERRIDE NOWRAP & PREVENT OVERFLOW */
+        white-space: normal !important;
+        word-break: normal !important;
+        overflow-wrap: break-word !important;
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    /* Keep Eyebrow Contained */
+    .luxury-map-content .eyebrow-light {
+        font-size: 10px !important;
+        letter-spacing: 1.5px !important;
+        text-align: center !important;
+        width: 100% !important;
+        white-space: normal !important;
+    }
+
+    /* Lead Text Responsiveness */
+    .luxury-map-content p.lead-light {
+        font-size: 13px !important;
+        line-height: 1.55 !important;
+        text-align: center !important;
+        margin-bottom: 24px !important;
+        width: 100% !important;
+    }
+
+    /* Stack CTA Buttons Cleanly */
+    .luxury-btn-group {
+        display: flex !important;
+        flex-direction: column !important;
+        width: 100% !important;
+        gap: 12px !important;
+    }
+
+    .luxury-btn-group .btn-banner {
+        width: 100% !important;
+        text-align: center !important;
+        margin: 0 !important;
+    }
+}
+/* =========================================
+   REDUCE SPACING AROUND WORLD MAP
+========================================= */
+
+/* 1. Base Styles (All Screen Sizes) */
+.luxury-services-grid {
+    margin-bottom: 20px !important; /* Reduced from 60px to pull map up */
+}
+
+.luxury-map-banner {
+    padding: 10px  20px !important;   /* Tightened overall section padding */
+}
+
+.silver-world-map-wrap {
+    height: 240px !important;       /* Reduced height container to clip empty vertical space */
+    margin: 0 auto 10px !important; /* Tightened bottom margin above the heading */
+}
+
+/* 2. Mobile Responsive Adjustments (<= 768px) */
+@media (max-width: 768px) {
+    .luxury-services-grid {
+        margin-bottom: 12px !important;
+    }
+
+    .silver-world-map-wrap {
+        height: 180px !important;    /* Compact height on small screens */
+        margin-top: 0 !important;
+        margin-bottom: 8px !important;
+    }
+
+    .luxury-map-content {
+        margin-top: 0 !important;
+    }
+}
+/* =========================================
+   A STRONGER TOMORROW BANNER
+========================================= */
+
+.tomorrow-banner {
+    position: relative;
+    width: 100% !important;
+    min-height: 260px !important;    /* Reduced from 420px */
+    display: flex;
+    align-items: flex-end;
+    padding: 32px 8% !important;     /* Reduced vertical padding from 60px */
+    box-sizing: border-box;
+    background-image: url('/images/p1.jfif');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow: hidden;
+}
+
+/* Mobile Responsive Adjustment */
+@media (max-width: 768px) {
+    .tomorrow-banner {
+        min-height: 200px !important; /* Compact height for mobile screens */
+        padding: 24px 6% !important;  /* Tighter padding on small viewports */
+    }
+
+    .tomorrow-banner h2 {
+        font-size: 26px !important;    /* Adjusted heading size to fit compact height */
+        margin-bottom: 12px !important;
+    }
+}
+/* =========================================
+   COMPACT PROOF STRIP ON MOBILE
+========================================= */
+@media (max-width: 768px) {
+    /* Reduce vertical height and padding of the section */
+    .proof-strip-section {
+        padding: 20px 5% !important; /* Significantly reduced vertical padding */
+        min-height: auto !important;
+    }
+
+    /* Convert to a compact 2x2 grid with tighter gaps */
+    .proof-strip-grid {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 12px 16px !important; /* Minimal gap between items */
+    }
+
+    .proof-item {
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    /* Reduce metric number/heading size */
+    .proof-item strong {
+        font-size: 16px !important;
+        margin-bottom: 2px !important;
+        line-height: 1.1 !important;
+    }
+
+    /* Reduce description text size and spacing */
+    .proof-item p {
+        font-size: 11px !important;
+        line-height: 1.3 !important;
+        margin: 0 !important;
+        opacity: 0.8;
+    }
+}/* Mobile Hero Banner Image Visibility Fix */
+@media (max-width: 768px) {
+    .hero-banner {
+        min-height: 520px !important;
+        padding: 90px 6% 40px !important;
+        position: relative !important;
+        overflow: hidden !important;
+    }
+
+    /* Ensure background slides remain visible and fill the hero area */
+    .hero-bg-slider,
+    .hero-bg-slide {
+        display: block !important;
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        z-index: 1 !important;
+    }
+
+    /* Lighten the dark gradient overlay on mobile so the image shows through */
+    .hero-banner-overlay {
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        background: linear-gradient(
+            180deg, 
+            rgba(7, 14, 40, 0.75) 0%, 
+            rgba(7, 14, 40, 0.55) 50%, 
+            rgba(7, 14, 40, 0.85) 100%
+        ) !important;
+        z-index: 2 !important;
+    }
+
+    /* Keep content positioned clearly over the image and overlay */
+    .hero-banner-content {
+        position: relative !important;
+        z-index: 3 !important;
+    }
+}
+/* =========================================
+   STATIC HERO BANNER (SERVICES & SUBPAGES)
+========================================= */
+
+.hero-banner.static-hero {
+    position: relative;
+    min-height: 520px;
+    display: flex;
+    align-items: center;
+    padding: 100px 8% !important; /* Locks flush with global 8% horizontal site margin */
+    box-sizing: border-box;
+    width: 100% !important;
+    max-width: 1440px !important;
+    margin: 0 auto !important;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    overflow: hidden;
+}
+
+.hero-banner.static-hero .hero-banner-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg, 
+        rgba(7, 14, 40, 0.92) 0%, 
+        rgba(7, 14, 40, 0.75) 55%, 
+        rgba(7, 14, 40, 0.45) 100%
+    );
+    z-index: 2;
+}
+
+.hero-banner.static-hero .hero-banner-content {
+    position: relative;
+    z-index: 3;
+    width: 100%;
+    max-width: 850px !important;
+    text-align: left !important;
+}
+
+.hero-banner.static-hero h1 {
+    font-family: var(--font-heading) !important;
+    font-size: clamp(34px, 4.5vw, 48px) !important;
+    line-height: 1.18 !important;
+    font-weight: 500 !important;
+    color: #ffffff !important;
+    margin: 12px 0 20px 0 !important;
+}
+
+.hero-banner.static-hero .lead-light {
+    font-size: 16px !important;
+    line-height: 1.65 !important;
+    color: rgba(255, 255, 255, 0.9) !important;
+    margin-bottom: 28px !important;
+    max-width: 720px;
+}
+
+.hero-banner.static-hero .microcopy {
+    font-size: 11px !important;
+    margin-top: 16px !important;
+    opacity: 0.8;
+    color: #ffffff !important;
+}
+
+/* Mobile Responsive Adjustments */
+@media (max-width: 768px) {
+    .hero-banner.static-hero {
+        min-height: 440px !important;
+        padding: 90px 6% 40px !important;
+    }
+
+    .hero-banner.static-hero h1 {
+        font-size: 28px !important;
+        line-height: 1.25 !important;
+    }
+
+    .hero-banner.static-hero .lead-light {
+        font-size: 14px !important;
+        line-height: 1.55 !important;
+    }
+}
+/* =========================================
+   PROOF STRIP ALIGNMENT FIX
+========================================= */
+
+.proof-strip-section {
+    padding: 40px 8% !important;
+    background-color: var(--navy-dark);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.proof-strip-grid {
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 32px !important;
+    align-items: start !important; /* Forces all items to align to top baseline */
+    width: 100%;
+}
+
+.proof-item {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important; /* Keeps text stacked cleanly from top */
+    align-items: flex-start !important;
+    text-align: left !important;
+}
+
+.proof-item strong {
+    font-family: var(--font-heading) !important;
+    font-size: 26px !important;
+    line-height: 1.2 !important;
+    color: #ffffff !important;
+    margin-bottom: 8px !important;
+    display: block !important;
+    min-height: 32px !important; /* Locks heading height so paragraphs below align evenly */
+}
+
+.proof-item p {
+    font-size: 13px !important;
+    line-height: 1.5 !important;
+    color: rgba(255, 255, 255, 0.8) !important;
+    margin: 0 !important;
+}
+/* =========================================
+   PROOF STRIP LEFT ALIGNMENT FIX
+========================================= */
+
+.proof-item {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+    align-items: flex-start !important; /* Pushes child elements to the far left boundary */
+    text-align: left !important;
+    width: 100% !important;
+}
+
+.proof-item strong {
+    font-family: var(--font-heading) !important;
+    font-size: 26px !important;
+    line-height: 1.2 !important;
+    color: #ffffff !important;
+    margin: 0 0 8px 0 !important;
+    padding: 0 !important;
+    text-align: left !important;
+    align-self: flex-start !important;
+}
+
+.proof-item p {
+    font-size: 13px !important;
+    line-height: 1.5 !important;
+    color: rgba(255, 255, 255, 0.8) !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    text-align: left !important;
+    align-self: flex-start !important; /* Guarantees paragraph is pinned to the left edge under strong */
+    width: 100% !important;
+}
+/* =========================================
+   EYEBROW LETTER SPACING RESET
+========================================= */
+
+.eyebrow,
+.eyebrow-light,
+p.eyebrow,
+p.eyebrow-light {
+    letter-spacing: 0 !important;
+}/* =========================================
+   MOBILE HEADER LOGO & PROOF STRIP FIX
+========================================= */
+
+@media (max-width: 768px) {
+    /* 1. Flush Left Logo Alignment */
+    .header-top {
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        padding-left: 0 !important; /* Removes left offset */
+        width: 100% !important;
+    }
+
+    .logo-container {
+        margin-left: 0 !important;
+        padding-left: 0 !important;
+    }
+
+    .logo-container img.brand-logo {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        display: block !important;
+    }
+
+    /* 2. Proof Strip 2x2 Grid Fix (Prevents Horizontal Bleed) */
+    .proof-strip-section {
+        padding: 24px 5% !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+        overflow: hidden !important;
+    }
+
+    .proof-strip-grid {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important; /* Clean 2x2 layout */
+        gap: 20px 16px !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    .proof-item {
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        box-sizing: border-box !important;
+    }
+
+    .proof-item strong {
+        font-size: 18px !important;
+        line-height: 1.2 !important;
+        margin-bottom: 4px !important;
+        min-height: auto !important;
+        white-space: normal !important; /* Allows long headers to wrap naturally */
+    }
+
+    .proof-item p {
+        font-size: 11px !important;
+        line-height: 1.35 !important;
+        white-space: normal !important;
+    }
+}
+@media (max-width: 1024px) {
+    /* Remove horizontal padding from the outer header on mobile */
+    header {
+        padding-left: 0 !important;
+        padding-right: 5% !important; /* Retains right padding for the hamburger icon */
+    }
+
+    /* Force header-top container full width without left inset */
+    .header-top {
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        width: 100% !important;
+        padding-left: 0 !important;
+        margin-left: 0 !important;
+    }
+
+    /* Force logo wrapper flush against the viewport edge */
+    a.logo-container {
+        margin-left: 0 !important;
+        padding-left: 12px !important; /* Small 16px padding so logo doesn't touch the raw glass edge */
+        display: flex !important;
+        justify-content: flex-start !important;
+        align-items: center !important;
+    }
+
+    /* Keep the image aligned to the far left inside its wrapper */
+    img.brand-logo {
+        margin-left: 0 !important;
+        margin-right: auto !important;
+        display: block !important;
+    }
+}
+/* =========================================
+   WHY DIRECTORY SECTION - NAVY DARK TEXT FIX
+========================================= */
+
+.why-directory-section {
+    color: var(--navy-dark) !important;
+}
+
+.why-directory-section .why-title {
+    color: var(--navy-dark) !important; /* Forces dark navy on headers */
+}
+
+.why-directory-section .why-desc {
+    color: var(--navy-dark) !important; /* Forces dark navy on paragraph body copy */
+    opacity: 0.9;                       /* Maintains clean readability */
+}
+.home-page-content p {
+    font-size: 16px !important;
+}
+/* Home page specific paragraph font size */
+main > .hero-banner p,
+.proof-strip-section p,
+.about-split-section p,
+.clarity-banner p,
+.who-we-work-with-section p,
+.tomorrow-banner p,
+.uae-establishment-section p,
+.dark-band p,
+.services-section p,
+.before-you-enquire-section p,
+.luxury-features-section p {
+    font-size: 16px !important;
+}
+/* Remove top accent line in Before You Enquire section */
+.before-you-enquire-section .section-accent-line {
+    display: none !important;
+}
+
+/* Match Before You Enquire eyebrow to global eyebrow standards */
+.before-enquire-content .eyebrow {
+    font-family: var(--font-body) !important;
+    font-size: 11px !important;
+    font-weight: 600 !important;
+    letter-spacing: 2px !important;
+    color: #80868b !important;
+    text-transform: uppercase !important;
+    line-height: 1 !important;
+    margin-top: 0 !important;
+    margin-bottom: 12px !important;
+    display: block !important;
+    text-align: left !important;
+}
+/* Global Button Size & Typography Standardization */
+.btn-outline,
+.btn-banner,
+.btn-signin,
+.btn-outline-pill,
+button.btn-outline,
+a.btn-outline,
+a.btn-banner {
+    font-size: 16px !important;
+    padding: 12px 28px !important;
+    height: 48px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    box-sizing: border-box !important;
+    line-height: 1 !important;
+    white-space: nowrap !important;
+}
+
+/* Ensure navbar CTA maintains proper alignment with the new height */
+.nav-right-cta .btn-signin {
+    min-width: auto !important;
+}
+/* Navigation Links Font Size Update */
+#primaryNav a,
+nav a {
+    font-size: 16px !important;
+}
+/* Lines 302-305 & 321 in style.css */
+.proof-item:last-child {
+    align-items: flex-end;
+    text-align: right;
+}
+/* Proof Strip Left Alignment Fix */
+.proof-strip-grid .proof-item,
+.proof-strip-grid .proof-item:last-child {
+    align-items: flex-start !important;
+    text-align: left !important;
+}
+
+.proof-strip-grid .proof-item p,
+.proof-strip-grid .proof-item:last-child p {
+    text-align: left !important;
+}
+/* Justify text inside the fit-card list */
+.fit-card .fit-list li {
+    text-align: justify !important;
+    text-justify: inter-word !important;
+}
+/* Justify footer brand description text */
+.footer-brand-text {
+    text-align: justify !important;
+    text-justify: inter-word !important;
+}
+/* Align footer logo flush left with description text */
+.footer-brand-col {
+    align-items: flex-start !important;
+}
+
+.footer-logo-link {
+    display: inline-block !important;
+    margin-left: 0 !important;
+    padding-left: 0 !important;
+}
+
+.footer-logo-link .brand-logo {
+    margin-left: 0 !important;
+    display: block !important;
+}
+/* Mobile spacing fix for Hero Banner text and CTA buttons */
+@media (max-width: 768px) {
+    .hero-banner .text-slider-container,
+    .hero-banner p.lead-light {
+        margin-bottom: 28px !important; /* Adds breathing room below paragraph text */
+    }
+
+    .hero-banner .button-row {
+        margin-top: 16px !important;    /* Adds extra spacing above the 'Book a Consultation' button */
+    }
+}
+/* Justify Hero paragraph text on mobile viewports */
+@media (max-width: 768px) {
+    .hero-banner-content p,
+    .hero-banner .text-slide,
+    .hero-banner p.lead-light {
+        text-align: justify !important;
+        text-justify: inter-word !important;
+    }
+}
+/* Justify Proof Strip paragraph text on mobile viewports */
+@media (max-width: 768px) {
+    .proof-item p,
+    .proof-strip-grid .proof-item p {
+        text-align: justify !important;
+        text-justify: inter-word !important;
+    }
+}
+/* Justify 'Who We Work With' lead paragraph on mobile viewports */
+@media (max-width: 768px) {
+    .who-we-work-with-section p.lead {
+        text-align: justify !important;
+        text-justify: inter-word !important;
+    }
+}/* Justify 'Who We Work With' lead paragraph on mobile viewports */
+@media (max-width: 768px) {
+    .who-we-work-with-section p.lead {
+        text-align: justify !important;
+        text-justify: inter-word !important;
+    }
+}
+/* Justify 'Complete UAE Establishment' lead paragraphs on mobile viewports */
+@media (max-width: 768px) {
+    .uae-establishment-section .section-header p.lead {
+        text-align: justify !important;
+        text-justify: inter-word !important;
+    }
+}
+/* Justify 'Our Services' section subhead/description on mobile viewports */
+@media (max-width: 768px) {
+    .services-section .section-header p {
+        text-align: justify !important;
+        text-justify: inter-word !important;
+    }
+}
+/* =========================================
+   LEGAL PAGES & GLOBAL TYPOGRAPHY UNIFICATION
+========================================= */
+
+/* 1. Legal Page Layout Wrapper Alignment */
+.legal-section-wrapper {
+    padding: 40px 8% 120px !important;
+    background: #ffffff;
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.legal-content-container {
+    width: 100% !important;
+    max-width: 100% !important;
+}
+
+/* 2. Unified Eyebrows */
+.eyebrow,
+.eyebrow-light,
+.page-hero .eyebrow {
+    font-family: var(--font-body) !important;
+    font-size: 11px !important;
+    font-weight: 600 !important;
+    letter-spacing: 0 !important; /* Resets letter spacing to match site update */
+    color: #80868b !important;
+    text-transform: uppercase !important;
+    line-height: 1 !important;
+    margin-top: 0 !important;
+    margin-bottom: 12px !important;
+    display: block !important;
+    text-align: left !important;
+}
+
+/* 3. Section Headings (H2) - 36px Desktop / 24px Mobile */
+h2,
+.legal-content-container h2 {
+    font-family: var(--font-heading) !important;
+    font-size: 36px !important;
+    line-height: 1.25 !important;
+    font-weight: 500 !important;
+    color: var(--navy-dark) !important;
+    margin: 40px 0 20px !important;
+    text-align: left !important;
+}
+
+/* 4. Sub-Headings (H3) - 22px Desktop / 18px Mobile */
+h3,
+.legal-content-container h3 {
+    font-family: var(--font-heading) !important;
+    font-size: 22px !important;
+    line-height: 1.3 !important;
+    font-weight: 600 !important;
+    color: var(--navy-dark) !important;
+    margin: 32px 0 16px !important;
+    text-align: left !important;
+}
+
+/* 5. Paragraphs & List Items - 15px Desktop / 14px Mobile */
+.legal-content-container p,
+.legal-content-container li {
+    font-size: 1px !important;
+    line-height: 1.65 !important;
+    color: var(--navy-light) !important;
+    margin-bottom: 20px !important;
+    text-align: justify !important;
+    text-justify: inter-word !important;
+}
+
+.legal-content-container ul,
+.legal-content-container ol {
+    margin-bottom: 24px !important;
+    padding-left: 24px !important;
+}
+
+/* 6. Responsive Mobile Adjustments (<= 768px) */
+@media (max-width: 768px) {
+    .legal-section-wrapper {
+        padding: 24px 6% 60px !important;
+    }
+
+    .legal-content-container h2 {
+        font-size: 24px !important;
+        line-height: 1.3 !important;
+        margin: 28px 0 16px !important;
+    }
+
+    .legal-content-container h3 {
+        font-size: 18px !important;
+        line-height: 1.35 !important;
+        margin: 24px 0 12px !important;
+    }
+
+    .legal-content-container p,
+    .legal-content-container li {
+        font-size: 16px !important;
+        line-height: 1.55 !important;
     }
 }

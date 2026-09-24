@@ -3,40 +3,123 @@
 {% block content %}
 
 <style>
-    /* Keep H1 left-aligned to prevent awkward word gaps */
+    /* Section grid container */
+    .contact-layout {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 60px !important;
+        align-items: start !important;
+        max-width: 1200px !important;
+        margin: 0 auto !important;
+        padding-top: 140px !important; /* Clears fixed top header */
+        padding-bottom: 80px !important;
+        padding-left: 5% !important;
+        padding-right: 5% !important;
+    }
+
+    /* Left column alignment */
     .contact-layout h1 {
         text-align: left !important;
+        font-size: 38px !important;
+        line-height: 1.2 !important;
+        margin-bottom: 24px !important;
     }
 
-    /* Only justify paragraphs and labels */
     .contact-layout p,
     .contact-layout label {
-        text-align: justify !important;
+        text-align: left !important; /* Left alignment looks cleaner on forms than justify */
     }
-    
-    /* Keep button text centered */
-    .contact-layout .btn-outline {
+
+    .contact-details {
+        display: flex !important;
+        gap: 40px !important;
+        margin-top: 32px !important;
+    }
+
+    /* Right column form styling */
+    .contact-form {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 20px !important;
+        background: #ffffff !important;
+        border: 1px solid #e0e0e0 !important;
+        padding: 40px !important;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05) !important;
+        box-sizing: border-box !important;
+        width: 100% !important;
+    }
+
+    .contact-form label {
+        font-size: 14px !important;
+        font-weight: 600 !important;
+        color: #1a1a1a !important;
+        margin-bottom: -10px !important;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+        width: 100% !important;
+        padding: 12px 14px !important;
+        border: 1px solid #ccc !important;
+        border-radius: 0 !important;
+        font-size: 14px !important;
+        box-sizing: border-box !important;
+        outline: none !important;
+    }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+        border-color: #000000 !important;
+    }
+
+    .contact-form .btn-outline {
+        width: 100% !important;
+        padding: 14px 20px !important;
+        font-size: 14px !important;
         text-align: center !important;
+        cursor: pointer !important;
+        background: transparent !important;
+        border: 1px solid #000000 !important;
+        transition: all 0.3s ease !important;
+    }
+
+    .contact-form .btn-outline:hover {
+        background: #000000 !important;
+        color: #ffffff !important;
+    }
+
+    /* Responsive stacking for smaller screens */
+    @media (max-width: 900px) {
+        .contact-layout {
+            grid-template-columns: 1fr !important;
+            padding-top: 100px !important;
+            gap: 40px !important;
+        }
+
+        .contact-form {
+            padding: 24px !important;
+        }
     }
 </style>
-
 <section class="contact-layout">
     <div>
         <p class="eyebrow">START A CONVERSATION</p>
         <h1>Tell Us What the Business Needs to Accomplish in the UAE.</h1>
         <p class="lead">Our short enquiry form asks about the proposed activities, ownership, timing, required visas, banking needs and continuing support. We will review the information and, where we believe Stratos can add value, invite you to a consultation.</p>
         <div class="contact-details">
-            <p><strong>Email</strong><br>hello@stratos.ae</p>
+            <p><strong>Email</strong><br>info@stratouae.com</p>
             <p><strong>Location</strong><br>Dubai, United Arab Emirates</p>
             <p style="font-size: 13px; color: var(--navy-light); margin-top: 16px;"><em>About five minutes. No documents are required at this stage.</em></p>
         </div>
     </div>
-    <form class="contact-form" action="{{ url_for('contact') }}" method="post">
+    <form class="contact-form" action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
+        <input type="hidden" name="_subject" value="New Contact Form Submission - STRATOS">
+
         <label for="name">Your name</label>
         <input id="name" name="name" required>
         
         <label for="email">Email address</label>
-        <input id="email" name="email" type="email" required>
+        <input id="email" name="_replyto" type="email" required>
         
         <label for="message">How can we help?</label>
         <textarea id="message" name="message" rows="5" required placeholder="Tell us about your business needs"></textarea>
